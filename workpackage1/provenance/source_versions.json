@@ -1,0 +1,14 @@
+{
+  "pins": {
+    "sqli-labs": "e96f21776372c8613a7e565106e62bc01a59355e",
+    "DVWA": "068d974487a297c155c48722f9fcf7180a83adc4"
+  },
+  "urls": {
+    "sqli-labs": "https://github.com/Audi-1/sqli-labs",
+    "DVWA": "https://github.com/digininja/DVWA"
+  },
+  "source_access_date": "2026-10-12",
+  "extraction": "git show COMMIT:PATH; raw files preserve exact object bytes",
+  "windows_limitation": "SQLi-Labs contains case-colliding filenames in Less-24 and Less-40. SQLI-005 uses exact Less-24 paths read from Git objects; use Linux for faithful full deployment.",
+  "preprocess_version": "v2"
+}

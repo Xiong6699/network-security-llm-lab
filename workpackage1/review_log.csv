@@ -1,0 +1,15 @@
+﻿sample_id,review_date,reviewer,entry_sink_checks,mapping_check,dependency_check,finding,revision,runtime_status,independent_human_review
+SQLI-005,2026-10-12,Codex静态复核v2,注册转义、数据库写入、登录数据库返回值、会话来源、改密查询及重定向完整保留；三个阶段不能作为互不关联的独立样本统计。,每片逐行源文件映射和哈希，由verify_samples检查,A写入users.username/password；B查询users后把数据库返回的username写入SESSION；C读取SESSION.username并生成UPDATE；D提供A/B/C的数据库连接,静态关联路径完整；运行行为及最终标签待验证,按完整处理器/函数分包，依赖重复提供；代码块不在字符串或条件内截断,未运行POC,待组员复核
+XSS-005,2026-10-12,Codex静态复核v2,写入过滤、读取SELECT、实际HTML输出、配置相关编码分支及外围调用全部关联；不以数据库转义推断HTML输出安全。,每片逐行源文件映射和哈希，由verify_samples检查,B选择并包含A；A向guestbook写入name/comment；B调用C读取guestbook并拼接到page.body；C根据D的实际配置决定输出编码；外围dvwaHtmlEcho输出page.body，完整实现另存context/dvwaPage.inc.php,静态关联路径完整；运行行为及最终标签待验证,按完整处理器/函数分包，依赖重复提供；代码块不在字符串或条件内截断,未运行POC,待组员复核
+AUTH-001,2026-10-12,Codex静态复核v2,完整页面、客户端、两个独立接口、会话和菜单渲染均保存；high/impossible等真实权限分支保留。教学提示注释从C中排除，业务权限约定保留。,每片逐行源文件映射和哈希，由verify_samples检查,A启动会话并包含页面角色检查C；A输出B，B调用D与E；D/E是独立HTTP入口，不经过A的页面流程；F定义实际身份与security读取；G控制菜单可见性并输出A的page.body；同一个AUTH-001跨P1/P2/P3综合判定，不能按片数当漏洞数,静态关联路径完整；运行行为及最终标签待验证,按完整处理器/函数分包，依赖重复提供；代码块不在字符串或条件内截断,未运行POC,待组员复核
+SQLI-001,2026-10-12,Codex静态复核,GET id→SQL拼接→mysql_query→结果/错误输出；连接include和日志保留,逐行对应检查由verify_samples执行,数据库及旧mysql接口需验证,静态关键路径完整；语法和运行行为未验证,来源难度和候选标签不进入模型输入；外围依赖补入context及元数据,未运行POC,待组员复核
+SQLI-002,2026-10-12,Codex静态复核,POST uname/passwd 两输入、存在性判断、查询、结果/错误输出与日志保留,逐行对应检查由verify_samples执行,表单HTML已移除，参数与POST方式写入元数据,静态关键路径完整；语法和运行行为未验证,来源难度和候选标签不进入模型输入；外围依赖补入context及元数据,未运行POC,待组员复核
+SQLI-003,2026-10-12,Codex静态复核,blacklist调用及完整函数、两个preg_replace、SQL执行和末尾Hint均保留,逐行对应检查由verify_samples执行,有过滤不等于安全；多PHP块的装饰输出变化已声明,静态关键路径完整；语法和运行行为未验证,来源难度和候选标签不进入模型输入；外围依赖补入context及元数据,未运行POC,待组员复核
+XSS-001,2026-10-12,Codex静态复核,GET name判断、响应头、HTML拼接及pre上下文保留,逐行对应检查由verify_samples执行,外围渲染在context/xss-handler.php；不能独立运行,静态关键路径完整；语法和运行行为未验证,来源难度和候选标签不进入模型输入；外围依赖补入context及元数据,未运行POC,待组员复核
+XSS-002,2026-10-12,Codex静态复核,str_replace的完整匹配字符串和HTML输出保留,逐行对应检查由verify_samples执行,过滤有效性需实测，不能用medium名称赋真实标签,静态关键路径完整；语法和运行行为未验证,来源难度和候选标签不进入模型输入；外围依赖补入context及元数据,未运行POC,待组员复核
+XSS-003,2026-10-12,Codex静态复核,正则表达式、参数源和HTML输出保留,逐行对应检查由verify_samples执行,复杂过滤候选；需要测试不同输入与浏览器条件,静态关键路径完整；语法和运行行为未验证,来源难度和候选标签不进入模型输入；外围依赖补入context及元数据,未运行POC,待组员复核
+XSS-004,2026-10-12,Codex静态复核,token校验、htmlspecialchars、pre文本上下文和token生成保留,逐行对应检查由verify_samples执行,checkToken实现与认证开关在外围依赖；防护仅针对所关注路径,静态关键路径完整；语法和运行行为未验证,来源难度和候选标签不进入模型输入；外围依赖补入context及元数据,未运行POC,待组员复核
+CMD-001,2026-10-12,Codex静态复核,Submit触发、REQUEST ip、Win/Linux两分支、shell_exec及输出保留,逐行对应检查由verify_samples执行,OS、shell、ping和shell_exec状态未知,静态关键路径完整；语法和运行行为未验证,来源难度和候选标签不进入模型输入；外围依赖补入context及元数据,未运行POC,待组员复核
+CMD-002,2026-10-12,Codex静态复核,完整黑名单、str_replace、两系统分支和输出保留,逐行对应检查由verify_samples执行,不得仅凭存在黑名单判安全,静态关键路径完整；语法和运行行为未验证,来源难度和候选标签不进入模型输入；外围依赖补入context及元数据,未运行POC,待组员复核
+CMD-003,2026-10-12,Codex静态复核,trim和所有黑名单项逐字保留，尤其管道符后的空格；两分支保留,逐行对应检查由verify_samples执行,过滤依赖字符细节；OS行为需实测,静态关键路径完整；语法和运行行为未验证,来源难度和候选标签不进入模型输入；外围依赖补入context及元数据,未运行POC,待组员复核
+CMD-004,2026-10-12,Codex静态复核,token、stripslashes、explode、四个is_numeric、sizeof、重组和两分支保留,逐行对应检查由verify_samples执行,is_numeric不等于严格IPv4校验；无效IP与命令注入分开判断,静态关键路径完整；语法和运行行为未验证,来源难度和候选标签不进入模型输入；外围依赖补入context及元数据,未运行POC,待组员复核

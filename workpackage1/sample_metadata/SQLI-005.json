@@ -1,0 +1,144 @@
+{
+  "sample_id": "SQLI-005",
+  "sample_kind": "multifile_workflow",
+  "project": "sqli-labs",
+  "source_url": "https://github.com/Audi-1/sqli-labs",
+  "commit": "e96f21776372c8613a7e565106e62bc01a59355e",
+  "audit_scope": "SQL注入",
+  "language": "PHP/HTML",
+  "entry": "用户注册、登录与修改密码",
+  "parameters": "注册POST submit/username/password/re_password；登录POST login_user/login_password；改密POST submit/current_password/password/re_password；Cookie Auth；SESSION username",
+  "conditions": "三个独立HTTP阶段共享同一数据库与登录会话；审计全部步骤，不假定数据库或会话中的值自动可信。",
+  "limitations": "依赖旧mysql_*接口、数据库users表及本地配置；不得部署审计片段替代完整靶场；Location/refresh调用前已有输出，运行行为受PHP输出缓冲影响。",
+  "dependencies": [
+    "A写入users.username/password",
+    "B查询users后把数据库返回的username写入SESSION",
+    "C读取SESSION.username并生成UPDATE",
+    "D提供A/B/C的数据库连接"
+  ],
+  "fragments": [
+    {
+      "fragment_id": "SQLI-005-A",
+      "code_id": "A",
+      "role": "注册写入",
+      "source_file": "Less-24/login_create.php",
+      "selected_spans": [
+        [
+          1,
+          76
+        ]
+      ],
+      "raw_file": "raw_samples/SQLI-005/A.php",
+      "normalized_file": "normalized_samples/SQLI-005/A.php",
+      "line_map": "line_maps/SQLI-005-A.csv",
+      "raw_sha256": "66f697af12e79e48785aee028daa35872d823b047ec976cabaf56918f4f9dc14",
+      "normalized_sha256": "66f697af12e79e48785aee028daa35872d823b047ec976cabaf56918f4f9dc14",
+      "raw_lines": 76,
+      "normalized_lines": 76,
+      "required_tokens": [
+        "mysql_escape_string",
+        "insert into users"
+      ]
+    },
+    {
+      "fragment_id": "SQLI-005-B",
+      "code_id": "B",
+      "role": "登录读取与会话赋值",
+      "source_file": "Less-24/login.php",
+      "selected_spans": [
+        [
+          1,
+          65
+        ]
+      ],
+      "raw_file": "raw_samples/SQLI-005/B.php",
+      "normalized_file": "normalized_samples/SQLI-005/B.php",
+      "line_map": "line_maps/SQLI-005-B.csv",
+      "raw_sha256": "8065e89386cf1a98bd6a3337ecb9b0886c4744b66e8573c532b19108d16d5d21",
+      "normalized_sha256": "8065e89386cf1a98bd6a3337ecb9b0886c4744b66e8573c532b19108d16d5d21",
+      "raw_lines": 65,
+      "normalized_lines": 65,
+      "required_tokens": [
+        "function sqllogin",
+        "$_SESSION[\"username\"] = $login"
+      ]
+    },
+    {
+      "fragment_id": "SQLI-005-C",
+      "code_id": "C",
+      "role": "修改密码及退出",
+      "source_file": "Less-24/pass_change.php",
+      "selected_spans": [
+        [
+          1,
+          72
+        ]
+      ],
+      "raw_file": "raw_samples/SQLI-005/C.php",
+      "normalized_file": "normalized_samples/SQLI-005/C.php",
+      "line_map": "line_maps/SQLI-005-C.csv",
+      "raw_sha256": "e7dd7b41de7bbcfbc848639beeaf18a437e263fc14526a551075a3bc2b4e5ea7",
+      "normalized_sha256": "e7dd7b41de7bbcfbc848639beeaf18a437e263fc14526a551075a3bc2b4e5ea7",
+      "raw_lines": 72,
+      "normalized_lines": 72,
+      "required_tokens": [
+        "$_SESSION[\"username\"]",
+        "UPDATE users",
+        "mysql_real_escape_string",
+        "mysql_affected_rows"
+      ]
+    },
+    {
+      "fragment_id": "SQLI-005-D",
+      "code_id": "D",
+      "role": "共享数据库连接",
+      "source_file": "sql-connections/sql-connect.php",
+      "selected_spans": [
+        [
+          1,
+          37
+        ]
+      ],
+      "raw_file": "raw_samples/SQLI-005/D.php",
+      "normalized_file": "normalized_samples/SQLI-005/D.php",
+      "line_map": "line_maps/SQLI-005-D.csv",
+      "raw_sha256": "63addc74cdf08772db4557a2084ac4bfe5210b161a3d47037501bf55a832c9a3",
+      "normalized_sha256": "18de887a68841d823e28c50db119330867b5ddbd45eb0ac550cf4681e0950f97",
+      "raw_lines": 37,
+      "normalized_lines": 37,
+      "required_tokens": [
+        "mysql_connect",
+        "mysql_select_db"
+      ]
+    }
+  ],
+  "packets": [
+    {
+      "packet_id": "SQLI-005-P1",
+      "fragment_ids": [
+        "SQLI-005-A",
+        "SQLI-005-D"
+      ],
+      "code_lines": 113,
+      "input_file": "llm_inputs/SQLI-005-P1.md"
+    },
+    {
+      "packet_id": "SQLI-005-P2",
+      "fragment_ids": [
+        "SQLI-005-B",
+        "SQLI-005-C",
+        "SQLI-005-D"
+      ],
+      "code_lines": 174,
+      "input_file": "llm_inputs/SQLI-005-P2.md"
+    }
+  ],
+  "shared_fragments": [
+    "SQLI-005-D"
+  ],
+  "unique_code_lines": 250,
+  "max_packet_code_lines": 174,
+  "preprocess_version": "v2",
+  "runtime_validation": "pending",
+  "semantic_changes": "无；完整源码或完整函数逐行保留，仅生成函数包装行及统一换行"
+}

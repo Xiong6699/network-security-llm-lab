@@ -1,0 +1,137 @@
+{
+  "sample_id": "XSS-005",
+  "sample_kind": "multifile_workflow",
+  "project": "DVWA",
+  "source_url": "https://github.com/digininja/DVWA",
+  "commit": "068d974487a297c155c48722f9fcf7180a83adc4",
+  "audit_scope": "XSS",
+  "language": "PHP/HTML",
+  "entry": "留言写入与再次展示",
+  "parameters": "POST btnSign/txtName/mtxMessage；后续页面GET读取历史留言；页面另含btnClear操作",
+  "conditions": "A为当前选定写入片段，B其余写入版本未提供，不能将A套用到所有配置。数据库持久化留言，dvwaGuestbook读取并返回HTML，page.body传给渲染器；运行配置与实际包含文件需在验证时记录。",
+  "limitations": "mysqli连接、DVWA会话和security配置尚未实测；清理留言操作会改变后续读取结果；不要把客户端maxlength当服务器校验。",
+  "dependencies": [
+    "B选择并包含A",
+    "A向guestbook写入name/comment",
+    "B调用C读取guestbook并拼接到page.body",
+    "C根据D的实际配置决定输出编码",
+    "外围dvwaHtmlEcho输出page.body，完整实现另存context/dvwaPage.inc.php"
+  ],
+  "fragments": [
+    {
+      "fragment_id": "XSS-005-A",
+      "code_id": "A",
+      "role": "留言写入",
+      "source_file": "vulnerabilities/xss_s/source/low.php",
+      "selected_spans": [
+        [
+          1,
+          22
+        ]
+      ],
+      "raw_file": "raw_samples/XSS-005/A.php",
+      "normalized_file": "normalized_samples/XSS-005/A.php",
+      "line_map": "line_maps/XSS-005-A.csv",
+      "raw_sha256": "fd08b4c5d29111581d0ce36ce2a54febd236d4ed3bd7b64d53d6eae9b0f433a0",
+      "normalized_sha256": "27ca9fd3e65466116f31258507b227c4813ab675607890771476bb11f50656bd",
+      "raw_lines": 22,
+      "normalized_lines": 22,
+      "required_tokens": [
+        "mysqli_real_escape_string",
+        "INSERT INTO guestbook"
+      ]
+    },
+    {
+      "fragment_id": "XSS-005-B",
+      "code_id": "B",
+      "role": "请求入口、表单与输出组装",
+      "source_file": "vulnerabilities/xss_s/index.php",
+      "selected_spans": [
+        [
+          1,
+          87
+        ]
+      ],
+      "raw_file": "raw_samples/XSS-005/B.php",
+      "normalized_file": "normalized_samples/XSS-005/B.php",
+      "line_map": "line_maps/XSS-005-B.csv",
+      "raw_sha256": "88c6ade99cb248f5ae211a49cc23f56d48fe07c6e2d63175f76116e3560a8df5",
+      "normalized_sha256": "e8d70411787617b4d38031a6ed9736825e95b77a12da97c2035993465b74dde4",
+      "raw_lines": 87,
+      "normalized_lines": 87,
+      "required_tokens": [
+        "dvwaGuestbook()",
+        "dvwaHtmlEcho",
+        "btnClear",
+        "maxlength"
+      ]
+    },
+    {
+      "fragment_id": "XSS-005-C",
+      "code_id": "C",
+      "role": "数据库读取与HTML拼接",
+      "source_file": "dvwa/includes/dvwaPage.inc.php",
+      "selected_spans": [
+        [
+          610,
+          629
+        ]
+      ],
+      "raw_file": "raw_samples/XSS-005/C.php",
+      "normalized_file": "normalized_samples/XSS-005/C.php",
+      "line_map": "line_maps/XSS-005-C.csv",
+      "raw_sha256": "bea6c28500f15705ad5cfedf8c501706bf36a293f22419e7a63651907495f3b8",
+      "normalized_sha256": "7a834bd52e6f9d504230b073b7ba597f855bb0c21672b64a46d74588bad18343",
+      "raw_lines": 692,
+      "normalized_lines": 22,
+      "required_tokens": [
+        "SELECT name, comment",
+        "htmlspecialchars",
+        "$guestbook .=",
+        "return $guestbook"
+      ]
+    },
+    {
+      "fragment_id": "XSS-005-D",
+      "code_id": "D",
+      "role": "运行配置读取",
+      "source_file": "dvwa/includes/dvwaPage.inc.php",
+      "selected_spans": [
+        [
+          200,
+          216
+        ]
+      ],
+      "raw_file": "raw_samples/XSS-005/D.php",
+      "normalized_file": "normalized_samples/XSS-005/D.php",
+      "line_map": "line_maps/XSS-005-D.csv",
+      "raw_sha256": "bea6c28500f15705ad5cfedf8c501706bf36a293f22419e7a63651907495f3b8",
+      "normalized_sha256": "2d99a3ca639ff678146cf3f120e2593d464d43afc542d4bc82fa92f96649f990",
+      "raw_lines": 692,
+      "normalized_lines": 19,
+      "required_tokens": [
+        "$_COOKIE",
+        "default_security_level"
+      ]
+    }
+  ],
+  "packets": [
+    {
+      "packet_id": "XSS-005-P1",
+      "fragment_ids": [
+        "XSS-005-A",
+        "XSS-005-B",
+        "XSS-005-C",
+        "XSS-005-D"
+      ],
+      "code_lines": 150,
+      "input_file": "llm_inputs/XSS-005-P1.md"
+    }
+  ],
+  "shared_fragments": [],
+  "unique_code_lines": 150,
+  "max_packet_code_lines": 150,
+  "preprocess_version": "v2",
+  "runtime_validation": "pending",
+  "semantic_changes": "无；完整源码或完整函数逐行保留，仅生成函数包装行及统一换行"
+}

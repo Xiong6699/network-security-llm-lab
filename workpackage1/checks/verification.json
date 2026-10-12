@@ -1,0 +1,129 @@
+{
+  "sample_count": 14,
+  "audit_scope_count": 4,
+  "reviewed_count": 14,
+  "max_sample_code_lines": 450,
+  "max_input_packet_code_lines": 219,
+  "workflow_sample_count": 3,
+  "fragment_count": 26,
+  "check_date": "2026-10-12",
+  "scope": "Static provenance, mapping, policy coverage, key context and model input isolation only",
+  "php_lint": "not_run_no_php_command",
+  "runtime_validation": "not_run_by_this_checker",
+  "samples": [
+    {
+      "sample_id": "SQLI-001",
+      "status": "passed_static_integrity",
+      "lines": 33,
+      "mapped_source_lines": 31,
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "SQLI-002",
+      "status": "passed_static_integrity",
+      "lines": 46,
+      "mapped_source_lines": 44,
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "SQLI-003",
+      "status": "passed_static_integrity",
+      "lines": 45,
+      "mapped_source_lines": 43,
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "XSS-001",
+      "status": "passed_static_integrity",
+      "lines": 8,
+      "mapped_source_lines": 6,
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "XSS-002",
+      "status": "passed_static_integrity",
+      "lines": 10,
+      "mapped_source_lines": 8,
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "XSS-003",
+      "status": "passed_static_integrity",
+      "lines": 10,
+      "mapped_source_lines": 8,
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "XSS-004",
+      "status": "passed_static_integrity",
+      "lines": 13,
+      "mapped_source_lines": 11,
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "CMD-001",
+      "status": "passed_static_integrity",
+      "lines": 17,
+      "mapped_source_lines": 15,
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "CMD-002",
+      "status": "passed_static_integrity",
+      "lines": 24,
+      "mapped_source_lines": 22,
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "CMD-003",
+      "status": "passed_static_integrity",
+      "lines": 31,
+      "mapped_source_lines": 29,
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "CMD-004",
+      "status": "passed_static_integrity",
+      "lines": 33,
+      "mapped_source_lines": 31,
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "SQLI-005",
+      "sample_kind": "multifile_workflow",
+      "status": "passed_static_integrity",
+      "lines": 250,
+      "fragment_count": 4,
+      "packet_count": 2,
+      "max_packet_lines": 174,
+      "shared_fragments": [
+        "SQLI-005-D"
+      ],
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "XSS-005",
+      "sample_kind": "multifile_workflow",
+      "status": "passed_static_integrity",
+      "lines": 150,
+      "fragment_count": 4,
+      "packet_count": 1,
+      "max_packet_lines": 150,
+      "shared_fragments": [],
+      "declared_semantic_edits": 0
+    },
+    {
+      "sample_id": "AUTH-001",
+      "sample_kind": "multifile_workflow",
+      "status": "passed_static_integrity",
+      "lines": 450,
+      "fragment_count": 7,
+      "packet_count": 3,
+      "max_packet_lines": 219,
+      "shared_fragments": [
+        "AUTH-001-F"
+      ],
+      "declared_semantic_edits": 0
+    }
+  ]
+}

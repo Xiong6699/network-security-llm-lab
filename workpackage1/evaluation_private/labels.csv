@@ -1,0 +1,15 @@
+﻿sample_id,ground_truth,evidence,runtime_status
+SQLI-005,待验证,尚无POC结果,未验证
+XSS-005,待验证,尚无POC结果,未验证
+AUTH-001,待验证,尚无POC结果,未验证
+SQLI-001,待验证,尚无POC结果,未验证
+SQLI-002,待验证,尚无POC结果,未验证
+SQLI-003,待验证,尚无POC结果,未验证
+XSS-001,待验证,尚无POC结果,未验证
+XSS-002,待验证,尚无POC结果,未验证
+XSS-003,待验证,尚无POC结果,未验证
+XSS-004,待验证,尚无POC结果,未验证
+CMD-001,待验证,尚无POC结果,未验证
+CMD-002,待验证,尚无POC结果,未验证
+CMD-003,待验证,尚无POC结果,未验证
+CMD-004,待验证,尚无POC结果,未验证

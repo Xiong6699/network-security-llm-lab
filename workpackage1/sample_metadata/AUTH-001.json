@@ -1,0 +1,251 @@
+{
+  "sample_id": "AUTH-001",
+  "sample_kind": "multifile_workflow",
+  "project": "DVWA",
+  "source_url": "https://github.com/digininja/DVWA",
+  "commit": "068d974487a297c155c48722f9fcf7180a83adc4",
+  "audit_scope": "权限越权",
+  "language": "PHP+JavaScript",
+  "entry": "用户管理页面与数据接口",
+  "parameters": "页面GET；列表接口GET；更新接口POST JSON{id,first_name,surname}；会话用户；security配置",
+  "conditions": "业务约定：仅admin可读取或修改所有用户资料。页面被包含的角色检查与security配置相关：low版本无额外执行语句；medium/high/impossible版本有角色检查。源码中的等级分支是实际控制条件，不作为最终标签。",
+  "limitations": "普通用户与admin、匿名及不同security配置需要分别验证；页面授权不能替代独立接口授权；SQL拼接和DOM输出问题可另记录，本样本主要评估权限一致性。",
+  "dependencies": [
+    "A启动会话并包含页面角色检查C",
+    "A输出B，B调用D与E",
+    "D/E是独立HTTP入口，不经过A的页面流程",
+    "F定义实际身份与security读取",
+    "G控制菜单可见性并输出A的page.body",
+    "同一个AUTH-001跨P1/P2/P3综合判定，不能按片数当漏洞数"
+  ],
+  "fragments": [
+    {
+      "fragment_id": "AUTH-001-A",
+      "code_id": "A",
+      "role": "管理页面入口",
+      "source_file": "vulnerabilities/authbypass/index.php",
+      "selected_spans": [
+        [
+          1,
+          77
+        ]
+      ],
+      "raw_file": "raw_samples/AUTH-001/A.php",
+      "normalized_file": "normalized_samples/AUTH-001/A.php",
+      "line_map": "line_maps/AUTH-001-A.csv",
+      "raw_sha256": "a8d7a08fdcc6d93d2bf73f78ac1d66f1e112e1631848e24fb2fd89ad5b89ced9",
+      "normalized_sha256": "c60b6f0d045c324281acd135c942f93eea7df07ab16001b040f0de3560b36307",
+      "raw_lines": 77,
+      "normalized_lines": 77,
+      "required_tokens": [
+        "dvwaPageStartup",
+        "require_once",
+        "authbypass.js"
+      ]
+    },
+    {
+      "fragment_id": "AUTH-001-B",
+      "code_id": "B",
+      "role": "浏览器请求与显示",
+      "source_file": "vulnerabilities/authbypass/authbypass.js",
+      "selected_spans": [
+        [
+          1,
+          53
+        ]
+      ],
+      "raw_file": "raw_samples/AUTH-001/B.js",
+      "normalized_file": "normalized_samples/AUTH-001/B.js",
+      "line_map": "line_maps/AUTH-001-B.csv",
+      "raw_sha256": "4e5a493f5688bd8dff72e260742ad74a9cdb51e4a00bd223acf531094ffeb578",
+      "normalized_sha256": "4e5a493f5688bd8dff72e260742ad74a9cdb51e4a00bd223acf531094ffeb578",
+      "raw_lines": 53,
+      "normalized_lines": 53,
+      "required_tokens": [
+        "change_user_details.php",
+        "get_user_data.php",
+        "JSON.stringify"
+      ]
+    },
+    {
+      "fragment_id": "AUTH-001-C",
+      "code_id": "C",
+      "role": "被包含的页面角色检查",
+      "source_file": "vulnerabilities/authbypass/source/high.php",
+      "selected_spans": [
+        [
+          12,
+          16
+        ]
+      ],
+      "raw_file": "raw_samples/AUTH-001/C.php",
+      "normalized_file": "normalized_samples/AUTH-001/C.php",
+      "line_map": "line_maps/AUTH-001-C.csv",
+      "raw_sha256": "e284b44a6c6e76e1071879aa26a0a7d6fbd66ba3af79fe191219a5a35fa89f9c",
+      "normalized_sha256": "5ee0f3f2de1eaf60e6b89a47e42ce3a91b3fbaba2ba6ca42c8328aebe13d39ca",
+      "raw_lines": 17,
+      "normalized_lines": 7,
+      "required_tokens": [
+        "dvwaCurrentUser",
+        "http_response_code(403)",
+        "exit"
+      ]
+    },
+    {
+      "fragment_id": "AUTH-001-D",
+      "code_id": "D",
+      "role": "读取所有用户资料接口",
+      "source_file": "vulnerabilities/authbypass/get_user_data.php",
+      "selected_spans": [
+        [
+          1,
+          42
+        ]
+      ],
+      "raw_file": "raw_samples/AUTH-001/D.php",
+      "normalized_file": "normalized_samples/AUTH-001/D.php",
+      "line_map": "line_maps/AUTH-001-D.csv",
+      "raw_sha256": "1fa87751bccbb490bd5874a295d5ebec98e861bfb46b94902f05e458b5c5c7fa",
+      "normalized_sha256": "1fa87751bccbb490bd5874a295d5ebec98e861bfb46b94902f05e458b5c5c7fa",
+      "raw_lines": 42,
+      "normalized_lines": 42,
+      "required_tokens": [
+        "dvwaSecurityLevelGet",
+        "dvwaCurrentUser",
+        "SELECT user_id"
+      ]
+    },
+    {
+      "fragment_id": "AUTH-001-E",
+      "code_id": "E",
+      "role": "修改指定用户资料接口",
+      "source_file": "vulnerabilities/authbypass/change_user_details.php",
+      "selected_spans": [
+        [
+          1,
+          52
+        ]
+      ],
+      "raw_file": "raw_samples/AUTH-001/E.php",
+      "normalized_file": "normalized_samples/AUTH-001/E.php",
+      "line_map": "line_maps/AUTH-001-E.csv",
+      "raw_sha256": "a153214888e317e4cf15a3cf5c328821f3a0a9750a1737986589c6c7ac1a046a",
+      "normalized_sha256": "a153214888e317e4cf15a3cf5c328821f3a0a9750a1737986589c6c7ac1a046a",
+      "raw_lines": 52,
+      "normalized_lines": 52,
+      "required_tokens": [
+        "REQUEST_METHOD",
+        "php://input",
+        "json_decode",
+        "UPDATE users",
+        "dvwaCurrentUser"
+      ]
+    },
+    {
+      "fragment_id": "AUTH-001-F",
+      "code_id": "F",
+      "role": "会话、身份与配置函数",
+      "source_file": "dvwa/includes/dvwaPage.inc.php",
+      "selected_spans": [
+        [
+          124,
+          129
+        ],
+        [
+          132,
+          138
+        ],
+        [
+          146,
+          154
+        ],
+        [
+          172,
+          175
+        ],
+        [
+          200,
+          216
+        ]
+      ],
+      "raw_file": "raw_samples/AUTH-001/F.php",
+      "normalized_file": "normalized_samples/AUTH-001/F.php",
+      "line_map": "line_maps/AUTH-001-F.csv",
+      "raw_sha256": "bea6c28500f15705ad5cfedf8c501706bf36a293f22419e7a63651907495f3b8",
+      "normalized_sha256": "960a4577a153c967d956e4b8f5fb8886b1848662366522ee7db0aa484c78345f",
+      "raw_lines": 692,
+      "normalized_lines": 45,
+      "required_tokens": [
+        "function &dvwaSessionGrab",
+        "function dvwaIsLoggedIn",
+        "function dvwaCurrentUser",
+        "function dvwaSecurityLevelGet"
+      ]
+    },
+    {
+      "fragment_id": "AUTH-001-G",
+      "code_id": "G",
+      "role": "完整菜单与页面渲染函数",
+      "source_file": "dvwa/includes/dvwaPage.inc.php",
+      "selected_spans": [
+        [
+          281,
+          452
+        ]
+      ],
+      "raw_file": "raw_samples/AUTH-001/G.php",
+      "normalized_file": "normalized_samples/AUTH-001/G.php",
+      "line_map": "line_maps/AUTH-001-G.csv",
+      "raw_sha256": "bea6c28500f15705ad5cfedf8c501706bf36a293f22419e7a63651907495f3b8",
+      "normalized_sha256": "51c20b285f6f2986022e151d0f69670357ada60fafa9ba2578da10882d0a0046",
+      "raw_lines": 692,
+      "normalized_lines": 174,
+      "required_tokens": [
+        "function dvwaHtmlEcho",
+        "dvwaCurrentUser() == \"admin\"",
+        "authbypass",
+        "$pPage[ 'body' ]"
+      ]
+    }
+  ],
+  "packets": [
+    {
+      "packet_id": "AUTH-001-P1",
+      "fragment_ids": [
+        "AUTH-001-A",
+        "AUTH-001-B",
+        "AUTH-001-C",
+        "AUTH-001-F"
+      ],
+      "code_lines": 182,
+      "input_file": "llm_inputs/AUTH-001-P1.md"
+    },
+    {
+      "packet_id": "AUTH-001-P2",
+      "fragment_ids": [
+        "AUTH-001-D",
+        "AUTH-001-E",
+        "AUTH-001-F"
+      ],
+      "code_lines": 139,
+      "input_file": "llm_inputs/AUTH-001-P2.md"
+    },
+    {
+      "packet_id": "AUTH-001-P3",
+      "fragment_ids": [
+        "AUTH-001-G",
+        "AUTH-001-F"
+      ],
+      "code_lines": 219,
+      "input_file": "llm_inputs/AUTH-001-P3.md"
+    }
+  ],
+  "shared_fragments": [
+    "AUTH-001-F"
+  ],
+  "unique_code_lines": 450,
+  "max_packet_code_lines": 219,
+  "preprocess_version": "v2",
+  "runtime_validation": "pending",
+  "semantic_changes": "无；完整源码或完整函数逐行保留，仅生成函数包装行及统一换行"
+}

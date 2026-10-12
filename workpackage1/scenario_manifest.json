@@ -1,0 +1,20 @@
+[
+  {
+    "sample_id": "SQLI-005",
+    "title": "用户注册、登录与修改密码",
+    "purpose": "追踪用户输入经历持久化、数据库读取、会话赋值和后续查询使用的关系；避免只检查单次请求。",
+    "metadata_file": "sample_metadata/SQLI-005.json"
+  },
+  {
+    "sample_id": "XSS-005",
+    "title": "留言写入与再次展示",
+    "purpose": "检查写入时处理与读取时输出编码是否匹配；数据库转义和HTML编码必须分别判断。",
+    "metadata_file": "sample_metadata/XSS-005.json"
+  },
+  {
+    "sample_id": "AUTH-001",
+    "title": "用户管理页面与数据接口",
+    "purpose": "检查菜单可见性、页面访问、读取接口和修改接口是否分别执行同一业务权限规则。",
+    "metadata_file": "sample_metadata/AUTH-001.json"
+  }
+]
