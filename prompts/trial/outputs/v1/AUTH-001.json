@@ -1,0 +1,104 @@
+{
+  "schema_version": "wp2-output-v1",
+  "sample_id": "AUTH-001",
+  "input_version": "v2",
+  "prompt_version": "v1",
+  "analysis_stage": "parent",
+  "received_packet_ids": [
+    "AUTH-001-P1",
+    "AUTH-001-P2",
+    "AUTH-001-P3"
+  ],
+  "prediction": "存在候选",
+  "verdict": "待验证",
+  "confidence": {
+    "level": "medium",
+    "reason": "代码位置与目标路径可追溯，但实际环境和观察证据未核验。"
+  },
+  "findings": [
+    {
+      "finding_id": "AUTH-001-F1",
+      "vulnerability_type": "权限越权",
+      "locations": [
+        {
+          "fragment_id": "AUTH-001-D",
+          "line_start": 10,
+          "line_end": 10,
+          "quote": "if ((dvwaSecurityLevelGet() == \"high\" || dvwaSecurityLevelGet() == \"impossible\") && dvwaCurrentUser() != \"admin\") {"
+        },
+        {
+          "fragment_id": "AUTH-001-D",
+          "line_start": 15,
+          "line_end": 15,
+          "quote": "$query  = \"SELECT user_id, first_name, last_name FROM users\";"
+        },
+        {
+          "fragment_id": "AUTH-001-D",
+          "line_start": 40,
+          "line_end": 40,
+          "quote": "print json_encode ($users);"
+        }
+      ],
+      "data_flow": [
+        "页面、菜单与数据接口是不同入口",
+        "low或medium条件下该角色拒绝分支不成立，随后查询并返回用户资料"
+      ],
+      "principle": "业务约定仅admin可读取全部用户资料，而独立读取接口的角色拒绝受配置条件限制；在low/medium与有效低权限身份条件下构成静态越权候选。",
+      "impact": "可能让普通用户读取仅admin应读取的用户资料；本草案只读，不测试资料修改。",
+      "preconditions": [
+        "实际读取入口对应D的固定源码",
+        "管理员与普通用户会话身份已经独立核验",
+        "两类请求使用同一明确配置，low/medium候选与high/impossible反例分别记录",
+        "数据库中存在专用教学保护记录"
+      ],
+      "counterexamples": [
+        "high/impossible下实际身份被识别为非admin并有效拒绝读取",
+        "额外服务端访问控制覆盖独立读取接口"
+      ],
+      "poc": {
+        "status": "需人工适配",
+        "language": "python",
+        "code": null,
+        "artifact_path": "prompts/trial/pocs/auth_001_read.py",
+        "dependencies": [
+          "Python标准库，无第三方库",
+          "本地固定版本靶场和相应运行依赖"
+        ],
+        "parameters": [
+          "--base-url 本地基址",
+          "--path 实际get_user_data.php路径",
+          "--admin-cookie-file 管理员会话文件",
+          "--low-cookie-file 普通用户会话文件",
+          "--security 本次固定配置"
+        ],
+        "steps": [
+          "先核验部署版本、配置与专用测试会话",
+          "用--help核对必填参数并填写实际本地地址和路径",
+          "由验证组运行草案，保存环境、对照与观察证据"
+        ],
+        "expected_observation": "核验身份后比较两类会话是否取得受保护的用户资料，按配置分别记录。",
+        "success_criteria": "普通用户实际读到业务规格禁止读取的数据才是对应条件的成功现象；HTTP 200、JSON格式或声明身份本身不够。",
+        "limitations": [
+          "脚本不能独立证明会话身份",
+          "不测试更新接口，不能由读取结论推断所有操作"
+        ],
+        "execution_status": "未运行"
+      }
+    }
+  ],
+  "exclusion_evidence": [],
+  "missing_context": [
+    "接口实际会话识别与认证状态",
+    "部署路径、两类会话文件和实际配置"
+  ],
+  "risk_notes": [
+    "更新接口存在不同配置下的角色约束差异，另由验证组在专用对象上核验；此只读草案不能证明修改成功。"
+  ],
+  "quality_notes": [],
+  "limitations": [
+    "本对象是当前Codex会话的结构化分析草案，不是独立模型调用原文。",
+    "没有运行POC，真实标签仍待验证。",
+    "已综合P1/P2/P3的输入关系，共享F不重复计数；读取与更新接口需要分别验证。"
+  ],
+  "runtime_evidence": []
+}

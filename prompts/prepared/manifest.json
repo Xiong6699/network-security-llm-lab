@@ -1,0 +1,1013 @@
+{
+  "design_date": "2026-10-13",
+  "source_commit_for_workpackage1": "b7156968d5848e4e9f4ec710e9a1ab693f008673",
+  "input_version": "v2",
+  "parent_sample_count": 14,
+  "input_packet_count_per_version": 17,
+  "prepared_prompt_count": 51,
+  "versions": [
+    "v1",
+    "v2",
+    "final"
+  ],
+  "scope": "Prepared inputs only; not model calls or vulnerability ground truth",
+  "source_sha256": {
+    "prompts/versions/v1.md": "c72fd63da2f565ed6d2ffbacc8b5ac7a4e274d6079bf08db742f88962e01bb4b",
+    "workpackage1/llm_inputs/SQLI-001.md": "5a569e4799b4c10d6f8c92931094c93883ab4637381033237edef8d979553ab0",
+    "workpackage1/llm_inputs/SQLI-002.md": "93ebd9a820a2328b36355b5c624fcef2bba75227eced9d5ed50a2ec0b33d2230",
+    "workpackage1/llm_inputs/SQLI-003.md": "a6285b06f2e86dfd03ad7bf841011315b06e4a12cf309fe6ff510515a0209789",
+    "workpackage1/llm_inputs/XSS-001.md": "cd9df9d3e032aa5d5e889fa21c6b6458479847c975794dee3fa6eed2c8013ec4",
+    "workpackage1/llm_inputs/XSS-002.md": "ae80a38ae1107368c8691601b7ff5057353723cb47af870498803b5d3d2f9512",
+    "workpackage1/llm_inputs/XSS-003.md": "ddf087054749d607ab0662d35f142722c7fba718774c8e05ba3b06e645351518",
+    "workpackage1/llm_inputs/XSS-004.md": "73e6fc35a67420d5f46f0ee2137d1d6025d1cef4b1c22d0a9d996e1704551464",
+    "workpackage1/llm_inputs/CMD-001.md": "d4088ef7d1500c4fdb3e233090ccda642f46e35014dd8e616e78943a1b2485b3",
+    "workpackage1/llm_inputs/CMD-002.md": "703d10ddf4f34bb80b0b77e18c0148cde2e03b3ddb12a33621c214a7d1237dc8",
+    "workpackage1/llm_inputs/CMD-003.md": "92ad7621c974a99db1b2a376cb2bb9372ad2c2c27584823d951eb84f3c563bc6",
+    "workpackage1/llm_inputs/CMD-004.md": "5ce97b6d75dfe4b72550c44df15a25912b38e146bc4c81a8cce9421e47b11e80",
+    "workpackage1/llm_inputs/SQLI-005-P1.md": "313a6de309772401285b01ef04edd428b0a5fa6a2b5f433ce11ac2c34073f47a",
+    "workpackage1/llm_inputs/SQLI-005-P2.md": "9ee6687678ba5a3f7bd030a0681952c5236f37256073d0292ff705ab8813f027",
+    "workpackage1/llm_inputs/XSS-005-P1.md": "7f59a620339eb98680ce81e5a859d8c9b141172ee056ba7142e8952c4b11c467",
+    "workpackage1/llm_inputs/AUTH-001-P1.md": "8ba653929158665faa18c821f8425b198ca29ef027a515a221a72e3b1c15a60d",
+    "workpackage1/llm_inputs/AUTH-001-P2.md": "e6a69fe5160b351737056a83aeacd585f8d453fbfbf37b3641d22fdbdd346c37",
+    "workpackage1/llm_inputs/AUTH-001-P3.md": "2e8981e42660b042f9f257a3d3d6c0e9ceca24bbaa12a51e6e0aa13345e1069a",
+    "prompts/versions/v2.md": "4728033631e4521159eb88cc07d043b72f98d87b751d8c0a6ce57954c6c622e2",
+    "prompts/rules/sql_injection.md": "4f2e6c0ea47fd55d3cb6df9f603be4aa755c19fedee72a305e6f8449e85af075",
+    "prompts/rules/xss.md": "8d71e0f6aa488ff99991e9412cb84879c8ee9de4f598ab1746234d4fb9c44008",
+    "prompts/rules/command_injection.md": "7d9b9f348e6cddd7ee8246ff23dccaa1bf14ccba2f134ec9b8da98fbb022766a",
+    "prompts/rules/authorization.md": "58168ad08c95d9add6630c836dfa84c6fec59a0fb839ba8b8664c07fc3a1edaa",
+    "prompts/versions/final.md": "c9d52369e991b04e4b5cdbefb1e5dd7232c1ebbd86d321067343a1714d52930b",
+    "prompts/output_schema.md": "22c0dd1aa29ecb66ce27cfc8d7baff3a0de98af5bcfe0cf9298c6fc70f1f5214",
+    "prompts/poc_constraints.md": "683c0598cdcd2c91686da9b11ff71b2411637d3cb3b628adf404982d5cc163b1",
+    "workpackage1/samples.csv": "c873015cb13f2bac10363e4f9a525149a8cf24e9fecb8a048be4ae82d9c66a30",
+    "workpackage1/sample_metadata/SQLI-001.json": "c3f14824fe184f1dd3d651fa98a6154dfca48b9e16927faf3a0de55824f3dc30",
+    "workpackage1/sample_metadata/SQLI-002.json": "1168198df127cf34d063f7ba1a41ddb02a643da83d3956918f04daeb1b2e8bd8",
+    "workpackage1/sample_metadata/SQLI-003.json": "3e1fb013d3dfb5f6cbd355a3e6abdc57643cb61994228f408dacb2ff95c0a909",
+    "workpackage1/sample_metadata/XSS-001.json": "5c65722ecc5159f36eff6c04de9ed0a1154cf9658d953f5a1e26006942d7f6dc",
+    "workpackage1/sample_metadata/XSS-002.json": "5a924d7265dcf3887b18c166aa49f9904797f50caa34e46100df29c46dc4cb65",
+    "workpackage1/sample_metadata/XSS-003.json": "cfebb54c095d94ca50e53e85582763970fb895414dd4a7c81bb298ab999fae96",
+    "workpackage1/sample_metadata/XSS-004.json": "82114626369e760b951518301c16e01c876ca7f3ffb586e2b9c1ede33dfbae7e",
+    "workpackage1/sample_metadata/CMD-001.json": "85146f9d7290c1c12e641d30af9df3de484d14d8926fce345b2ea9752b7b1fde",
+    "workpackage1/sample_metadata/CMD-002.json": "be9ad3903185d0c5ac1dd9c39b0061f07c28e82e1b21e0d813b0935dd904b6d9",
+    "workpackage1/sample_metadata/CMD-003.json": "8bc653b01098064136ab496216f24d06401032e611fc8c2d0fe3e0fd24cfea53",
+    "workpackage1/sample_metadata/CMD-004.json": "12270b9789ce87a9e71cbf18e126e6dd347e70105cb2b12a83d12002d0ffec29",
+    "workpackage1/sample_metadata/SQLI-005.json": "5a166fda817de5d6eb9aa615a23a14086d25f443430a781fb74dc86f0eb3eea3",
+    "workpackage1/sample_metadata/XSS-005.json": "a72b9173f261b600bb7d20ef5d170eeab5c7af1eb4dc0d08648a8202581f97eb",
+    "workpackage1/sample_metadata/AUTH-001.json": "86c3bd7af47f720e3466a4086a22bc4cd0a79ed38fb5967dea18637f6d5dee3f"
+  },
+  "entries": [
+    {
+      "sample_id": "SQLI-001",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "SQLI-001",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "SQLI-001"
+      ],
+      "code_lines": 33,
+      "source_input": "workpackage1/llm_inputs/SQLI-001.md",
+      "source_sha256": "5a569e4799b4c10d6f8c92931094c93883ab4637381033237edef8d979553ab0",
+      "prompt_file": "prompts/prepared/v1/SQLI-001.md",
+      "prompt_sha256": "4d408bcb79978f097ce9bc00ee06bd39d0d87390c0284c32f06d2c7e9d86317a",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-002",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "SQLI-002",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "SQLI-002"
+      ],
+      "code_lines": 46,
+      "source_input": "workpackage1/llm_inputs/SQLI-002.md",
+      "source_sha256": "93ebd9a820a2328b36355b5c624fcef2bba75227eced9d5ed50a2ec0b33d2230",
+      "prompt_file": "prompts/prepared/v1/SQLI-002.md",
+      "prompt_sha256": "6e1946edd92e00b6a7d3bc990cde010d67225cbad36de811eb6e0e8d71a62493",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-003",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "SQLI-003",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "SQLI-003"
+      ],
+      "code_lines": 45,
+      "source_input": "workpackage1/llm_inputs/SQLI-003.md",
+      "source_sha256": "a6285b06f2e86dfd03ad7bf841011315b06e4a12cf309fe6ff510515a0209789",
+      "prompt_file": "prompts/prepared/v1/SQLI-003.md",
+      "prompt_sha256": "56e12bd30038d9bd84e04a4b3ea609d222e105efd582b6c3be3835d2489a91fa",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-001",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "XSS-001",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-001"
+      ],
+      "code_lines": 8,
+      "source_input": "workpackage1/llm_inputs/XSS-001.md",
+      "source_sha256": "cd9df9d3e032aa5d5e889fa21c6b6458479847c975794dee3fa6eed2c8013ec4",
+      "prompt_file": "prompts/prepared/v1/XSS-001.md",
+      "prompt_sha256": "94b94244767463087df94ce25cc2ef386948967c5419227a0d2dadf67e1f7eed",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-002",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "XSS-002",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-002"
+      ],
+      "code_lines": 10,
+      "source_input": "workpackage1/llm_inputs/XSS-002.md",
+      "source_sha256": "ae80a38ae1107368c8691601b7ff5057353723cb47af870498803b5d3d2f9512",
+      "prompt_file": "prompts/prepared/v1/XSS-002.md",
+      "prompt_sha256": "b596bd5d5e35ca71ec60c6e449dd6b6fc3749214022c965356a03c3cac3c8695",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-003",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "XSS-003",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-003"
+      ],
+      "code_lines": 10,
+      "source_input": "workpackage1/llm_inputs/XSS-003.md",
+      "source_sha256": "ddf087054749d607ab0662d35f142722c7fba718774c8e05ba3b06e645351518",
+      "prompt_file": "prompts/prepared/v1/XSS-003.md",
+      "prompt_sha256": "f1d532147c825a36bdeed0ed7cf96962d43639d84feeab072d0fb9a5bd9c6791",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-004",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "XSS-004",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-004"
+      ],
+      "code_lines": 13,
+      "source_input": "workpackage1/llm_inputs/XSS-004.md",
+      "source_sha256": "73e6fc35a67420d5f46f0ee2137d1d6025d1cef4b1c22d0a9d996e1704551464",
+      "prompt_file": "prompts/prepared/v1/XSS-004.md",
+      "prompt_sha256": "23251cfce8d03832f7345270b42e329bba71a3014cc2ebd1d4b0f8ca8fd02e9b",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-001",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "CMD-001",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-001"
+      ],
+      "code_lines": 17,
+      "source_input": "workpackage1/llm_inputs/CMD-001.md",
+      "source_sha256": "d4088ef7d1500c4fdb3e233090ccda642f46e35014dd8e616e78943a1b2485b3",
+      "prompt_file": "prompts/prepared/v1/CMD-001.md",
+      "prompt_sha256": "de4cf92b9e4d0f24031aea491e49032bccd85f826528ac8fdcaf2ef3fc1d8eb2",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-002",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "CMD-002",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-002"
+      ],
+      "code_lines": 24,
+      "source_input": "workpackage1/llm_inputs/CMD-002.md",
+      "source_sha256": "703d10ddf4f34bb80b0b77e18c0148cde2e03b3ddb12a33621c214a7d1237dc8",
+      "prompt_file": "prompts/prepared/v1/CMD-002.md",
+      "prompt_sha256": "f1c572796c39d057c4dc4523d0b5471851a0cff75a38cfe5ca95e3b08918e97f",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-003",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "CMD-003",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-003"
+      ],
+      "code_lines": 31,
+      "source_input": "workpackage1/llm_inputs/CMD-003.md",
+      "source_sha256": "92ad7621c974a99db1b2a376cb2bb9372ad2c2c27584823d951eb84f3c563bc6",
+      "prompt_file": "prompts/prepared/v1/CMD-003.md",
+      "prompt_sha256": "03ce353cc97007cdfcad55e1a56e9e4a9806b65d59f404a50a10e1801e4d11fa",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-004",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "CMD-004",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-004"
+      ],
+      "code_lines": 33,
+      "source_input": "workpackage1/llm_inputs/CMD-004.md",
+      "source_sha256": "5ce97b6d75dfe4b72550c44df15a25912b38e146bc4c81a8cce9421e47b11e80",
+      "prompt_file": "prompts/prepared/v1/CMD-004.md",
+      "prompt_sha256": "8a12f766eede3b1ce75c7d98ba3bcabfeab55dec5c594bcc1e10c84adfb45bc5",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-005",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "SQLI-005-P1",
+      "packet_index": 1,
+      "packet_count": 2,
+      "fragment_ids": [
+        "SQLI-005-A",
+        "SQLI-005-D"
+      ],
+      "code_lines": 113,
+      "source_input": "workpackage1/llm_inputs/SQLI-005-P1.md",
+      "source_sha256": "313a6de309772401285b01ef04edd428b0a5fa6a2b5f433ce11ac2c34073f47a",
+      "prompt_file": "prompts/prepared/v1/SQLI-005-P1.md",
+      "prompt_sha256": "956b55ba84ac175a8b82a21d737f2ec47bbc577713330a9166fb97d9b083ecb5",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-005",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "SQLI-005-P2",
+      "packet_index": 2,
+      "packet_count": 2,
+      "fragment_ids": [
+        "SQLI-005-B",
+        "SQLI-005-C",
+        "SQLI-005-D"
+      ],
+      "code_lines": 174,
+      "source_input": "workpackage1/llm_inputs/SQLI-005-P2.md",
+      "source_sha256": "9ee6687678ba5a3f7bd030a0681952c5236f37256073d0292ff705ab8813f027",
+      "prompt_file": "prompts/prepared/v1/SQLI-005-P2.md",
+      "prompt_sha256": "1ac87f25bc36c1ab0dfbbfa15a7350401bf3786e1166b99ebfac31acd5931c54",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-005",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "XSS-005-P1",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-005-A",
+        "XSS-005-B",
+        "XSS-005-C",
+        "XSS-005-D"
+      ],
+      "code_lines": 150,
+      "source_input": "workpackage1/llm_inputs/XSS-005-P1.md",
+      "source_sha256": "7f59a620339eb98680ce81e5a859d8c9b141172ee056ba7142e8952c4b11c467",
+      "prompt_file": "prompts/prepared/v1/XSS-005-P1.md",
+      "prompt_sha256": "0fd8075b18f3e7010170eda35897e2dc55a0e7ddfd182165f8638a4108e46167",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "audit_scope": "权限越权",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "AUTH-001-P1",
+      "packet_index": 1,
+      "packet_count": 3,
+      "fragment_ids": [
+        "AUTH-001-A",
+        "AUTH-001-B",
+        "AUTH-001-C",
+        "AUTH-001-F"
+      ],
+      "code_lines": 182,
+      "source_input": "workpackage1/llm_inputs/AUTH-001-P1.md",
+      "source_sha256": "8ba653929158665faa18c821f8425b198ca29ef027a515a221a72e3b1c15a60d",
+      "prompt_file": "prompts/prepared/v1/AUTH-001-P1.md",
+      "prompt_sha256": "3d2f82a8092553fb66969ec07a44a7fcf7e33e49dee4aca51e60df1b4537af88",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "audit_scope": "权限越权",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "AUTH-001-P2",
+      "packet_index": 2,
+      "packet_count": 3,
+      "fragment_ids": [
+        "AUTH-001-D",
+        "AUTH-001-E",
+        "AUTH-001-F"
+      ],
+      "code_lines": 139,
+      "source_input": "workpackage1/llm_inputs/AUTH-001-P2.md",
+      "source_sha256": "e6a69fe5160b351737056a83aeacd585f8d453fbfbf37b3641d22fdbdd346c37",
+      "prompt_file": "prompts/prepared/v1/AUTH-001-P2.md",
+      "prompt_sha256": "f295668177afb0a75cb1a63a35a39588968e813d58ece104cb5bcfc7c1f9673b",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "audit_scope": "权限越权",
+      "input_version": "v2",
+      "prompt_version": "v1",
+      "packet_id": "AUTH-001-P3",
+      "packet_index": 3,
+      "packet_count": 3,
+      "fragment_ids": [
+        "AUTH-001-G",
+        "AUTH-001-F"
+      ],
+      "code_lines": 219,
+      "source_input": "workpackage1/llm_inputs/AUTH-001-P3.md",
+      "source_sha256": "2e8981e42660b042f9f257a3d3d6c0e9ceca24bbaa12a51e6e0aa13345e1069a",
+      "prompt_file": "prompts/prepared/v1/AUTH-001-P3.md",
+      "prompt_sha256": "3a02cb17f5236198988811ef8817c9b61de424224522143de7a9561ea0d8e3ed",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-001",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "SQLI-001",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "SQLI-001"
+      ],
+      "code_lines": 33,
+      "source_input": "workpackage1/llm_inputs/SQLI-001.md",
+      "source_sha256": "5a569e4799b4c10d6f8c92931094c93883ab4637381033237edef8d979553ab0",
+      "prompt_file": "prompts/prepared/v2/SQLI-001.md",
+      "prompt_sha256": "04d22398bc9145666c07576235aa44bf5a02bba40d575eab4d838c7b347f5909",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-002",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "SQLI-002",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "SQLI-002"
+      ],
+      "code_lines": 46,
+      "source_input": "workpackage1/llm_inputs/SQLI-002.md",
+      "source_sha256": "93ebd9a820a2328b36355b5c624fcef2bba75227eced9d5ed50a2ec0b33d2230",
+      "prompt_file": "prompts/prepared/v2/SQLI-002.md",
+      "prompt_sha256": "4c87831589c5572bd9ecdd476ce8e5626b2dfc37f395dbf288939ea98968a08b",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-003",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "SQLI-003",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "SQLI-003"
+      ],
+      "code_lines": 45,
+      "source_input": "workpackage1/llm_inputs/SQLI-003.md",
+      "source_sha256": "a6285b06f2e86dfd03ad7bf841011315b06e4a12cf309fe6ff510515a0209789",
+      "prompt_file": "prompts/prepared/v2/SQLI-003.md",
+      "prompt_sha256": "b4d7de0a5f28c4397dbe5abfba437f690d67333cf49ff886aa09643ca8928594",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-001",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "XSS-001",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-001"
+      ],
+      "code_lines": 8,
+      "source_input": "workpackage1/llm_inputs/XSS-001.md",
+      "source_sha256": "cd9df9d3e032aa5d5e889fa21c6b6458479847c975794dee3fa6eed2c8013ec4",
+      "prompt_file": "prompts/prepared/v2/XSS-001.md",
+      "prompt_sha256": "02a6d851432c3582cb580d6ed30bb50c7da394b70b69f9116bc11c0b16315d2f",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-002",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "XSS-002",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-002"
+      ],
+      "code_lines": 10,
+      "source_input": "workpackage1/llm_inputs/XSS-002.md",
+      "source_sha256": "ae80a38ae1107368c8691601b7ff5057353723cb47af870498803b5d3d2f9512",
+      "prompt_file": "prompts/prepared/v2/XSS-002.md",
+      "prompt_sha256": "f8812d392624afedc06075ade5b3d652a9a2acc776bfb1c6b9fd4b57bcf99f9a",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-003",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "XSS-003",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-003"
+      ],
+      "code_lines": 10,
+      "source_input": "workpackage1/llm_inputs/XSS-003.md",
+      "source_sha256": "ddf087054749d607ab0662d35f142722c7fba718774c8e05ba3b06e645351518",
+      "prompt_file": "prompts/prepared/v2/XSS-003.md",
+      "prompt_sha256": "41fbd0497fb52442ce7851399b543762cf672f1bded0d0119176cfcee616ff38",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-004",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "XSS-004",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-004"
+      ],
+      "code_lines": 13,
+      "source_input": "workpackage1/llm_inputs/XSS-004.md",
+      "source_sha256": "73e6fc35a67420d5f46f0ee2137d1d6025d1cef4b1c22d0a9d996e1704551464",
+      "prompt_file": "prompts/prepared/v2/XSS-004.md",
+      "prompt_sha256": "d5128a59f797578227d34779169b9e920d9e1c966859754257b8fec83fb1e504",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-001",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "CMD-001",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-001"
+      ],
+      "code_lines": 17,
+      "source_input": "workpackage1/llm_inputs/CMD-001.md",
+      "source_sha256": "d4088ef7d1500c4fdb3e233090ccda642f46e35014dd8e616e78943a1b2485b3",
+      "prompt_file": "prompts/prepared/v2/CMD-001.md",
+      "prompt_sha256": "83c38f7b8003b103efd1ecf6d67c974ff031d32f4ebc6b95ca31e184ae7305c9",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-002",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "CMD-002",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-002"
+      ],
+      "code_lines": 24,
+      "source_input": "workpackage1/llm_inputs/CMD-002.md",
+      "source_sha256": "703d10ddf4f34bb80b0b77e18c0148cde2e03b3ddb12a33621c214a7d1237dc8",
+      "prompt_file": "prompts/prepared/v2/CMD-002.md",
+      "prompt_sha256": "9b11f2f33891a00c0b08e8f35400ef355735b5ddddfcfa4b9d1e16bdf17b429c",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-003",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "CMD-003",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-003"
+      ],
+      "code_lines": 31,
+      "source_input": "workpackage1/llm_inputs/CMD-003.md",
+      "source_sha256": "92ad7621c974a99db1b2a376cb2bb9372ad2c2c27584823d951eb84f3c563bc6",
+      "prompt_file": "prompts/prepared/v2/CMD-003.md",
+      "prompt_sha256": "8a8fdc0ab4886e30c415502d5e26a3fb11bc2c6b620c6d24cadceeffe7b06ea8",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-004",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "CMD-004",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-004"
+      ],
+      "code_lines": 33,
+      "source_input": "workpackage1/llm_inputs/CMD-004.md",
+      "source_sha256": "5ce97b6d75dfe4b72550c44df15a25912b38e146bc4c81a8cce9421e47b11e80",
+      "prompt_file": "prompts/prepared/v2/CMD-004.md",
+      "prompt_sha256": "cdb6a1975924cff95d5791140226d315618c16e031ce1bf4424b6d34d613c54d",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-005",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "SQLI-005-P1",
+      "packet_index": 1,
+      "packet_count": 2,
+      "fragment_ids": [
+        "SQLI-005-A",
+        "SQLI-005-D"
+      ],
+      "code_lines": 113,
+      "source_input": "workpackage1/llm_inputs/SQLI-005-P1.md",
+      "source_sha256": "313a6de309772401285b01ef04edd428b0a5fa6a2b5f433ce11ac2c34073f47a",
+      "prompt_file": "prompts/prepared/v2/SQLI-005-P1.md",
+      "prompt_sha256": "ea903702c58b80f4acf94fbbf05470dd78a47e3bd4146904479fd77177df0f4b",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-005",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "SQLI-005-P2",
+      "packet_index": 2,
+      "packet_count": 2,
+      "fragment_ids": [
+        "SQLI-005-B",
+        "SQLI-005-C",
+        "SQLI-005-D"
+      ],
+      "code_lines": 174,
+      "source_input": "workpackage1/llm_inputs/SQLI-005-P2.md",
+      "source_sha256": "9ee6687678ba5a3f7bd030a0681952c5236f37256073d0292ff705ab8813f027",
+      "prompt_file": "prompts/prepared/v2/SQLI-005-P2.md",
+      "prompt_sha256": "7b9f560967ff3397bf90f1a18dd5133966eed396878ca81cd513fc6dfae10c8d",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-005",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "XSS-005-P1",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-005-A",
+        "XSS-005-B",
+        "XSS-005-C",
+        "XSS-005-D"
+      ],
+      "code_lines": 150,
+      "source_input": "workpackage1/llm_inputs/XSS-005-P1.md",
+      "source_sha256": "7f59a620339eb98680ce81e5a859d8c9b141172ee056ba7142e8952c4b11c467",
+      "prompt_file": "prompts/prepared/v2/XSS-005-P1.md",
+      "prompt_sha256": "351c600856aa45141daeb237f6dfa86a6e84047308c496c7fcb1edb6f97f6bc6",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "audit_scope": "权限越权",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "AUTH-001-P1",
+      "packet_index": 1,
+      "packet_count": 3,
+      "fragment_ids": [
+        "AUTH-001-A",
+        "AUTH-001-B",
+        "AUTH-001-C",
+        "AUTH-001-F"
+      ],
+      "code_lines": 182,
+      "source_input": "workpackage1/llm_inputs/AUTH-001-P1.md",
+      "source_sha256": "8ba653929158665faa18c821f8425b198ca29ef027a515a221a72e3b1c15a60d",
+      "prompt_file": "prompts/prepared/v2/AUTH-001-P1.md",
+      "prompt_sha256": "9613e5cd328e976f20f08c89e5213b4de6d4a345f952471b78ecddc8295dba59",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "audit_scope": "权限越权",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "AUTH-001-P2",
+      "packet_index": 2,
+      "packet_count": 3,
+      "fragment_ids": [
+        "AUTH-001-D",
+        "AUTH-001-E",
+        "AUTH-001-F"
+      ],
+      "code_lines": 139,
+      "source_input": "workpackage1/llm_inputs/AUTH-001-P2.md",
+      "source_sha256": "e6a69fe5160b351737056a83aeacd585f8d453fbfbf37b3641d22fdbdd346c37",
+      "prompt_file": "prompts/prepared/v2/AUTH-001-P2.md",
+      "prompt_sha256": "249388285d9d43045a0da1fe8277a3ff868e4e7a58d14e6db57f4b83b5d819ca",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "audit_scope": "权限越权",
+      "input_version": "v2",
+      "prompt_version": "v2",
+      "packet_id": "AUTH-001-P3",
+      "packet_index": 3,
+      "packet_count": 3,
+      "fragment_ids": [
+        "AUTH-001-G",
+        "AUTH-001-F"
+      ],
+      "code_lines": 219,
+      "source_input": "workpackage1/llm_inputs/AUTH-001-P3.md",
+      "source_sha256": "2e8981e42660b042f9f257a3d3d6c0e9ceca24bbaa12a51e6e0aa13345e1069a",
+      "prompt_file": "prompts/prepared/v2/AUTH-001-P3.md",
+      "prompt_sha256": "ccbc8cb4db006371b409126c136138aa2a9a7885b374f925c12a34d348e2001f",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-001",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "SQLI-001",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "SQLI-001"
+      ],
+      "code_lines": 33,
+      "source_input": "workpackage1/llm_inputs/SQLI-001.md",
+      "source_sha256": "5a569e4799b4c10d6f8c92931094c93883ab4637381033237edef8d979553ab0",
+      "prompt_file": "prompts/prepared/final/SQLI-001.md",
+      "prompt_sha256": "f145c91e3b0a253ea00bc3f9c69ba7f0963c795b9d88a63c23ebd680e6ffb202",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-002",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "SQLI-002",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "SQLI-002"
+      ],
+      "code_lines": 46,
+      "source_input": "workpackage1/llm_inputs/SQLI-002.md",
+      "source_sha256": "93ebd9a820a2328b36355b5c624fcef2bba75227eced9d5ed50a2ec0b33d2230",
+      "prompt_file": "prompts/prepared/final/SQLI-002.md",
+      "prompt_sha256": "d17d35effc4f883500be50163807aa7ef872ca90fccbcd9498a211e628cd927e",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-003",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "SQLI-003",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "SQLI-003"
+      ],
+      "code_lines": 45,
+      "source_input": "workpackage1/llm_inputs/SQLI-003.md",
+      "source_sha256": "a6285b06f2e86dfd03ad7bf841011315b06e4a12cf309fe6ff510515a0209789",
+      "prompt_file": "prompts/prepared/final/SQLI-003.md",
+      "prompt_sha256": "d336d624b7433fa05b4429f890270c92278f48c121c74033e2475927b335f68a",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-001",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "XSS-001",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-001"
+      ],
+      "code_lines": 8,
+      "source_input": "workpackage1/llm_inputs/XSS-001.md",
+      "source_sha256": "cd9df9d3e032aa5d5e889fa21c6b6458479847c975794dee3fa6eed2c8013ec4",
+      "prompt_file": "prompts/prepared/final/XSS-001.md",
+      "prompt_sha256": "892bcee8d43d0560b6b609185bb876309a6507649f5c685cab19e5b13296d938",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-002",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "XSS-002",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-002"
+      ],
+      "code_lines": 10,
+      "source_input": "workpackage1/llm_inputs/XSS-002.md",
+      "source_sha256": "ae80a38ae1107368c8691601b7ff5057353723cb47af870498803b5d3d2f9512",
+      "prompt_file": "prompts/prepared/final/XSS-002.md",
+      "prompt_sha256": "826c50ae7151c53f7e62b2952100fe8f17859fada81a595bb04e11c9c1357ff9",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-003",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "XSS-003",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-003"
+      ],
+      "code_lines": 10,
+      "source_input": "workpackage1/llm_inputs/XSS-003.md",
+      "source_sha256": "ddf087054749d607ab0662d35f142722c7fba718774c8e05ba3b06e645351518",
+      "prompt_file": "prompts/prepared/final/XSS-003.md",
+      "prompt_sha256": "d22dcdcd9865581fb35ab51966772798c37671fe7a1ed7fbe29b93de89ed35cf",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-004",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "XSS-004",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-004"
+      ],
+      "code_lines": 13,
+      "source_input": "workpackage1/llm_inputs/XSS-004.md",
+      "source_sha256": "73e6fc35a67420d5f46f0ee2137d1d6025d1cef4b1c22d0a9d996e1704551464",
+      "prompt_file": "prompts/prepared/final/XSS-004.md",
+      "prompt_sha256": "f203a63fac345f9ab7a3505962199c83352368c71c9af828e1c5c84b93540b2e",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-001",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "CMD-001",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-001"
+      ],
+      "code_lines": 17,
+      "source_input": "workpackage1/llm_inputs/CMD-001.md",
+      "source_sha256": "d4088ef7d1500c4fdb3e233090ccda642f46e35014dd8e616e78943a1b2485b3",
+      "prompt_file": "prompts/prepared/final/CMD-001.md",
+      "prompt_sha256": "5d4f7e13828c900b6838ca0052ddb2516c26dfba0a64943ae6b2b9082fcd3232",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-002",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "CMD-002",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-002"
+      ],
+      "code_lines": 24,
+      "source_input": "workpackage1/llm_inputs/CMD-002.md",
+      "source_sha256": "703d10ddf4f34bb80b0b77e18c0148cde2e03b3ddb12a33621c214a7d1237dc8",
+      "prompt_file": "prompts/prepared/final/CMD-002.md",
+      "prompt_sha256": "66fed58fa428bbf0ee5c1efb128711e0df2b4584ba06991f4136cf0b99cacd04",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-003",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "CMD-003",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-003"
+      ],
+      "code_lines": 31,
+      "source_input": "workpackage1/llm_inputs/CMD-003.md",
+      "source_sha256": "92ad7621c974a99db1b2a376cb2bb9372ad2c2c27584823d951eb84f3c563bc6",
+      "prompt_file": "prompts/prepared/final/CMD-003.md",
+      "prompt_sha256": "2de433c1e1217b0324caa2d88781dda91711f9b334c2d4c1550f1ad2edbb60f6",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "CMD-004",
+      "audit_scope": "命令注入",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "CMD-004",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "CMD-004"
+      ],
+      "code_lines": 33,
+      "source_input": "workpackage1/llm_inputs/CMD-004.md",
+      "source_sha256": "5ce97b6d75dfe4b72550c44df15a25912b38e146bc4c81a8cce9421e47b11e80",
+      "prompt_file": "prompts/prepared/final/CMD-004.md",
+      "prompt_sha256": "920c4066651b4ba0f3b74e5f8ac60bfc7381b6d18972cea7b2e7c7f0adf6a36e",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-005",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "SQLI-005-P1",
+      "packet_index": 1,
+      "packet_count": 2,
+      "fragment_ids": [
+        "SQLI-005-A",
+        "SQLI-005-D"
+      ],
+      "code_lines": 113,
+      "source_input": "workpackage1/llm_inputs/SQLI-005-P1.md",
+      "source_sha256": "313a6de309772401285b01ef04edd428b0a5fa6a2b5f433ce11ac2c34073f47a",
+      "prompt_file": "prompts/prepared/final/SQLI-005-P1.md",
+      "prompt_sha256": "be12fde40683c1f50b3b8889f4e3857c1e392752bad48f69826510aa4721ffb9",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "SQLI-005",
+      "audit_scope": "SQL注入",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "SQLI-005-P2",
+      "packet_index": 2,
+      "packet_count": 2,
+      "fragment_ids": [
+        "SQLI-005-B",
+        "SQLI-005-C",
+        "SQLI-005-D"
+      ],
+      "code_lines": 174,
+      "source_input": "workpackage1/llm_inputs/SQLI-005-P2.md",
+      "source_sha256": "9ee6687678ba5a3f7bd030a0681952c5236f37256073d0292ff705ab8813f027",
+      "prompt_file": "prompts/prepared/final/SQLI-005-P2.md",
+      "prompt_sha256": "41a1e918f94114b91f7db770b3f389de870ce08bd0e825888c6e14bbb436bafa",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "XSS-005",
+      "audit_scope": "XSS",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "XSS-005-P1",
+      "packet_index": 1,
+      "packet_count": 1,
+      "fragment_ids": [
+        "XSS-005-A",
+        "XSS-005-B",
+        "XSS-005-C",
+        "XSS-005-D"
+      ],
+      "code_lines": 150,
+      "source_input": "workpackage1/llm_inputs/XSS-005-P1.md",
+      "source_sha256": "7f59a620339eb98680ce81e5a859d8c9b141172ee056ba7142e8952c4b11c467",
+      "prompt_file": "prompts/prepared/final/XSS-005-P1.md",
+      "prompt_sha256": "6355469ac1ef6949c0d1aadf2885feddad411ad72d61ec7f1c611ff9fdf8545a",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "audit_scope": "权限越权",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "AUTH-001-P1",
+      "packet_index": 1,
+      "packet_count": 3,
+      "fragment_ids": [
+        "AUTH-001-A",
+        "AUTH-001-B",
+        "AUTH-001-C",
+        "AUTH-001-F"
+      ],
+      "code_lines": 182,
+      "source_input": "workpackage1/llm_inputs/AUTH-001-P1.md",
+      "source_sha256": "8ba653929158665faa18c821f8425b198ca29ef027a515a221a72e3b1c15a60d",
+      "prompt_file": "prompts/prepared/final/AUTH-001-P1.md",
+      "prompt_sha256": "7fc05c7c79b41ffc8decad745d8d395d86fed04fd190e96c061a5aab95619755",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "audit_scope": "权限越权",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "AUTH-001-P2",
+      "packet_index": 2,
+      "packet_count": 3,
+      "fragment_ids": [
+        "AUTH-001-D",
+        "AUTH-001-E",
+        "AUTH-001-F"
+      ],
+      "code_lines": 139,
+      "source_input": "workpackage1/llm_inputs/AUTH-001-P2.md",
+      "source_sha256": "e6a69fe5160b351737056a83aeacd585f8d453fbfbf37b3641d22fdbdd346c37",
+      "prompt_file": "prompts/prepared/final/AUTH-001-P2.md",
+      "prompt_sha256": "a49edf62d3de6561e83e76bf1e93804651e355fd71842c50ee1ce9bdff977f91",
+      "execution_status": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "audit_scope": "权限越权",
+      "input_version": "v2",
+      "prompt_version": "final",
+      "packet_id": "AUTH-001-P3",
+      "packet_index": 3,
+      "packet_count": 3,
+      "fragment_ids": [
+        "AUTH-001-G",
+        "AUTH-001-F"
+      ],
+      "code_lines": 219,
+      "source_input": "workpackage1/llm_inputs/AUTH-001-P3.md",
+      "source_sha256": "2e8981e42660b042f9f257a3d3d6c0e9ceca24bbaa12a51e6e0aa13345e1069a",
+      "prompt_file": "prompts/prepared/final/AUTH-001-P3.md",
+      "prompt_sha256": "6abc6bb00297f6f098bd4e1f6ac7c7c0c03f3789cb0adda0c0f24ae3504550c0",
+      "execution_status": "not_run"
+    }
+  ]
+}

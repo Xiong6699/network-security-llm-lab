@@ -1,0 +1,43 @@
+{
+  "schema_version": "wp2-output-v1",
+  "sample_id": "XSS-004",
+  "input_version": "v2",
+  "prompt_version": "v2",
+  "analysis_stage": "parent",
+  "received_packet_ids": [
+    "XSS-004"
+  ],
+  "prediction": "未检出候选",
+  "verdict": "待验证",
+  "confidence": {
+    "level": "medium",
+    "reason": "所给文本上下文存在输出编码证据；外围和运行条件未核验，未确认整个应用安全。"
+  },
+  "findings": [],
+  "exclusion_evidence": [
+    {
+      "fragment_id": "XSS-004",
+      "line_start": 7,
+      "line_end": 7,
+      "quote": "\t$name = htmlspecialchars( $_GET[ 'name' ] );"
+    },
+    {
+      "fragment_id": "XSS-004",
+      "line_start": 9,
+      "line_end": 9,
+      "quote": "\t$html .= \"<pre>Hello {$name}</pre>\";"
+    }
+  ],
+  "missing_context": [
+    "token与外围渲染的运行行为",
+    "PHP编码配置与实际浏览器响应"
+  ],
+  "risk_notes": [],
+  "quality_notes": [],
+  "limitations": [
+    "本对象是当前Codex会话的结构化分析草案，不是独立模型调用原文。",
+    "没有运行POC，真实标签仍待验证。",
+    "仅未检出已提供pre文本路径中的XSS候选；需检查外围是否二次解码，不能把token存在当作XSS防护证据。"
+  ],
+  "runtime_evidence": []
+}

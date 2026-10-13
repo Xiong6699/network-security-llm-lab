@@ -1,0 +1,298 @@
+{
+  "date": "2026-10-13",
+  "mode": "same_conversation_assistant_draft",
+  "authorization": "用户在本对话选择先用当前Codex对话做初步试用",
+  "model_name": "Codex current conversation",
+  "exact_model_id": null,
+  "model_snapshot": null,
+  "sampling_parameters": null,
+  "model_metadata_note": "界面或API没有向本实验提供可核验的模型标识和采样配置，未知项不猜测。",
+  "independent_model_call_count": 0,
+  "independent_context_reset": false,
+  "draft_count": 15,
+  "parent_sample_count": 5,
+  "source_commit_for_workpackage1": "b7156968d5848e4e9f4ec710e9a1ab693f008673",
+  "preparation_manifest_sha256": "5286dcbc4e3123e3b417dea4c09c4e7a40c3d6a11dc452f38fd52a365851d367",
+  "ui_notice": "用户截图显示网络安全内容访问限制；未给出具体被限制内容或请求日志，不据此虚构API错误或成功调用。",
+  "poc_artifacts": [
+    {
+      "path": "prompts/trial/pocs/auth_001_read.py",
+      "sha256": "460b5ee1dacd7b6d2f048dfa94751fab2d566e78b75d16cb29a5a87883d6727f",
+      "execution": "not_run"
+    },
+    {
+      "path": "prompts/trial/pocs/cmd_001.py",
+      "sha256": "9fa0232a318d72e26024fa0313d80d22e4ba23bdb0b86eea56f8185e67b44751",
+      "execution": "not_run"
+    },
+    {
+      "path": "prompts/trial/pocs/sqli_001.py",
+      "sha256": "da5e255f4eff3a0b2eb7573062dd21620e041d1fb2e1852f370e0eb858ec26d4",
+      "execution": "not_run"
+    },
+    {
+      "path": "prompts/trial/pocs/xss_001.py",
+      "sha256": "6ae0b34701f052621d6f92fa3fca1ff6ca353f25f77863af607075640fceb11b",
+      "execution": "not_run"
+    }
+  ],
+  "metric_limits": [
+    "不是独立或盲测实验，不用于Prompt因果效果结论",
+    "真实标签未确认，不计算误报漏报",
+    "POC未运行，不计算可运行率"
+  ],
+  "records": [
+    {
+      "sample_id": "SQLI-001",
+      "prompt_version": "v1",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/v1/SQLI-001.md"
+      ],
+      "prepared_prompt_sha256": [
+        "4d408bcb79978f097ce9bc00ee06bd39d0d87390c0284c32f06d2c7e9d86317a"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/v1/SQLI-001.json",
+      "assistant_draft_sha256": "6c1fa6e5efeb5cf9ecc202bd90f8f5350bd2d20cfafa486bbdfd26713609e080",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "XSS-001",
+      "prompt_version": "v1",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/v1/XSS-001.md"
+      ],
+      "prepared_prompt_sha256": [
+        "94b94244767463087df94ce25cc2ef386948967c5419227a0d2dadf67e1f7eed"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/v1/XSS-001.json",
+      "assistant_draft_sha256": "1e18e59f235e278684d12ae91840c719734e8662fcffbf3579349a4daedd6e9b",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "CMD-001",
+      "prompt_version": "v1",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/v1/CMD-001.md"
+      ],
+      "prepared_prompt_sha256": [
+        "de4cf92b9e4d0f24031aea491e49032bccd85f826528ac8fdcaf2ef3fc1d8eb2"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/v1/CMD-001.json",
+      "assistant_draft_sha256": "0f68f9b2553fdf5b69527ccaa65719e7df615f2445c8c78f30cc3e88d5f1432c",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "prompt_version": "v1",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/v1/AUTH-001-P1.md",
+        "prompts/prepared/v1/AUTH-001-P2.md",
+        "prompts/prepared/v1/AUTH-001-P3.md"
+      ],
+      "prepared_prompt_sha256": [
+        "3d2f82a8092553fb66969ec07a44a7fcf7e33e49dee4aca51e60df1b4537af88",
+        "f295668177afb0a75cb1a63a35a39588968e813d58ece104cb5bcfc7c1f9673b",
+        "3a02cb17f5236198988811ef8817c9b61de424224522143de7a9561ea0d8e3ed"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/v1/AUTH-001.json",
+      "assistant_draft_sha256": "189698048498e2eb6730a0cde7373410760ba8ce51a6f958709c8932f1cf28be",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "XSS-004",
+      "prompt_version": "v1",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/v1/XSS-004.md"
+      ],
+      "prepared_prompt_sha256": [
+        "23251cfce8d03832f7345270b42e329bba71a3014cc2ebd1d4b0f8ca8fd02e9b"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/v1/XSS-004.json",
+      "assistant_draft_sha256": "81132bb69a3a0b8a3ffd0d193deac393e83b2a1774f58a6fd03f33c013bb2f1c",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "SQLI-001",
+      "prompt_version": "v2",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/v2/SQLI-001.md"
+      ],
+      "prepared_prompt_sha256": [
+        "04d22398bc9145666c07576235aa44bf5a02bba40d575eab4d838c7b347f5909"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/v2/SQLI-001.json",
+      "assistant_draft_sha256": "bd12c333343e656f5a8dc9e328000529c0d0680d4c971efca01389ce79e1460c",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "XSS-001",
+      "prompt_version": "v2",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/v2/XSS-001.md"
+      ],
+      "prepared_prompt_sha256": [
+        "02a6d851432c3582cb580d6ed30bb50c7da394b70b69f9116bc11c0b16315d2f"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/v2/XSS-001.json",
+      "assistant_draft_sha256": "116adb27ec4cb63c1f7ff016522dc8c8c3a69b48c2884d67b411858b6f4bb796",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "CMD-001",
+      "prompt_version": "v2",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/v2/CMD-001.md"
+      ],
+      "prepared_prompt_sha256": [
+        "83c38f7b8003b103efd1ecf6d67c974ff031d32f4ebc6b95ca31e184ae7305c9"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/v2/CMD-001.json",
+      "assistant_draft_sha256": "044d9bd5d547578337306f18d62a9544087b853131f78c9ce0c781b8e774ed0c",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "prompt_version": "v2",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/v2/AUTH-001-P1.md",
+        "prompts/prepared/v2/AUTH-001-P2.md",
+        "prompts/prepared/v2/AUTH-001-P3.md"
+      ],
+      "prepared_prompt_sha256": [
+        "9613e5cd328e976f20f08c89e5213b4de6d4a345f952471b78ecddc8295dba59",
+        "249388285d9d43045a0da1fe8277a3ff868e4e7a58d14e6db57f4b83b5d819ca",
+        "ccbc8cb4db006371b409126c136138aa2a9a7885b374f925c12a34d348e2001f"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/v2/AUTH-001.json",
+      "assistant_draft_sha256": "3f143c975fc5ab4198b25e5b80ccf5b5bad28c56e02d4b55a3c3764295261b56",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "XSS-004",
+      "prompt_version": "v2",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/v2/XSS-004.md"
+      ],
+      "prepared_prompt_sha256": [
+        "d5128a59f797578227d34779169b9e920d9e1c966859754257b8fec83fb1e504"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/v2/XSS-004.json",
+      "assistant_draft_sha256": "6c7e96dd84e1990ee21d7b60af3c5dc61844064dc694ca4db6bb7252033eed3a",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "SQLI-001",
+      "prompt_version": "final",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/final/SQLI-001.md"
+      ],
+      "prepared_prompt_sha256": [
+        "f145c91e3b0a253ea00bc3f9c69ba7f0963c795b9d88a63c23ebd680e6ffb202"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/final/SQLI-001.json",
+      "assistant_draft_sha256": "cdcacbf654380c7707d8592319feec285e6c99ad55ac87ec5cc29bf1eabd12d7",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "XSS-001",
+      "prompt_version": "final",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/final/XSS-001.md"
+      ],
+      "prepared_prompt_sha256": [
+        "892bcee8d43d0560b6b609185bb876309a6507649f5c685cab19e5b13296d938"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/final/XSS-001.json",
+      "assistant_draft_sha256": "9f6f3a7251da383568f646169444e02e2580bd05c326bc7aba2b496413f272fb",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "CMD-001",
+      "prompt_version": "final",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/final/CMD-001.md"
+      ],
+      "prepared_prompt_sha256": [
+        "5d4f7e13828c900b6838ca0052ddb2516c26dfba0a64943ae6b2b9082fcd3232"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/final/CMD-001.json",
+      "assistant_draft_sha256": "ef69b687a21a578b2ba4e08786460c8392a14e2b355e76648cae4c64949f7cb7",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "prompt_version": "final",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/final/AUTH-001-P1.md",
+        "prompts/prepared/final/AUTH-001-P2.md",
+        "prompts/prepared/final/AUTH-001-P3.md"
+      ],
+      "prepared_prompt_sha256": [
+        "7fc05c7c79b41ffc8decad745d8d395d86fed04fd190e96c061a5aab95619755",
+        "a49edf62d3de6561e83e76bf1e93804651e355fd71842c50ee1ce9bdff977f91",
+        "6abc6bb00297f6f098bd4e1f6ac7c7c0c03f3789cb0adda0c0f24ae3504550c0"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/final/AUTH-001.json",
+      "assistant_draft_sha256": "cc03c637e7dba800f94260e097e5b3021de39e707e7d3da21abf38256e263e3f",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    },
+    {
+      "sample_id": "XSS-004",
+      "prompt_version": "final",
+      "input_version": "v2",
+      "prepared_prompt_files": [
+        "prompts/prepared/final/XSS-004.md"
+      ],
+      "prepared_prompt_sha256": [
+        "f203a63fac345f9ab7a3505962199c83352368c71c9af828e1c5c84b93540b2e"
+      ],
+      "assistant_draft_path": "prompts/trial/outputs/final/XSS-004.json",
+      "assistant_draft_sha256": "afd5c0528fee4acc61c08b0ebfdc64e47a05c9fb61f0ad0184eb91e1e9489577",
+      "raw_api_response_path": null,
+      "source_kind": "same_conversation_assistant_draft",
+      "poc_execution": "not_run"
+    }
+  ]
+}

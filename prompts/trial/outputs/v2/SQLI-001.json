@@ -1,0 +1,99 @@
+{
+  "schema_version": "wp2-output-v1",
+  "sample_id": "SQLI-001",
+  "input_version": "v2",
+  "prompt_version": "v2",
+  "analysis_stage": "parent",
+  "received_packet_ids": [
+    "SQLI-001"
+  ],
+  "prediction": "存在候选",
+  "verdict": "待验证",
+  "confidence": {
+    "level": "medium",
+    "reason": "代码位置与目标路径可追溯，但实际环境和观察证据未核验。"
+  },
+  "findings": [
+    {
+      "finding_id": "SQLI-001-F1",
+      "vulnerability_type": "SQL注入",
+      "locations": [
+        {
+          "fragment_id": "SQLI-001",
+          "line_start": 8,
+          "line_end": 8,
+          "quote": "$id=$_GET['id'];"
+        },
+        {
+          "fragment_id": "SQLI-001",
+          "line_start": 14,
+          "line_end": 14,
+          "quote": "$sql=\"SELECT * FROM users WHERE id='$id' LIMIT 0,1\";"
+        },
+        {
+          "fragment_id": "SQLI-001",
+          "line_start": 15,
+          "line_end": 15,
+          "quote": "$result=mysql_query($sql);"
+        }
+      ],
+      "data_flow": [
+        "GET id在第8行进入变量id",
+        "第14行将id拼入带引号的查询值位置",
+        "第15行调用mysql_query，随后输出查询结果或错误"
+      ],
+      "principle": "已提供代码中用户参数直接进入SQL文本，未见该路径的参数化或转义；构成静态SQL注入候选，查询语义是否实际改变仍需对照验证。",
+      "impact": "在所提供查询路径与兼容环境中可能影响记录选择；未测试数据读取范围或其他查询。",
+      "preconditions": [
+        "固定源码对应的处理器实际部署",
+        "旧mysql_*接口与数据库连接可用",
+        "GET id可送达该入口，使用专用教学记录"
+      ],
+      "counterexamples": [
+        "前置层存在本输入未提供的有效参数约束",
+        "该查询路径不可达或运行接口不兼容"
+      ],
+      "poc": {
+        "status": "需人工适配",
+        "language": "python",
+        "code": null,
+        "artifact_path": "prompts/trial/pocs/sqli_001.py",
+        "dependencies": [
+          "Python标准库，无第三方库",
+          "本地固定版本靶场和相应运行依赖"
+        ],
+        "parameters": [
+          "--base-url 本地基址",
+          "--path 实际部署路径",
+          "--cookie-file 可选本地会话文件"
+        ],
+        "steps": [
+          "先核验部署版本、配置与专用测试会话",
+          "用--help核对必填参数并填写实际本地地址和路径",
+          "由验证组运行草案，保存环境、对照与观察证据"
+        ],
+        "expected_observation": "正常与布尔对照的查询结果表现存在可解释差异。",
+        "success_criteria": "对照正常、真条件、假条件的实际记录显示，并排除语法错误、PHP错误和认证跳转；响应哈希不同本身不够。",
+        "limitations": [
+          "脚本只给出状态、长度和哈希，不自动确认查询语义",
+          "部署路径未提供，需人工适配"
+        ],
+        "execution_status": "未运行"
+      }
+    }
+  ],
+  "exclusion_evidence": [],
+  "missing_context": [
+    "实际部署路径、PHP和数据库版本",
+    "数据库与正常测试记录状态"
+  ],
+  "risk_notes": [],
+  "quality_notes": [
+    "mysql_*兼容性属于运行与维护问题，单独记录，不直接当SQL注入证据"
+  ],
+  "limitations": [
+    "本对象是当前Codex会话的结构化分析草案，不是独立模型调用原文。",
+    "没有运行POC，真实标签仍待验证。"
+  ],
+  "runtime_evidence": []
+}
