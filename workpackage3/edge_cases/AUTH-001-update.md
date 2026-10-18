@@ -56,3 +56,80 @@ impossible条件下应验证请求被拒绝且目标数据未改变。条件案�
 ## 范围外风险
 
 UPDATE语句直接拼接请求字段，还存在需要单独审计的SQL注入线索。本案例聚焦权限越权，不将该线索混入权限漏洞的判定与统计。
+
+## 代码位置与引文补充
+
+以下行号采用工作包1标准化片段的局部行号。
+
+### 更新接口的授权条件
+
+片段AUTH-001-E，第11行：
+
+```php
+if (dvwaSecurityLevelGet() == "impossible" && dvwaCurrentUser() != "admin") {
+```
+
+第12至13行返回Access denied并退出。该检查只在impossible配置下拒绝非admin，不覆盖high等其他配置。
+
+### 请求方法与输入来源
+
+片段AUTH-001-E，第16行：
+
+```php
+if ($_SERVER['REQUEST_METHOD'] != "POST") {
+```
+
+该条件只限制请求方法，不检查请求者是否有修改权限。
+
+第26至27行：
+
+```php
+$json = file_get_contents('php://input');
+$data = json_decode($json);
+```
+
+目标id及修改内容来自请求体。成功解析JSON不等于通过授权检查，也不等于字段已经完整验证。
+
+### 修改目标与数据库操作
+
+片段AUTH-001-E，第47行：
+
+```php
+$query = "UPDATE users SET first_name = '" . $data->first_name . "', last_name = '" .  $data->surname . "' where user_id = " . $data->id . "";
+```
+
+修改对象由请求中的id决定，当前路径未见将目标对象绑定到当前用户的检查。第48行调用mysqli_query执行更新。
+
+第50行：
+
+```php
+print json_encode (array ("result" => "ok"));
+```
+
+该响应不能单独证明目标记录已经改变，仍需独立回查实际数据。
+
+### 身份与配置来源
+
+片段AUTH-001-F，第26行从会话取得用户名：
+
+```php
+return ( isset( $dvwaSession[ 'username' ]) ? $dvwaSession[ 'username' ] : 'Unknown') ;
+```
+
+第32至34行优先读取客户端配置：
+
+```php
+if (isset($_COOKIE['security'])) {
+	return $_COOKIE[ 'security' ];
+}
+```
+
+因此，授权条件依赖客户端可影响的配置值；但当前尚未完成接口外围认证初始化的核查。
+
+## 静态证据等级
+
+证据等级：medium。
+
+依据：请求输入、角色检查、更新目标、数据库执行及身份和配置来源均可定位；但接口外围认证、实际会话与部署条件尚未完整核查。因此保留越权更新候选，结论为待验证。
+
+本等级表示静态证据完整程度，不代表漏洞概率或风险严重程度。
