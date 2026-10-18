@@ -50,3 +50,63 @@ D.php中的htmlspecialchars属于输出编码，不代替角色授权，也不�
 成功确认需要证明普通用户实际取得按业务要求仅允许管理员读取的数据。HTTP 200或JSON响应本身不构成充分证据。
 
 high或impossible条件下应检查是否拒绝并且未返回受保护数据。所有条件案例仍归属AUTH-001父样本，不计为新增独立样本。
+
+## 代码位置与引文补充
+
+以下行号采用工作包1标准化片段的局部行号。
+
+### 读取接口的授权条件
+
+片段AUTH-001-D，第10行：
+
+```php
+if ((dvwaSecurityLevelGet() == "high" || dvwaSecurityLevelGet() == "impossible") && dvwaCurrentUser() != "admin") {
+```
+
+第11至12行返回Access denied并退出，说明该拒绝分支只在指定配置及非admin条件同时满足时触发。
+
+### 数据查询与返回
+
+片段AUTH-001-D，第15行：
+
+```php
+$query  = "SELECT user_id, first_name, last_name FROM users";
+```
+
+第16行执行查询，第40行返回结果：
+
+```php
+print json_encode ($users);
+```
+
+查询中未按当前用户限制记录范围，因此需要核查调用者是否具有读取全部用户资料的权限。
+
+### 身份来源
+
+片段AUTH-001-F，第26行：
+
+```php
+return ( isset( $dvwaSession[ 'username' ]) ? $dvwaSession[ 'username' ] : 'Unknown') ;
+```
+
+当前用户名来自会话。该函数本身不证明读取接口已执行登录认证。
+
+### 配置来源
+
+片段AUTH-001-F，第32至34行：
+
+```php
+if (isset($_COOKIE['security'])) {
+	return $_COOKIE[ 'security' ];
+}
+```
+
+配置优先读取客户端Cookie，说明授权条件依赖客户端可影响的值。
+
+## 静态证据等级
+
+证据等级：medium。
+
+依据：角色检查、全部用户查询、结果返回及身份和配置来源均可定位；但接口外围初始化、实际认证与部署条件尚未完整核查。因此保留越权读取候选，结论为待验证。
+
+本等级反映静态证据完整程度，不代表漏洞概率或影响严重程度。
