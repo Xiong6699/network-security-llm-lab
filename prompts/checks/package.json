@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-13",
+  "scope": "Local static package checks only; no independent model calls, network requests, PHP or POC execution",
+  "prepared_prompt_count": 51,
+  "parent_sample_count": 14,
+  "formal_records": 42,
+  "formal_status": "not_run",
+  "same_conversation_drafts_checked": 15,
+  "workpackage1_unchanged_file_count": 130,
+  "input_code_blocks_unchanged": true,
+  "four_main_sections": true,
+  "local_markdown_links": "passed",
+  "negative_protocol_cases": [
+    {
+      "case": "line_range",
+      "rejected": true
+    },
+    {
+      "case": "quote",
+      "rejected": true
+    },
+    {
+      "case": "confirmation",
+      "rejected": true
+    },
+    {
+      "case": "missing_packet",
+      "rejected": true
+    },
+    {
+      "case": "prediction",
+      "rejected": true
+    },
+    {
+      "case": "external_artifact",
+      "rejected": true
+    }
+  ],
+  "poc_local_url_guards": [
+    {
+      "file": "prompts/trial/pocs/auth_001_read.py",
+      "local_url_guard": "passed",
+      "main_executed": false
+    },
+    {
+      "file": "prompts/trial/pocs/cmd_001.py",
+      "local_url_guard": "passed",
+      "main_executed": false
+    },
+    {
+      "file": "prompts/trial/pocs/sqli_001.py",
+      "local_url_guard": "passed",
+      "main_executed": false
+    },
+    {
+      "file": "prompts/trial/pocs/xss_001.py",
+      "local_url_guard": "passed",
+      "main_executed": false
+    }
+  ],
+  "python_syntax": "passed",
+  "poc_execution": "not_run",
+  "inherited_checkout_differences": [
+    {
+      "file": "workpackage1/normalized_samples/AUTH-001/B.js",
+      "difference": "CRLF checkout versus LF Git object",
+      "present_before_workpackage2": true,
+      "same_code_lines": true
+    }
+  ],
+  "status": "passed_static_package"
+}

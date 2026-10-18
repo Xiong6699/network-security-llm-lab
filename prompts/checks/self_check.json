@@ -1,0 +1,16 @@
+{
+  "status": "passed_static_checks",
+  "prepared_prompts": 51,
+  "parent_samples": 14,
+  "formal_records": 42,
+  "formal_status_counts": {
+    "not_run": 42
+  },
+  "same_conversation_drafts_checked": 15,
+  "invalid_output_cases_rejected": 6,
+  "poc_drafts_compiled_and_local_url_guard_checked": 4,
+  "workpackage1_tracked_diff": "clean",
+  "model_calls": 0,
+  "poc_executions": 0,
+  "scope": "Static file, protocol, syntax and helper checks only; no model call, network request, PHP or POC execution"
+}

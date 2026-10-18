@@ -1,0 +1,98 @@
+{
+  "schema_version": "wp2-output-v1",
+  "sample_id": "CMD-001",
+  "input_version": "v2",
+  "prompt_version": "v2",
+  "analysis_stage": "parent",
+  "received_packet_ids": [
+    "CMD-001"
+  ],
+  "prediction": "存在候选",
+  "verdict": "待验证",
+  "confidence": {
+    "level": "medium",
+    "reason": "代码位置与目标路径可追溯，但实际环境和观察证据未核验。"
+  },
+  "findings": [
+    {
+      "finding_id": "CMD-001-F1",
+      "vulnerability_type": "命令注入",
+      "locations": [
+        {
+          "fragment_id": "CMD-001",
+          "line_start": 4,
+          "line_end": 4,
+          "quote": "\t$target = $_REQUEST[ 'ip' ];"
+        },
+        {
+          "fragment_id": "CMD-001",
+          "line_start": 8,
+          "line_end": 8,
+          "quote": "\t\t$cmd = shell_exec( 'ping  ' . $target );"
+        },
+        {
+          "fragment_id": "CMD-001",
+          "line_start": 12,
+          "line_end": 12,
+          "quote": "\t\t$cmd = shell_exec( 'ping  -c 4 ' . $target );"
+        }
+      ],
+      "data_flow": [
+        "POST Submit触发处理，REQUEST ip进入target",
+        "Windows或非Windows分支将target拼入命令字符串",
+        "shell_exec执行后把cmd拼入页面输出"
+      ],
+      "principle": "可控参数进入shell命令文本，片段未见对应参数白名单或无shell隔离；候选依赖实际shell、系统与可执行配置。",
+      "impact": "满足部署条件时可能改变该命令的解释；本草案只验证无害额外回显。",
+      "preconditions": [
+        "实际操作系统与所选输入一致",
+        "shell_exec启用且shell与ping可用",
+        "会话有效并送达Submit/ip处理路径"
+      ],
+      "counterexamples": [
+        "执行函数禁用或对应分支不可达",
+        "未提供的前置层严格约束输入或改用无shell参数调用"
+      ],
+      "poc": {
+        "status": "需人工适配",
+        "language": "python",
+        "code": null,
+        "artifact_path": "prompts/trial/pocs/cmd_001.py",
+        "dependencies": [
+          "Python标准库，无第三方库",
+          "本地固定版本靶场和相应运行依赖"
+        ],
+        "parameters": [
+          "--base-url 本地基址",
+          "--path 实际页面路径",
+          "--cookie-file 本地会话文件",
+          "--os 实际服务端linux或windows"
+        ],
+        "steps": [
+          "先核验部署版本、配置与专用测试会话",
+          "用--help核对必填参数并填写实际本地地址和路径",
+          "由验证组运行草案，保存环境、对照与观察证据"
+        ],
+        "expected_observation": "测试输入的实际命令输出中出现额外无害标记，正常输入没有该标记。",
+        "success_criteria": "核验标记来自实际命令输出，而非请求值回显；排除认证错误和命令不可用，结合对应系统分支判断。",
+        "limitations": [
+          "系统和会话未知，尚未运行",
+          "单个标记匹配不作为自动漏洞确认"
+        ],
+        "execution_status": "未运行"
+      }
+    }
+  ],
+  "exclusion_evidence": [],
+  "missing_context": [
+    "操作系统、shell和执行函数配置",
+    "登录会话和页面部署路径"
+  ],
+  "risk_notes": [],
+  "quality_notes": [],
+  "limitations": [
+    "本对象是当前Codex会话的结构化分析草案，不是独立模型调用原文。",
+    "没有运行POC，真实标签仍待验证。"
+  ],
+  "runtime_evidence": []
+}

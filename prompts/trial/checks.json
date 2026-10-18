@@ -1,0 +1,142 @@
+{
+  "scope": "Protocol, quote/line consistency and Python compilation only; no model calls or POC execution",
+  "output_count": 15,
+  "passed_count": 15,
+  "results": [
+    {
+      "sample_id": "AUTH-001",
+      "prompt_version": "final",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/final/AUTH-001.json",
+      "sha256": "cc03c637e7dba800f94260e097e5b3021de39e707e7d3da21abf38256e263e3f"
+    },
+    {
+      "sample_id": "CMD-001",
+      "prompt_version": "final",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/final/CMD-001.json",
+      "sha256": "ef69b687a21a578b2ba4e08786460c8392a14e2b355e76648cae4c64949f7cb7"
+    },
+    {
+      "sample_id": "SQLI-001",
+      "prompt_version": "final",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/final/SQLI-001.json",
+      "sha256": "cdcacbf654380c7707d8592319feec285e6c99ad55ac87ec5cc29bf1eabd12d7"
+    },
+    {
+      "sample_id": "XSS-001",
+      "prompt_version": "final",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/final/XSS-001.json",
+      "sha256": "9f6f3a7251da383568f646169444e02e2580bd05c326bc7aba2b496413f272fb"
+    },
+    {
+      "sample_id": "XSS-004",
+      "prompt_version": "final",
+      "status": "passed_static_protocol",
+      "finding_count": 0,
+      "python_poc_syntax_count": 0,
+      "file": "prompts/trial/outputs/final/XSS-004.json",
+      "sha256": "afd5c0528fee4acc61c08b0ebfdc64e47a05c9fb61f0ad0184eb91e1e9489577"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "prompt_version": "v1",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/v1/AUTH-001.json",
+      "sha256": "189698048498e2eb6730a0cde7373410760ba8ce51a6f958709c8932f1cf28be"
+    },
+    {
+      "sample_id": "CMD-001",
+      "prompt_version": "v1",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/v1/CMD-001.json",
+      "sha256": "0f68f9b2553fdf5b69527ccaa65719e7df615f2445c8c78f30cc3e88d5f1432c"
+    },
+    {
+      "sample_id": "SQLI-001",
+      "prompt_version": "v1",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/v1/SQLI-001.json",
+      "sha256": "6c1fa6e5efeb5cf9ecc202bd90f8f5350bd2d20cfafa486bbdfd26713609e080"
+    },
+    {
+      "sample_id": "XSS-001",
+      "prompt_version": "v1",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/v1/XSS-001.json",
+      "sha256": "1e18e59f235e278684d12ae91840c719734e8662fcffbf3579349a4daedd6e9b"
+    },
+    {
+      "sample_id": "XSS-004",
+      "prompt_version": "v1",
+      "status": "passed_static_protocol",
+      "finding_count": 0,
+      "python_poc_syntax_count": 0,
+      "file": "prompts/trial/outputs/v1/XSS-004.json",
+      "sha256": "81132bb69a3a0b8a3ffd0d193deac393e83b2a1774f58a6fd03f33c013bb2f1c"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "prompt_version": "v2",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/v2/AUTH-001.json",
+      "sha256": "3f143c975fc5ab4198b25e5b80ccf5b5bad28c56e02d4b55a3c3764295261b56"
+    },
+    {
+      "sample_id": "CMD-001",
+      "prompt_version": "v2",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/v2/CMD-001.json",
+      "sha256": "044d9bd5d547578337306f18d62a9544087b853131f78c9ce0c781b8e774ed0c"
+    },
+    {
+      "sample_id": "SQLI-001",
+      "prompt_version": "v2",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/v2/SQLI-001.json",
+      "sha256": "bd12c333343e656f5a8dc9e328000529c0d0680d4c971efca01389ce79e1460c"
+    },
+    {
+      "sample_id": "XSS-001",
+      "prompt_version": "v2",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "prompts/trial/outputs/v2/XSS-001.json",
+      "sha256": "116adb27ec4cb63c1f7ff016522dc8c8c3a69b48c2884d67b411858b6f4bb796"
+    },
+    {
+      "sample_id": "XSS-004",
+      "prompt_version": "v2",
+      "status": "passed_static_protocol",
+      "finding_count": 0,
+      "python_poc_syntax_count": 0,
+      "file": "prompts/trial/outputs/v2/XSS-004.json",
+      "sha256": "6c7e96dd84e1990ee21d7b60af3c5dc61844064dc694ca4db6bb7252033eed3a"
+    }
+  ]
+}

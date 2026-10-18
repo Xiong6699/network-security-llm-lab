@@ -1,0 +1,90 @@
+{
+  "schema_version": "wp2-output-v1",
+  "sample_id": "XSS-001",
+  "input_version": "v2",
+  "prompt_version": "v1",
+  "analysis_stage": "parent",
+  "received_packet_ids": [
+    "XSS-001"
+  ],
+  "prediction": "存在候选",
+  "verdict": "待验证",
+  "confidence": {
+    "level": "medium",
+    "reason": "代码位置与目标路径可追溯，但实际环境和观察证据未核验。"
+  },
+  "findings": [
+    {
+      "finding_id": "XSS-001-F1",
+      "vulnerability_type": "XSS",
+      "locations": [
+        {
+          "fragment_id": "XSS-001",
+          "line_start": 4,
+          "line_end": 4,
+          "quote": "if( array_key_exists( \"name\", $_GET ) && $_GET[ 'name' ] != NULL ) {"
+        },
+        {
+          "fragment_id": "XSS-001",
+          "line_start": 6,
+          "line_end": 6,
+          "quote": "\t$html .= '<pre>Hello ' . $_GET[ 'name' ] . '</pre>';"
+        }
+      ],
+      "data_flow": [
+        "GET name通过存在性判断",
+        "按输入说明由外围页面输出，实际浏览器条件仍待核验"
+      ],
+      "principle": "已提供路径把可控输入直接放入HTML文本，未见相应输出编码；反射型XSS为候选，不等于已在浏览器执行。",
+      "impact": "满足页面输出及浏览器条件时可能执行测试脚本；没有测试会话数据访问或外传。",
+      "preconditions": [
+        "处理器与外围渲染路径实际匹配",
+        "已授权本地会话有效且请求使用对应配置",
+        "浏览器能够解释实际响应且无其他阻止条件"
+      ],
+      "counterexamples": [
+        "实际响应在输出前又进行了有效上下文编码",
+        "输入未到达浏览器可解释页面或运行策略阻止触发"
+      ],
+      "poc": {
+        "status": "需人工适配",
+        "language": "python",
+        "code": null,
+        "artifact_path": "prompts/trial/pocs/xss_001.py",
+        "dependencies": [
+          "Python标准库，无第三方库",
+          "本地固定版本靶场和相应运行依赖"
+        ],
+        "parameters": [
+          "--base-url 本地基址",
+          "--path 实际页面路径",
+          "--cookie-file 本地会话文件"
+        ],
+        "steps": [
+          "先核验部署版本、配置与专用测试会话",
+          "用--help核对必填参数并填写实际本地地址和路径",
+          "由验证组运行草案，保存环境、对照与观察证据"
+        ],
+        "expected_observation": "无害标记进入响应，随后在同一授权浏览器会话观察控制台标记。",
+        "success_criteria": "必须保存浏览器中无害标记的实际执行证据；响应含原始输入、HTTP 200或URL构造均不足以确认。",
+        "limitations": [
+          "HTTP草案不执行浏览器JavaScript",
+          "浏览器步骤与登录配置需人工核验"
+        ],
+        "execution_status": "未运行"
+      }
+    }
+  ],
+  "exclusion_evidence": [],
+  "missing_context": [
+    "部署路径、登录会话、实际渲染响应",
+    "浏览器和内容安全策略等运行条件"
+  ],
+  "risk_notes": [],
+  "quality_notes": [],
+  "limitations": [
+    "本对象是当前Codex会话的结构化分析草案，不是独立模型调用原文。",
+    "没有运行POC，真实标签仍待验证。"
+  ],
+  "runtime_evidence": []
+}
