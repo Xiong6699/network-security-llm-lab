@@ -1,0 +1,35 @@
+{
+  "blind_id": "BR-08",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "Admin and ordinary sessions are separately confirmed by the DVWA login banner.",
+      "met": "true",
+      "evidence": "请求证据中 admin 与 gordonb 各执行一次独立登录 POST，均返回 302 Location: index.php；随后 index.php 返回两个长度/哈希不同的已登录页面（6523B 42bc54… 与 6446B e51fe9…），观察记录 identity 明确记为 admin/gordonb。但响应截断，未直接展示 “You have logged in as ...” 横幅行。"
+    },
+    {
+      "criterion": "The admin page/read/update control works at this security level.",
+      "met": "true",
+      "evidence": "admin 会话：authbypass 页面 200；get_user_data 200、list、6 行、目标存在；change_user_details 200/ok，db_before Wp4→db_after Wp4Admin，db_changed=true。"
+    },
+    {
+      "criterion": "The ordinary-session result is recorded separately for the page, read API and update API.",
+      "met": "true",
+      "evidence": "观察记录分别记录 page（200、ordinary_denied=false）、read_api.ordinary（200、list、6 行、target_present=true）、update_api.ordinary（200、ok、db_before Wp4→db_after Wp4Low、db_changed=true）。"
+    },
+    {
+      "criterion": "Any update is verified by direct MariaDB readback and then restored.",
+      "met": "true",
+      "evidence": "两次更新均给出 db_before/db_after 直读值且 db_changed=true；观察记录 restored=true。但请求列表中最后一次写入为 Wp4Low，未见改回 Wp4 的恢复请求或恢复后的回读。"
+    }
+  ],
+  "rationale": "普通用户 gordonb 在 security=low 下访问 authbypass 页面未被拒（200），read API 返回含 wp4target 的全部 6 行，update API 成功把目标 first_name 改为 Wp4Low 并有 MariaDB 前后直读，构成越权读取与越权修改，故触发且为有漏洞。",
+  "missing_evidence": [
+    "DVWA 登录横幅原文（admin/gordonb 的 “You have logged in as …” 行因响应截断未直接可见）",
+    "每个请求实际绑定的会话标识（cookie 值被脱敏，普通用户的更新归属只能依赖观察记录）",
+    "恢复操作的请求与恢复后的 MariaDB 回读（仅见 restored=true，请求列表中无改回 Wp4 的写入）"
+  ]
+}

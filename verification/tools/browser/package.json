@@ -1,0 +1,9 @@
+{
+  "name": "wp4-browser-evidence",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Headless browser execution evidence for work package 4 XSS validation",
+  "dependencies": {
+    "playwright-core": "1.64.1"
+  }
+}

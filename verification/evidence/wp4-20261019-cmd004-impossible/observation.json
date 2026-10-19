@@ -1,0 +1,57 @@
+{
+  "run_id": "wp4-20261019-cmd004-impossible",
+  "sample_id": "CMD-004",
+  "path_id": "vulnerabilities/exec/index.php:ip",
+  "condition_key": "env=dvwa-wsl-01|role=admin|security=impossible|object=none|state=initialized",
+  "observations": {
+    "endpoint": "/vulnerabilities/exec/index.php",
+    "parameter": "ip (POST, read through $_REQUEST)",
+    "security_level": "impossible",
+    "identity": {
+      "logged_in": true,
+      "banner_has_admin": true,
+      "security_cookie": "impossible"
+    },
+    "normal": {
+      "ip": "127.0.0.1",
+      "status": 200,
+      "ping_output_observed": true,
+      "pre_excerpt": "PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.\n64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.014 ms\n64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.028 ms\n64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.028 ms\n64 bytes from 127.0.0.1: icmp_seq=4 ttl=64 time=0.027 ms\n\n--- 127.0.0.1 ping sta"
+    },
+    "test": {
+      "payload": "127.0.0.1",
+      "status": 200,
+      "marker": "WP4_CMD_004",
+      "marker_in_command_output": false,
+      "payload_reflected_outside_command_output": true,
+      "pre_excerpt": "PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.\n64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.013 ms\n64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.030 ms\n64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.029 ms\n64 bytes from 127.0.0.1: icmp_seq=4 ttl=64 time=0.030 ms\n\n--- 127.0.0.1 ping sta"
+    },
+    "invalid_payload_rejected": true,
+    "invalid_payload_marker_absent": true,
+    "five_octet_rejected": true,
+    "missing_token_redirect": true
+  },
+  "success_criteria": [
+    "The normal loopback ping produces the expected command output.",
+    "The token-protected request reaches the numeric-octet validation.",
+    "A payload containing a command separator is rejected as an invalid IP and no marker is executed.",
+    "A five-octet input is also rejected; the negative result is limited to this four-octet gate."
+  ],
+  "limitations": [
+    "Only the impossible exec source path and this Linux container are covered.",
+    "The payload only prints a fixed marker; it does not read files or open a connection.",
+    "The negative result applies to the four-octet is_numeric gate; IP-format weaknesses are recorded separately, not as command injection."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-cmd004-impossible/request.redacted.json",
+      "sha256": "a34e713bf21412fc418ac00b1eb693a1cc1d97ff1150da5a2473d406431817ee",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-cmd004-impossible/response.redacted.txt",
+      "sha256": "2dfcb44e0bcfa93a3a5ed87df202c1089de0999df13f445bd09a8d759fe1ed78",
+      "description": "response.redacted.txt"
+    }
+  ]
+}

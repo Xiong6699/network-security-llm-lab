@@ -1,0 +1,146 @@
+{
+  "design_date": "2026-10-19",
+  "version": "final-wp4-v1",
+  "base_version": "final",
+  "input_version": "v2",
+  "change_basis": "work package 4 POC adaptation and observation failures (hash-only SQL result, reflection-only XSS, token reuse, client maxlength truncation, AUTH read-only draft, command-output vs reflection)",
+  "scope": "POC runtime evidence, token freshness, independent readback/restore, result-region parsing; no change to audited code, packet order, input version or decision thresholds",
+  "entries": [
+    {
+      "sample_id": "AUTH-001",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "AUTH-001-P1",
+      "prompt_file": "prompts/prepared/final-wp4-v1/AUTH-001-P1.md",
+      "prompt_sha256": "c590f31d9ebcbec7ae792bfc9fbf57ad71436ece866fd4a4c44a17305fb30323",
+      "source_final_sha256": "7fc05c7c79b41ffc8decad745d8d395d86fed04fd190e96c061a5aab95619755"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "AUTH-001-P2",
+      "prompt_file": "prompts/prepared/final-wp4-v1/AUTH-001-P2.md",
+      "prompt_sha256": "e638f3b95ad7b9eec067f1370be8f00707788b0cb9aeb2a52eb56640482e5761",
+      "source_final_sha256": "a49edf62d3de6561e83e76bf1e93804651e355fd71842c50ee1ce9bdff977f91"
+    },
+    {
+      "sample_id": "AUTH-001",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "AUTH-001-P3",
+      "prompt_file": "prompts/prepared/final-wp4-v1/AUTH-001-P3.md",
+      "prompt_sha256": "68064ce708702733da1dd58b5646f2c1cb33d7305b75af80915bff76c87dac88",
+      "source_final_sha256": "6abc6bb00297f6f098bd4e1f6ac7c7c0c03f3789cb0adda0c0f24ae3504550c0"
+    },
+    {
+      "sample_id": "CMD-001",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "CMD-001",
+      "prompt_file": "prompts/prepared/final-wp4-v1/CMD-001.md",
+      "prompt_sha256": "6cc53fe8fe882560772cbc11230a942f01a64784368c079d0f8406317f63f39a",
+      "source_final_sha256": "5d4f7e13828c900b6838ca0052ddb2516c26dfba0a64943ae6b2b9082fcd3232"
+    },
+    {
+      "sample_id": "CMD-002",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "CMD-002",
+      "prompt_file": "prompts/prepared/final-wp4-v1/CMD-002.md",
+      "prompt_sha256": "f5c181863ccf15b1146e98456285af68efbf22ee64cdad08b1b4ef903f8c3332",
+      "source_final_sha256": "66fed58fa428bbf0ee5c1efb128711e0df2b4584ba06991f4136cf0b99cacd04"
+    },
+    {
+      "sample_id": "CMD-003",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "CMD-003",
+      "prompt_file": "prompts/prepared/final-wp4-v1/CMD-003.md",
+      "prompt_sha256": "165b67643c7b53366fef4331a73d2413748c3a3efd3185136fef2e810fd5c0e4",
+      "source_final_sha256": "2de433c1e1217b0324caa2d88781dda91711f9b334c2d4c1550f1ad2edbb60f6"
+    },
+    {
+      "sample_id": "CMD-004",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "CMD-004",
+      "prompt_file": "prompts/prepared/final-wp4-v1/CMD-004.md",
+      "prompt_sha256": "743836862ae5270c4174bbc9d2ce9c6260de2c8809be2b3bd63c18fa91b75680",
+      "source_final_sha256": "920c4066651b4ba0f3b74e5f8ac60bfc7381b6d18972cea7b2e7c7f0adf6a36e"
+    },
+    {
+      "sample_id": "SQLI-001",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "SQLI-001",
+      "prompt_file": "prompts/prepared/final-wp4-v1/SQLI-001.md",
+      "prompt_sha256": "a6dd2211887c98e7e71c8077ce0f67792f75c9e06a6658804a8f8628b939b53e",
+      "source_final_sha256": "f145c91e3b0a253ea00bc3f9c69ba7f0963c795b9d88a63c23ebd680e6ffb202"
+    },
+    {
+      "sample_id": "SQLI-002",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "SQLI-002",
+      "prompt_file": "prompts/prepared/final-wp4-v1/SQLI-002.md",
+      "prompt_sha256": "3d0636ec232d3e15143c84c58633252425936653856b34c9b7ab1ec069b2d71a",
+      "source_final_sha256": "d17d35effc4f883500be50163807aa7ef872ca90fccbcd9498a211e628cd927e"
+    },
+    {
+      "sample_id": "SQLI-003",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "SQLI-003",
+      "prompt_file": "prompts/prepared/final-wp4-v1/SQLI-003.md",
+      "prompt_sha256": "c8899ddbee474fe9341452f45985879cfa022b96673b320ccedc6c09a49fbf83",
+      "source_final_sha256": "d336d624b7433fa05b4429f890270c92278f48c121c74033e2475927b335f68a"
+    },
+    {
+      "sample_id": "SQLI-005",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "SQLI-005-P1",
+      "prompt_file": "prompts/prepared/final-wp4-v1/SQLI-005-P1.md",
+      "prompt_sha256": "6f6122fa174070fc8d96a663864c2fa4a85f5e41a8ba85f50332c9edd359afd1",
+      "source_final_sha256": "be12fde40683c1f50b3b8889f4e3857c1e392752bad48f69826510aa4721ffb9"
+    },
+    {
+      "sample_id": "SQLI-005",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "SQLI-005-P2",
+      "prompt_file": "prompts/prepared/final-wp4-v1/SQLI-005-P2.md",
+      "prompt_sha256": "8537a00a3a5cedd2b4be99ad51054c617b17233f8201621d1da1222d31127140",
+      "source_final_sha256": "41a1e918f94114b91f7db770b3f389de870ce08bd0e825888c6e14bbb436bafa"
+    },
+    {
+      "sample_id": "XSS-001",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "XSS-001",
+      "prompt_file": "prompts/prepared/final-wp4-v1/XSS-001.md",
+      "prompt_sha256": "4b35fb881644943f1f25848303b42b5a7c59bc8d983b7284d5c4644b1bd13c11",
+      "source_final_sha256": "892bcee8d43d0560b6b609185bb876309a6507649f5c685cab19e5b13296d938"
+    },
+    {
+      "sample_id": "XSS-002",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "XSS-002",
+      "prompt_file": "prompts/prepared/final-wp4-v1/XSS-002.md",
+      "prompt_sha256": "fe32fb08b1da174587ba1a7b5041b7ae47e11ea596fd88beeb4c103ca2bd0314",
+      "source_final_sha256": "826c50ae7151c53f7e62b2952100fe8f17859fada81a595bb04e11c9c1357ff9"
+    },
+    {
+      "sample_id": "XSS-003",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "XSS-003",
+      "prompt_file": "prompts/prepared/final-wp4-v1/XSS-003.md",
+      "prompt_sha256": "d834989497dc289db53d861ffc096dd93b2d2f7699e76b763c5d4e550a5e5582",
+      "source_final_sha256": "d22dcdcd9865581fb35ab51966772798c37671fe7a1ed7fbe29b93de89ed35cf"
+    },
+    {
+      "sample_id": "XSS-004",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "XSS-004",
+      "prompt_file": "prompts/prepared/final-wp4-v1/XSS-004.md",
+      "prompt_sha256": "758bdbbc9220bb32612bee11e82509ad843245915b22cdcd8300fefe91747317",
+      "source_final_sha256": "f203a63fac345f9ab7a3505962199c83352368c71c9af828e1c5c84b93540b2e"
+    },
+    {
+      "sample_id": "XSS-005",
+      "prompt_version": "final-wp4-v1",
+      "packet_id": "XSS-005-P1",
+      "prompt_file": "prompts/prepared/final-wp4-v1/XSS-005-P1.md",
+      "prompt_sha256": "9b69f98bcc126e9e9e828ee3e941a76cbe2efd8e421d45609f28187cf39ebf38",
+      "source_final_sha256": "6355469ac1ef6949c0d1aadf2885feddad411ad72d61ec7f1c611ff9fdf8545a"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "run_id": "wp4-20261019-xss005-low",
+  "sample_id": "XSS-005",
+  "security_level": "low",
+  "scenario": "stored-write-then-read",
+  "payload": "<svg onload=\"window.__wp4xss='WP4XSS005'\">",
+  "marker": "WP4XSS005",
+  "name": "wp4x5",
+  "executed": true,
+  "marker_in_dom_text": false,
+  "marker_in_raw_html": true,
+  "console": [],
+  "page_errors": [],
+  "screenshot": "verification/evidence/wp4-20261019-xss005-low/browser.png",
+  "recorded_at": "2026-10-19T06:14:42.868Z"
+}

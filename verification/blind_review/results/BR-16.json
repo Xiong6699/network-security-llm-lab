@@ -1,0 +1,37 @@
+{
+  "blind_id": "BR-16",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "Admin and ordinary sessions are separately confirmed by the DVWA login banner.",
+      "met": "true",
+      "evidence": "admin 与 gordonb 分别 POST /login.php，均返回 302→index.php；随后 index.php 响应分别为 6526/6449 字节，观察记录分别记录身份 admin/gordonb。banner 原文位于被截断的响应中，但两条已认证会话可由各自 index 响应与后续会话相关结果区分。"
+    },
+    {
+      "criterion": "The admin page/read/update control works at this security level.",
+      "met": "unknown",
+      "evidence": "admin 页面 200、admin 读取 200（shape=list，6 行，目标存在）已证实；但 update_api.admin 为 null，管理员修改控制未被测试，无法确认 admin update 在该安全级别可用。"
+    },
+    {
+      "criterion": "The ordinary-session result is recorded separately for the page, read API and update API.",
+      "met": "true",
+      "evidence": "普通会话三项分别记录：页面 403（普通被拒）；get_user_data 200、list、6 行且目标存在；change_user_details 200、result=ok，并附 db_before/db_after 与 ordinary_changed_target=true。"
+    },
+    {
+      "criterion": "Any update is verified by direct MariaDB readback and then restored.",
+      "met": "true",
+      "evidence": "观察记录给出 db_before first_name=Wp4、db_after first_name=Wp4Medium、db_changed=true、restored=true，可视为 MariaDB 回读与恢复的记录；但包内未附原始 SQL 输出、恢复操作请求或恢复后的回读值。"
+    }
+  ],
+  "rationale": "普通会话被 admin 页面 403 拒绝，但 get_user_data 返回与 admin 相同的 6 行数据，change_user_details 返回 ok 并记录 wp4target 库内字段变更与恢复，构成越权读取/修改的授权绕过，故目标漏洞已触发。admin 修改未测、原始 DB 回读缺失，影响完整性但不改变结论。",
+  "missing_evidence": [
+    "原始 MariaDB 查询输出以及恢复后的回读值（当前仅有 db_before/db_after 摘要与 restored 布尔）",
+    "admin 会话调用 change_user_details 的测试（update_api.admin 为 null）",
+    "两个会话的 DVWA 登录 banner 原文（响应证据被截断，仅能看到 admin 首页开头）",
+    "get_user_data 响应体（包内仅有大小与 sha256；更新前后哈希相同，无法核对是否包含被修改字段）",
+    "每条请求实际使用的会话 cookie 值（包内仅列 cookie 名称，会话归属依赖观察记录）"
+  ]
+}

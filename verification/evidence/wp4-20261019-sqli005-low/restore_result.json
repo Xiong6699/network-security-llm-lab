@@ -1,0 +1,6 @@
+{
+  "required": true,
+  "action": "delete dedicated wp4v/wp4s test users created by this run",
+  "result": "restored",
+  "remaining_rows": 0
+}

@@ -1,0 +1,233 @@
+{
+  "batch_id": "wp4-poc-01",
+  "created_at": "2026-10-19T14:43:07+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent (single-person review)",
+  "environment": {
+    "host": "Windows 11 26200 + WSL2 Ubuntu 22.04.5",
+    "dvwa": "http://127.0.0.1:9080 (PHP 8.1.2, MariaDB 10.6.23)",
+    "sqli_labs": "http://127.0.0.1:9081 (PHP 5.6.40 ext/mysql, MariaDB 10.6.23)",
+    "browser": "Google Chrome 155.0.8059.82 headless via playwright-core 1.64.1"
+  },
+  "samples": 14,
+  "runs": [
+    {
+      "run_id": "wp4-20261019-auth001-high",
+      "sample_id": "AUTH-001",
+      "path_id": "authbypass page/read_api/update_api",
+      "condition_key": "env=dvwa-wsl-01|role=ordinary|security=high|object=wp4target|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-auth001-high.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-auth001-high"
+    },
+    {
+      "run_id": "wp4-20261019-auth001-impossible",
+      "sample_id": "AUTH-001",
+      "path_id": "authbypass page/read_api/update_api",
+      "condition_key": "env=dvwa-wsl-01|role=ordinary|security=impossible|object=wp4target|state=initialized",
+      "trigger_result": "未触发",
+      "ground_truth": "无所关注漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-auth001-impossible.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-auth001-impossible"
+    },
+    {
+      "run_id": "wp4-20261019-auth001-low",
+      "sample_id": "AUTH-001",
+      "path_id": "authbypass page/read_api/update_api",
+      "condition_key": "env=dvwa-wsl-01|role=ordinary|security=low|object=wp4target|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-auth001-low.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-auth001-low"
+    },
+    {
+      "run_id": "wp4-20261019-auth001-medium",
+      "sample_id": "AUTH-001",
+      "path_id": "authbypass page/read_api/update_api",
+      "condition_key": "env=dvwa-wsl-01|role=ordinary|security=medium|object=wp4target|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-auth001-medium.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-auth001-medium"
+    },
+    {
+      "run_id": "wp4-20261019-cmd001-low",
+      "sample_id": "CMD-001",
+      "path_id": "vulnerabilities/exec/index.php:ip",
+      "condition_key": "env=dvwa-wsl-01|role=admin|security=low|object=none|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-cmd001-low.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-cmd001-low"
+    },
+    {
+      "run_id": "wp4-20261019-cmd002-medium",
+      "sample_id": "CMD-002",
+      "path_id": "vulnerabilities/exec/index.php:ip",
+      "condition_key": "env=dvwa-wsl-01|role=admin|security=medium|object=none|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-cmd002-medium.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-cmd002-medium"
+    },
+    {
+      "run_id": "wp4-20261019-cmd003-high",
+      "sample_id": "CMD-003",
+      "path_id": "vulnerabilities/exec/index.php:ip",
+      "condition_key": "env=dvwa-wsl-01|role=admin|security=high|object=none|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-cmd003-high.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-cmd003-high"
+    },
+    {
+      "run_id": "wp4-20261019-cmd004-impossible",
+      "sample_id": "CMD-004",
+      "path_id": "vulnerabilities/exec/index.php:ip",
+      "condition_key": "env=dvwa-wsl-01|role=admin|security=impossible|object=none|state=initialized",
+      "trigger_result": "未触发",
+      "ground_truth": "无所关注漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-cmd004-impossible.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-cmd004-impossible"
+    },
+    {
+      "run_id": "wp4-20261019-sqli001-low",
+      "sample_id": "SQLI-001",
+      "path_id": "Less-1/index.php?id",
+      "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=none|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-sqli001-low.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-sqli001-low"
+    },
+    {
+      "run_id": "wp4-20261019-sqli002-low",
+      "sample_id": "SQLI-002",
+      "path_id": "Less-11/index.php:uname",
+      "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=teaching-user|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-sqli002-low.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-sqli002-low"
+    },
+    {
+      "run_id": "wp4-20261019-sqli003-low",
+      "sample_id": "SQLI-003",
+      "path_id": "Less-25/index.php?id",
+      "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=none|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-sqli003-low.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-sqli003-low"
+    },
+    {
+      "run_id": "wp4-20261019-sqli005-low",
+      "sample_id": "SQLI-005",
+      "path_id": "Less-24 register/login/pass_change",
+      "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=dedicated-wp4v|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-sqli005-low.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-sqli005-low"
+    },
+    {
+      "run_id": "wp4-20261019-xss001-low",
+      "sample_id": "XSS-001",
+      "path_id": "vulnerabilities/xss_r/index.php:name",
+      "condition_key": "env=dvwa-wsl-01|role=admin|security=low|object=none|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-xss001-low.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-xss001-low"
+    },
+    {
+      "run_id": "wp4-20261019-xss002-medium",
+      "sample_id": "XSS-002",
+      "path_id": "vulnerabilities/xss_r/index.php:name",
+      "condition_key": "env=dvwa-wsl-01|role=admin|security=medium|object=none|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-xss002-medium.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-xss002-medium"
+    },
+    {
+      "run_id": "wp4-20261019-xss003-high",
+      "sample_id": "XSS-003",
+      "path_id": "vulnerabilities/xss_r/index.php:name",
+      "condition_key": "env=dvwa-wsl-01|role=admin|security=high|object=none|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-xss003-high.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-xss003-high"
+    },
+    {
+      "run_id": "wp4-20261019-xss004-impossible",
+      "sample_id": "XSS-004",
+      "path_id": "vulnerabilities/xss_r/index.php:name",
+      "condition_key": "env=dvwa-wsl-01|role=admin|security=impossible|object=none|state=initialized",
+      "trigger_result": "未触发",
+      "ground_truth": "无所关注漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-xss004-impossible.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-xss004-impossible"
+    },
+    {
+      "run_id": "wp4-20261019-xss005-low",
+      "sample_id": "XSS-005",
+      "path_id": "vulnerabilities/xss_s/index.php:btnSign/mtxMessage",
+      "condition_key": "env=dvwa-wsl-01|role=admin|security=low|object=dedicated-guestbook|state=initialized",
+      "trigger_result": "触发",
+      "ground_truth": "有漏洞",
+      "validation_log": "verification/validation_log/wp4-20261019-xss005-low.json",
+      "evidence_dir": "verification/evidence/wp4-20261019-xss005-low"
+    }
+  ],
+  "prompt_versions": [
+    "v1",
+    "v2",
+    "final",
+    "final-wp4-v1"
+  ],
+  "input_version": "v2",
+  "model_batches": [
+    {
+      "batch_id": "wp4-baseline-final",
+      "prompt_version": "final",
+      "model": "DeepSeek Harness subagent (deepseek-flash)",
+      "samples": 14,
+      "interface": "subagent independent context; not a formal model API record",
+      "raw_outputs": "results/batches/wp4-baseline-final/raw_outputs/",
+      "comparison": "results/batches/wp4-baseline-final/comparison.csv",
+      "metrics": "results/batches/wp4-baseline-final/metrics.csv",
+      "limitations": [
+        "model snapshot, sampling parameters and token usage unknown",
+        "multi-packet prompts were provided together rather than incrementally appended",
+        "same model family as the verification assistant; not a fully independent blind review"
+      ]
+    },
+    {
+      "batch_id": "wp4-final-wp4-v1",
+      "prompt_version": "final-wp4-v1",
+      "base_version": "final",
+      "model": "DeepSeek Harness subagent (deepseek-flash)",
+      "samples": 14,
+      "interface": "subagent independent context; not a formal model API record",
+      "raw_outputs": "results/batches/wp4-final-wp4-v1/raw_outputs/",
+      "comparison": "results/batches/wp4-final-wp4-v1/comparison.csv",
+      "version_comparison": "results/batches/wp4-final-wp4-v1/version_comparison.csv",
+      "metrics": "results/batches/wp4-final-wp4-v1/metrics.csv",
+      "change_requests": "results/change_requests.csv",
+      "optimization_report": "results/optimization_report.md",
+      "limitations": [
+        "same model family and executor as baseline",
+        "POC contract score is a keyword/completeness heuristic, not a manual quality score",
+        "model POCs were not executed; poc_result remains not_run"
+      ]
+    }
+  ],
+  "notes": [
+    "This manifest covers the POC/ground-truth batch only.",
+    "No formal model output is counted in this batch; see results/batches/ for model batches.",
+    "All test objects were dedicated to this lab and removed or restored."
+  ]
+}

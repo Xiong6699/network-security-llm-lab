@@ -1,0 +1,18 @@
+﻿sample_id,vulnerability_type,path_id,planned_condition,poc_script,expected_trigger,actual_trigger,status,run_id,evidence_dir
+SQLI-001,SQL注入,Less-1/index.php?id,env=sqli-labs-wsl-01|role=anonymous,run_sqli.py,触发,触发,completed,wp4-20261019-sqli001-low,verification/evidence/wp4-20261019-sqli001-low
+SQLI-002,SQL注入,Less-11/index.php:uname,env=sqli-labs-wsl-01|role=anonymous,run_sqli.py,触发,触发,completed,wp4-20261019-sqli002-low,verification/evidence/wp4-20261019-sqli002-low
+SQLI-003,SQL注入,Less-25/index.php?id,env=sqli-labs-wsl-01|role=anonymous,run_sqli.py,触发,触发,completed,wp4-20261019-sqli003-low,verification/evidence/wp4-20261019-sqli003-low
+SQLI-005,SQL注入,Less-24 register/login/pass_change,env=sqli-labs-wsl-01|role=anonymous,run_sqli005.py,触发,触发,completed,wp4-20261019-sqli005-low,verification/evidence/wp4-20261019-sqli005-low
+XSS-001,XSS,xss_r name,env=dvwa-wsl-01|security=low,run_xss.py,触发,触发,completed,wp4-20261019-xss001-low,verification/evidence/wp4-20261019-xss001-low
+XSS-002,XSS,xss_r name,env=dvwa-wsl-01|security=medium,run_xss.py,触发,触发,completed,wp4-20261019-xss002-medium,verification/evidence/wp4-20261019-xss002-medium
+XSS-003,XSS,xss_r name,env=dvwa-wsl-01|security=high,run_xss.py,触发,触发,completed,wp4-20261019-xss003-high,verification/evidence/wp4-20261019-xss003-high
+XSS-004,XSS,xss_r name+token,env=dvwa-wsl-01|security=impossible,run_xss.py,未触发,未触发,completed,wp4-20261019-xss004-impossible,verification/evidence/wp4-20261019-xss004-impossible
+XSS-005,XSS,xss_s write/read,env=dvwa-wsl-01|security=low,run_xss.py,触发,触发,completed,wp4-20261019-xss005-low,verification/evidence/wp4-20261019-xss005-low
+CMD-001,命令注入,exec ip,env=dvwa-wsl-01|security=low,run_cmd.py,触发,触发,completed,wp4-20261019-cmd001-low,verification/evidence/wp4-20261019-cmd001-low
+CMD-002,命令注入,exec ip,env=dvwa-wsl-01|security=medium,run_cmd.py,触发,触发,completed,wp4-20261019-cmd002-medium,verification/evidence/wp4-20261019-cmd002-medium
+CMD-003,命令注入,exec ip,env=dvwa-wsl-01|security=high,run_cmd.py,触发,触发,completed,wp4-20261019-cmd003-high,verification/evidence/wp4-20261019-cmd003-high
+CMD-004,命令注入,exec ip+token,env=dvwa-wsl-01|security=impossible,run_cmd.py,未触发,未触发,completed,wp4-20261019-cmd004-impossible,verification/evidence/wp4-20261019-cmd004-impossible
+AUTH-001,权限越权,authbypass page/read/update,env=dvwa-wsl-01|security=low,run_auth.py,触发,触发,completed,wp4-20261019-auth001-low,verification/evidence/wp4-20261019-auth001-low
+AUTH-001,权限越权,authbypass page/read/update,env=dvwa-wsl-01|security=medium,run_auth.py,触发,触发,completed,wp4-20261019-auth001-medium,verification/evidence/wp4-20261019-auth001-medium
+AUTH-001,权限越权,authbypass page/read/update,env=dvwa-wsl-01|security=high,run_auth.py,触发,触发,completed,wp4-20261019-auth001-high,verification/evidence/wp4-20261019-auth001-high
+AUTH-001,权限越权,authbypass page/read/update,env=dvwa-wsl-01|security=impossible,run_auth.py,未触发,未触发,completed,wp4-20261019-auth001-impossible,verification/evidence/wp4-20261019-auth001-impossible

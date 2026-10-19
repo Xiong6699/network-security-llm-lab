@@ -1,0 +1,62 @@
+{
+  "run_id": "wp4-20261019-sqli003-low",
+  "batch_id": "wp4-poc-01",
+  "case_id": "wp4-20261019-sqli003-low",
+  "sample_id": "SQLI-003",
+  "path_id": "Less-25/index.php?id",
+  "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=none|state=initialized",
+  "input_version": "v2",
+  "prompt_version": null,
+  "source_commit": "e96f21776372c8613a7e565106e62bc01a59355e",
+  "deployment_id": "sqli-labs-wsl-01",
+  "started_at": "2026-10-19T14:07:28+08:00",
+  "finished_at": "2026-10-19T14:07:28+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent",
+  "reviewer": null,
+  "review_status": "single_person_review_only",
+  "poc": {
+    "original_source": null,
+    "original_sha256": null,
+    "adapted_source": "verification/tools/run_sqli.py",
+    "adapted_sha256": "645222d71a4ab593848456973e0289883a622557f51150860fb1373fb796c6e3",
+    "adaptation_level": "C",
+    "adaptation_notes": ""
+  },
+  "requests": 3,
+  "trigger_result": "触发",
+  "ground_truth": "有漏洞",
+  "model_prediction": null,
+  "failure_kind": null,
+  "success_criteria": [
+    "The blacklist removes the literal words or/AND but the true && payload still returns the normal row.",
+    "The false payload, differing only in the compared constant, returns no row.",
+    "The filtered hint shows the blacklist did not remove the && operator."
+  ],
+  "limitations": [
+    "Only Less-25's GET id path is covered.",
+    "The proof relies on MySQL/MariaDB accepting && as logical AND."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-sqli003-low/request.redacted.json",
+      "sha256": "4a85b48283961fa9c4bf72588eb7cd8ab87ce2cfbbd363060f9e4035f29a60f0",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli003-low/response.redacted.txt",
+      "sha256": "9ff7d20e37793cef4493e8e48d0b3c368925e00904275fc7ca42855063dd6df6",
+      "description": "response.redacted.txt"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli003-low/observation.json",
+      "sha256": "b1a3d02aad13c5be816498edf2e9275fce8c564ad417525516cd520c7eb9dcad",
+      "description": "observation.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli003-low/restore_result.json",
+      "sha256": "a9e5fbf25618a89bc7260494273bafece8db396cef61eb3da639c2ac270a88b0",
+      "description": "restore_result.json"
+    }
+  ]
+}

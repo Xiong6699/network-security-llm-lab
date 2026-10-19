@@ -1,0 +1,63 @@
+{
+  "run_id": "wp4-20261019-cmd003-high",
+  "batch_id": "wp4-poc-01",
+  "case_id": "wp4-20261019-cmd003-high",
+  "sample_id": "CMD-003",
+  "path_id": "vulnerabilities/exec/index.php:ip",
+  "condition_key": "env=dvwa-wsl-01|role=admin|security=high|object=none|state=initialized",
+  "input_version": "v2",
+  "prompt_version": null,
+  "source_commit": "068d974487a297c155c48722f9fcf7180a83adc4",
+  "deployment_id": "dvwa-wsl-01",
+  "started_at": "2026-10-19T14:08:54+08:00",
+  "finished_at": "2026-10-19T14:09:00+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent",
+  "reviewer": null,
+  "review_status": "single_person_review_only",
+  "poc": {
+    "original_source": null,
+    "original_sha256": null,
+    "adapted_source": "verification/tools/run_cmd.py",
+    "adapted_sha256": "ca342274fc6fd1ff98402ddcbf256aa758417a31c907fe79114dea4ba0028462",
+    "adaptation_level": "C",
+    "adaptation_notes": ""
+  },
+  "requests": 7,
+  "trigger_result": "触发",
+  "ground_truth": "有漏洞",
+  "model_prediction": null,
+  "failure_kind": null,
+  "success_criteria": [
+    "The normal loopback ping produces the expected command output.",
+    "The marker appears inside the server-side command-output block.",
+    "The marker is not merely reflected in the HTML form or page text.",
+    "The only changed input is ip; the server OS branch is Linux."
+  ],
+  "limitations": [
+    "Only the high exec source path and this Linux container are covered.",
+    "The payload only prints a fixed marker; it does not read files or open a connection."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-cmd003-high/request.redacted.json",
+      "sha256": "67ebe6478f9747ff0f4cbbf321dc67b90977d9e3c225405f00305072f0f3f58e",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-cmd003-high/response.redacted.txt",
+      "sha256": "1dec6f3775f7d515cf13bd4a0f1e42d6a325e7cbf1b98f5714c80695b0e393d4",
+      "description": "response.redacted.txt"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-cmd003-high/observation.json",
+      "sha256": "fe955d4589ae20df8a4d0ecca44f32964d2fb96672d5eed0d426c51c5c3a45c6",
+      "description": "observation.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-cmd003-high/restore_result.json",
+      "sha256": "a9e5fbf25618a89bc7260494273bafece8db396cef61eb3da639c2ac270a88b0",
+      "description": "restore_result.json"
+    }
+  ]
+}

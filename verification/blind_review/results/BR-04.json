@@ -1,0 +1,31 @@
+{
+  "blind_id": "BR-04",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "medium",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "The page returns an authenticated response and reflects the control text.",
+      "met": "true",
+      "evidence": "identity.logged_in=true；POST /login.php 返回 302，随后 GET /index.php 为 200（response_bytes 6526，菜单含 DVWA 模块与 Logout），说明会话已建立。GET /vulnerabilities/xss_r/?name=WP4_CONTROL 返回 200（response_bytes 4785），normal_control.control_reflected=true。"
+    },
+    {
+      "criterion": "The payload reaches the final HTML position without an applicable output filter.",
+      "met": "true",
+      "evidence": "test 请求返回 200（response_bytes 4843），payload_reflected_verbatim=true，即 `<svg onload=...>` 原样反射；filter_control 中 `<script>alert(1)</script>` 的 raw_script_tag_present 与 script_keyword_present 均为 false，显示过滤器只处理 script 关键字而对该载荷不适用；响应头 X-XSS-Protection: 0 且无 CSP。"
+    },
+    {
+      "criterion": "Headless Chrome sets the JS marker in the page context, proving execution, not just reflection.",
+      "met": "true",
+      "evidence": "browser_execution.executed=true，page_errors 为空，且 marker_in_raw_html=true；说明浏览器加载后页面上下文被写入标记，属执行而非仅反射。但该结论仅来自汇总字段，未见 marker 取值或读取方式的原始记录。"
+    }
+  ],
+  "rationale": "登录链完整（302→index.php 200，含 Logout），控制文本反射正常。中等级别仅剥离 script 关键字，`<svg onload>` 载荷原样进入响应且无 CSP、X-XSS-Protection 为 0；无头 Chrome 报告标记已设置、无页面错误。三条标准均可判定满足，可认定反射型 XSS 触发，故参考标签为有漏洞。因浏览器执行仅以汇总字段呈现，置信度定为 medium。",
+  "missing_evidence": [
+    "xss_r 测试响应中包含 payload 的最终 HTML 片段（响应证据仅截断展示 index.php，未给出该屏的注入点上下文）",
+    "浏览器端 mark 的实际取值与读取方式（如 window.__wp4xss 求值结果、document.title），以排除 marker_in_raw_html 与真实执行混淆",
+    "browser.png 截图内容未随包提供，无法核验渲染/执行结果",
+    "无头 Chrome 版本与执行时间、以及断言标记的脚本输出日志"
+  ]
+}

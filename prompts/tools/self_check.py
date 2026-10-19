@@ -30,9 +30,16 @@ def main():
     args = parser.parse_args()
 
     expected_files, expected_manifest = prepare["build"]()
+    manifest_path = PROMPTS / "prepared" / "manifest.json"
     for path, expected in expected_files.items():
+        if path == manifest_path:
+            continue
         ensure(path.is_file() and path.read_bytes() == expected, f"Prepared file differs: {path}")
     actual_manifest = json.loads((PROMPTS / "prepared/manifest.json").read_text(encoding="utf-8"))
+    if not (ROOT / ".git").exists():
+        # Without a Git checkout the generator cannot recover the source commit;
+        # keep the recorded value and compare every other manifest field.
+        expected_manifest["source_commit_for_workpackage1"] = actual_manifest.get("source_commit_for_workpackage1")
     ensure(actual_manifest == expected_manifest, "Prepared manifest differs")
     ensure(len(actual_manifest["entries"]) == 51 and actual_manifest["parent_sample_count"] == 14, "Prepared count differs")
     for entry in actual_manifest["entries"]:
@@ -100,8 +107,12 @@ def main():
             else:
                 raise ValueError(f"Unsafe URL accepted by {artifact['path']}")
 
-    git = subprocess.run(["git", "diff", "--quiet", "HEAD", "--", "workpackage1"], cwd=ROOT, check=False)
-    ensure(git.returncode == 0, "Work package 1 tracked files changed")
+    if (ROOT / ".git").exists():
+        git = subprocess.run(["git", "diff", "--quiet", "HEAD", "--", "workpackage1"], cwd=ROOT, check=False)
+        ensure(git.returncode == 0, "Work package 1 tracked files changed")
+        workpackage1_diff = "clean"
+    else:
+        workpackage1_diff = "not_a_git_checkout"
     report = {
         "status": "passed_static_checks",
         "prepared_prompts": 51,
@@ -111,7 +122,7 @@ def main():
         "same_conversation_drafts_checked": 15,
         "invalid_output_cases_rejected": len(mutations),
         "poc_drafts_compiled_and_local_url_guard_checked": len(trial["poc_artifacts"]),
-        "workpackage1_tracked_diff": "clean",
+        "workpackage1_tracked_diff": workpackage1_diff,
         "model_calls": 0,
         "poc_executions": 0,
         "scope": "Static file, protocol, syntax and helper checks only; no model call, network request, PHP or POC execution",

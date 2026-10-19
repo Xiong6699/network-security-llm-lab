@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "action": "restore dedicated target user first_name/last_name and remove test user at batch end",
+  "result": "restored",
+  "db_values": [
+    "Wp4",
+    "Target"
+  ]
+}

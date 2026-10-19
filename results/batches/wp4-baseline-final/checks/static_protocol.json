@@ -1,0 +1,97 @@
+{
+  "scope": "Protocol, quote/line consistency and Python compilation only; no model calls or POC execution",
+  "output_count": 14,
+  "passed_count": 5,
+  "results": [
+    {
+      "file": "results/batches/wp4-baseline-final/raw_outputs/AUTH-001.json",
+      "status": "failed_static_protocol",
+      "error": "Finding outside target scope"
+    },
+    {
+      "sample_id": "CMD-001",
+      "prompt_version": "final",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "results/batches/wp4-baseline-final/raw_outputs/CMD-001.json",
+      "sha256": "ff9a264ca954a74fa39915ea635755fc771e0e877d65a4875e9e6680631ee8ae"
+    },
+    {
+      "file": "results/batches/wp4-baseline-final/raw_outputs/CMD-002.json",
+      "status": "failed_static_protocol",
+      "error": "Finding outside target scope"
+    },
+    {
+      "file": "results/batches/wp4-baseline-final/raw_outputs/CMD-003.json",
+      "status": "failed_static_protocol",
+      "error": "Out-of-range citation: CMD-003"
+    },
+    {
+      "sample_id": "CMD-004",
+      "prompt_version": "final",
+      "status": "passed_static_protocol",
+      "finding_count": 0,
+      "python_poc_syntax_count": 0,
+      "file": "results/batches/wp4-baseline-final/raw_outputs/CMD-004.json",
+      "sha256": "1effc9bc0bff777f03a73cb59113f60406977016d9db6304496747ca60d760b9"
+    },
+    {
+      "sample_id": "SQLI-001",
+      "prompt_version": "final",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 0,
+      "file": "results/batches/wp4-baseline-final/raw_outputs/SQLI-001.json",
+      "sha256": "56c3bad4dec7a244f41ef5f3db602060c8890242ddd1633a94410653d18ece50"
+    },
+    {
+      "file": "results/batches/wp4-baseline-final/raw_outputs/SQLI-002.json",
+      "status": "failed_static_protocol",
+      "error": "Finding outside target scope"
+    },
+    {
+      "sample_id": "SQLI-003",
+      "prompt_version": "final",
+      "status": "passed_static_protocol",
+      "finding_count": 1,
+      "python_poc_syntax_count": 1,
+      "file": "results/batches/wp4-baseline-final/raw_outputs/SQLI-003.json",
+      "sha256": "84412e5df412e75638603de36c214d207197ca796a550b04400566d94a9c8610"
+    },
+    {
+      "file": "results/batches/wp4-baseline-final/raw_outputs/SQLI-005.json",
+      "status": "failed_static_protocol",
+      "error": "Finding outside target scope"
+    },
+    {
+      "file": "results/batches/wp4-baseline-final/raw_outputs/XSS-001.json",
+      "status": "failed_static_protocol",
+      "error": "Finding outside target scope"
+    },
+    {
+      "file": "results/batches/wp4-baseline-final/raw_outputs/XSS-002.json",
+      "status": "failed_static_protocol",
+      "error": "Finding outside target scope"
+    },
+    {
+      "file": "results/batches/wp4-baseline-final/raw_outputs/XSS-003.json",
+      "status": "failed_static_protocol",
+      "error": "Finding outside target scope"
+    },
+    {
+      "sample_id": "XSS-004",
+      "prompt_version": "final",
+      "status": "passed_static_protocol",
+      "finding_count": 0,
+      "python_poc_syntax_count": 0,
+      "file": "results/batches/wp4-baseline-final/raw_outputs/XSS-004.json",
+      "sha256": "2f599322b6d2724dc4fa668ffc7f51e2c3d7faf78b86b6726796c286f0eb8f85"
+    },
+    {
+      "file": "results/batches/wp4-baseline-final/raw_outputs/XSS-005.json",
+      "status": "failed_static_protocol",
+      "error": "Finding outside target scope"
+    }
+  ]
+}

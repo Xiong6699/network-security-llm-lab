@@ -33,7 +33,8 @@ def check(data):
     require(isinstance(data, dict) and ROOT_FIELDS <= data.keys(), "Missing root protocol fields")
     require(data["schema_version"] == "wp2-output-v1", "Unsupported schema")
     require(data["input_version"] == "v2", "Unexpected input version")
-    require(data["prompt_version"] in ("v1", "v2", "final"), "Invalid prompt version")
+    # final-wp4-v1/v2 are explicit work-package-4 variants; old batches keep their versions.
+    require(data["prompt_version"] in ("v1", "v2", "final", "final-wp4-v1", "final-wp4-v2"), "Invalid prompt version")
     sid = data["sample_id"]
     require(isinstance(sid, str) and sid.replace("-", "").isalnum(), "Invalid sample ID")
     meta_path = repository_path(f"workpackage1/sample_metadata/{sid}.json")

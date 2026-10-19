@@ -1,0 +1,15 @@
+﻿sample_id,vulnerability_type,parent_ground_truth,model_prediction,model_verdict,analysis_stage,binary_prediction,comparison_class,path_coverage,format_errors,evidence_dir
+SQLI-001,SQL注入,有漏洞,存在候选,待验证,parent,1,TP,single_path,,verification/evidence/wp4-20261019-sqli001-low
+SQLI-002,SQL注入,有漏洞,存在候选,待验证,parent,1,TP,single_path,,verification/evidence/wp4-20261019-sqli002-low
+SQLI-003,SQL注入,有漏洞,存在候选,待验证,parent,1,TP,single_path,,verification/evidence/wp4-20261019-sqli003-low
+SQLI-005,SQL注入,有漏洞,存在候选,待验证,parent,1,TP,multi_stage,,verification/evidence/wp4-20261019-sqli005-low
+XSS-001,XSS,有漏洞,存在候选,待验证,parent,1,TP,single_path,,verification/evidence/wp4-20261019-xss001-low
+XSS-002,XSS,有漏洞,存在候选,待验证,parent,1,TP,single_path,,verification/evidence/wp4-20261019-xss002-medium
+XSS-003,XSS,有漏洞,存在候选,待验证,parent,1,TP,single_path,,verification/evidence/wp4-20261019-xss003-high
+XSS-004,XSS,无所关注漏洞,未检出候选,排除,parent,0,TN,single_path,,verification/evidence/wp4-20261019-xss004-impossible
+XSS-005,XSS,有漏洞,存在候选,待验证,parent,1,TP,write+read,,verification/evidence/wp4-20261019-xss005-low
+CMD-001,命令注入,有漏洞,存在候选,待验证,parent,1,TP,single_path,,verification/evidence/wp4-20261019-cmd001-low
+CMD-002,命令注入,有漏洞,存在候选,待验证,parent,1,TP,single_path,,verification/evidence/wp4-20261019-cmd002-medium
+CMD-003,命令注入,有漏洞,存在候选,待验证,parent,1,TP,single_path,,verification/evidence/wp4-20261019-cmd003-high
+CMD-004,命令注入,无所关注漏洞,未检出候选,排除,parent,0,TN,single_path,,verification/evidence/wp4-20261019-cmd004-impossible
+AUTH-001,权限越权,有漏洞,存在候选,待验证,parent,1,TP,read+update,,verification/evidence/wp4-20261019-auth001-low

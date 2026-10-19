@@ -1,0 +1,25 @@
+{
+  "batch": "wp4-final-wp4-v2",
+  "strict_protocol_passed": 14,
+  "strict_protocol_total": 14,
+  "failures": [],
+  "negative_exclusion": [
+    {
+      "sample_id": "XSS-004",
+      "baseline_final": 4,
+      "final_wp4_v1": 3,
+      "final_wp4_v2": 6,
+      "baseline_minimum": 4,
+      "passed": true
+    },
+    {
+      "sample_id": "CMD-004",
+      "baseline_final": 7,
+      "final_wp4_v1": 5,
+      "final_wp4_v2": 13,
+      "baseline_minimum": 7,
+      "passed": true
+    }
+  ],
+  "status": "passed"
+}

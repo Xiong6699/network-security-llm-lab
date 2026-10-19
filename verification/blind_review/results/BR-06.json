@@ -1,0 +1,30 @@
+{
+  "blind_id": "BR-06",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "The page returns an authenticated response and reflects the control text.",
+      "met": "true",
+      "evidence": "登录 POST 返回 302 并下发会话，随后 index.php 返回 200 且菜单含 Logout，表明已认证；对照请求 /vulnerabilities/xss_r/?name=WP4_CONTROL 返回 200，normal_control.control_reflected=true。"
+    },
+    {
+      "criterion": "The payload reaches the final HTML position without an applicable output filter.",
+      "met": "true",
+      "evidence": "测试请求返回 200、4834 字节，payload_reflected_verbatim=true；与对照 4776 字节相差 58 字节，与载荷（约 70 字节）替换对照文本（11 字节）的长度差一致，说明未做 HTML 实体编码；响应头 X-XSS-Protection: 0。"
+    },
+    {
+      "criterion": "Headless Chrome sets the JS marker in the page context, proving execution, not just reflection.",
+      "met": "true",
+      "evidence": "browser_execution.executed=true 且 page_errors 为空，属页面上下文标记判定。marker_in_raw_html=true 因载荷本身含标记文本，单凭此项不能证明执行，但 executed 是独立记录的页面态结论。"
+    }
+  ],
+  "rationale": "low 级别下 name 参数原样回显，载荷长度差与反射结果自洽，无头浏览器记录标记已在页面上下文置位，三条成功标准均有结构化记录支持，故判定触发且有漏洞。残余风险仅为响应正文证据被截断、未见 xss_r 页面原始片段。",
+  "missing_evidence": [
+    "xss_r 响应正文中载荷位于最终 HTML 位置的原始片段（响应证据仅展示被截断的 index.php）",
+    "页面上下文标记的原始读取值（如 window.__wp4xss、document.title 的抓取值），以明确区分执行与单纯反射",
+    "browser.png 截图内容未随包内嵌，无法独立核对渲染与标题变化"
+  ]
+}

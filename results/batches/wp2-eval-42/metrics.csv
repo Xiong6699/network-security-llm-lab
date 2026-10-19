@@ -1,0 +1,4 @@
+﻿prompt_version,n,tp,fp,fn,tn,unknown,accuracy,precision,recall,f1,strict_protocol_passed,strict_protocol_total
+v1,14,12,0,0,2,0,1.0000,1.0000,1.0000,1.0000,5,14
+v2,14,12,0,0,2,0,1.0000,1.0000,1.0000,1.0000,8,14
+final,14,12,0,0,2,0,1.0000,1.0000,1.0000,1.0000,4,14

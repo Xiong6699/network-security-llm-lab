@@ -126,9 +126,17 @@ def build():
         p = DATA / "sample_metadata" / f"{meta['sample_id']}.json"
         sources[p.relative_to(ROOT).as_posix()] = digest(p.read_bytes())
     try:
-        commit = subprocess.check_output(["git", "-C", str(ROOT), "log", "-1", "--format=%H", "--", "workpackage1"], text=True).strip() or None
+        commit = subprocess.check_output(
+            ["git", "-C", str(ROOT), "log", "-1", "--format=%H", "--", "workpackage1"],
+            text=True, stderr=subprocess.DEVNULL).strip() or None
     except (OSError, subprocess.CalledProcessError):
         commit = None
+    if commit is None:
+        # Without a Git checkout, preserve the commit already recorded in the
+        # manifest instead of rewriting history with null.
+        existing = PROMPTS / "prepared" / "manifest.json"
+        if existing.exists():
+            commit = json.loads(read(existing)).get("source_commit_for_workpackage1")
     manifest = {
         "design_date": "2026-10-13", "source_commit_for_workpackage1": commit,
         "input_version": "v2", "parent_sample_count": len(samples),

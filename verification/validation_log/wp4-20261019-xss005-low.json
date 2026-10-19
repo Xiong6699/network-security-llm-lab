@@ -1,0 +1,73 @@
+{
+  "run_id": "wp4-20261019-xss005-low",
+  "batch_id": "wp4-poc-01",
+  "case_id": "wp4-20261019-xss005-low",
+  "sample_id": "XSS-005",
+  "path_id": "vulnerabilities/xss_s/index.php:btnSign/mtxMessage",
+  "condition_key": "env=dvwa-wsl-01|role=admin|security=low|object=dedicated-guestbook|state=initialized",
+  "input_version": "v2",
+  "prompt_version": null,
+  "source_commit": "068d974487a297c155c48722f9fcf7180a83adc4",
+  "deployment_id": "dvwa-wsl-01",
+  "started_at": "2026-10-19T14:15:08+08:00",
+  "finished_at": "2026-10-19T14:15:08+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent",
+  "reviewer": null,
+  "review_status": "single_person_review_only",
+  "poc": {
+    "original_source": null,
+    "original_sha256": null,
+    "adapted_source": "verification/tools/run_xss.py",
+    "adapted_sha256": "81af5580af97f5657317f315f5c789c3560e2407f4f8eadd539288353a11d6ab",
+    "adaptation_level": "C",
+    "adaptation_notes": ""
+  },
+  "requests": 6,
+  "trigger_result": "触发",
+  "ground_truth": "有漏洞",
+  "model_prediction": null,
+  "failure_kind": null,
+  "success_criteria": [
+    "A dedicated guestbook row is written and read back verbatim from MariaDB.",
+    "The read page renders the row without output encoding at low.",
+    "Headless Chrome executes the marker from the stored payload.",
+    "Only the dedicated rows are deleted by name; the rest of the guestbook is untouched."
+  ],
+  "limitations": [
+    "The write path covered is low.php; other write levels are outside this input packet.",
+    "The payload is deliberately shortened to respect the 50-character textarea limit."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-xss005-low/browser.json",
+      "sha256": "6d3134b7acfd1e342c328ff81bb0f05314109f5951d15231dc3661019325569e",
+      "description": "headless browser evidence: browser.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss005-low/browser.png",
+      "sha256": "064353dffd61ab91c4ef2b108ab6b00f4137eebde5ad0499d731e999cb0942e0",
+      "description": "headless browser evidence: browser.png"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss005-low/request.redacted.json",
+      "sha256": "e750b9b227aaeb2164b1bdbe641bc025f41104f2a41f56ea4cc083fbec683646",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss005-low/response.redacted.txt",
+      "sha256": "3655952648233e2c0d00a2e75911c23198125ccd79a6dd0650f73f45cf3c33c8",
+      "description": "response.redacted.txt"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss005-low/observation.json",
+      "sha256": "83446871777eae733cfaa66e5f67d060cad40153a98fbc66ea969ebd26794fd1",
+      "description": "observation.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss005-low/restore_result.json",
+      "sha256": "10de48405f375e33bfc03c7a26e4b8d5e4b1f3cc28f803e777bd574f94bb3893",
+      "description": "restore_result.json"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "run_id": "wp4-20261019-auth001-high",
+  "sample_id": "AUTH-001",
+  "path_id": "authbypass page/read_api/update_api",
+  "condition_key": "env=dvwa-wsl-01|role=ordinary|security=high|object=wp4target|state=initialized",
+  "observations": {
+    "security_level": "high",
+    "target_object": {
+      "user_id": 6,
+      "user": "wp4target"
+    },
+    "identity": {
+      "admin": "admin",
+      "ordinary": "gordonb"
+    },
+    "page": {
+      "admin_status": 200,
+      "ordinary_status": 403,
+      "ordinary_denied": true
+    },
+    "read_api": {
+      "admin": {
+        "status": 200,
+        "shape": "list",
+        "row_count": 6,
+        "target_present": true,
+        "error": null
+      },
+      "ordinary": {
+        "status": 200,
+        "shape": "object",
+        "row_count": 0,
+        "target_present": false,
+        "error": "Access denied"
+      },
+      "ordinary_received_protected_rows": false
+    },
+    "update_api": {
+      "ordinary": {
+        "status": 200,
+        "result": "ok",
+        "error": null,
+        "db_before": {
+          "first_name": "Wp4",
+          "last_name": "Target"
+        },
+        "db_after": {
+          "first_name": "Wp4High",
+          "last_name": "Target"
+        },
+        "db_changed": true
+      },
+      "admin": null,
+      "ordinary_changed_target": true,
+      "restored": true
+    }
+  },
+  "success_criteria": [
+    "Admin and ordinary sessions are separately confirmed by the DVWA login banner.",
+    "The admin page/read/update control works at this security level.",
+    "The ordinary-session result is recorded separately for the page, read API and update API.",
+    "Any update is verified by direct MariaDB readback and then restored."
+  ],
+  "limitations": [
+    "Only security=high with the dedicated wp4target object is covered.",
+    "The security cookie is client-controlled; this is recorded as part of the condition, not as a separate vulnerability.",
+    "Single-person review only."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-auth001-high/request.redacted.json",
+      "sha256": "198ccb600ce7269e4f7b0fe783ade223a1515b9ab2b7d093231aabc60240276a",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-auth001-high/response.redacted.txt",
+      "sha256": "1795c991105ca8b73f3b38ab23375fbb1f5ac7feee0087261b07eb75da7a556c",
+      "description": "response.redacted.txt"
+    }
+  ]
+}

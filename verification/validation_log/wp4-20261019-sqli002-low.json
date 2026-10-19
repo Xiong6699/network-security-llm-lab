@@ -1,0 +1,63 @@
+{
+  "run_id": "wp4-20261019-sqli002-low",
+  "batch_id": "wp4-poc-01",
+  "case_id": "wp4-20261019-sqli002-low",
+  "sample_id": "SQLI-002",
+  "path_id": "Less-11/index.php:uname",
+  "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=teaching-user|state=initialized",
+  "input_version": "v2",
+  "prompt_version": null,
+  "source_commit": "e96f21776372c8613a7e565106e62bc01a59355e",
+  "deployment_id": "sqli-labs-wsl-01",
+  "started_at": "2026-10-19T14:07:03+08:00",
+  "finished_at": "2026-10-19T14:07:03+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent",
+  "reviewer": null,
+  "review_status": "single_person_review_only",
+  "poc": {
+    "original_source": null,
+    "original_sha256": null,
+    "adapted_source": "verification/tools/run_sqli.py",
+    "adapted_sha256": "645222d71a4ab593848456973e0289883a622557f51150860fb1373fb796c6e3",
+    "adaptation_level": "C",
+    "adaptation_notes": ""
+  },
+  "requests": 3,
+  "trigger_result": "触发",
+  "ground_truth": "有漏洞",
+  "model_prediction": null,
+  "failure_kind": null,
+  "success_criteria": [
+    "The normal account/password pair logs in and shows the teaching row.",
+    "A comment sequence in uname returns the same account while the password is wrong.",
+    "The false condition returns no row with the same password value and endpoint.",
+    "Only uname is changed between true and false cases; passwd stays constant."
+  ],
+  "limitations": [
+    "Only Less-11's POST login query is covered.",
+    "This is a minimal authentication-bypass/boolean proof, not a data dump."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-sqli002-low/request.redacted.json",
+      "sha256": "3e23850b826131129244a58f08775b1acf18584a25181983046d7f3dc04116e1",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli002-low/response.redacted.txt",
+      "sha256": "ba9cd9f2ce770e954bb999dfc4ef9e72e998d27fae2c5aa6c1383270f796d759",
+      "description": "response.redacted.txt"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli002-low/observation.json",
+      "sha256": "6824eb1267791dd104ed50d6574174205947e3cc08608449c87387ca201cecc8",
+      "description": "observation.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli002-low/restore_result.json",
+      "sha256": "a9e5fbf25618a89bc7260494273bafece8db396cef61eb3da639c2ac270a88b0",
+      "description": "restore_result.json"
+    }
+  ]
+}

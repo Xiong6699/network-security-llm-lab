@@ -1,0 +1,36 @@
+{
+  "blind_id": "BR-05",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "medium",
+  "evidence_sufficient": false,
+  "criteria": [
+    {
+      "criterion": "A dedicated guestbook row is written and read back verbatim from MariaDB.",
+      "met": "true",
+      "evidence": "写入返回 HTTP 200，xss_s 页面由 5510 字节增至 5621 字节；持久化字段 row_count=1、comment_id=4、stored_verbatim=true，随后 GET 与 POST 的 response_sha256 完全相同（6824ae42...），说明同一行已落库并可被重复读出。局限：包内没有 MariaDB 查询的原始输出。"
+    },
+    {
+      "criterion": "The read page renders the row without output encoding at low.",
+      "met": "true",
+      "evidence": "payload_in_read_html=true、marker_in_write_response=true，原样载荷出现在响应中；写入后 POST 与后续 GET 字节完全一致，表明读取页复现了同一内容。局限：响应证据只保留了 index.php，xss_s 原始 HTML 被截断，此项依赖观察记录。"
+    },
+    {
+      "criterion": "Headless Chrome executes the marker from the stored payload.",
+      "met": "true",
+      "evidence": "browser_execution.executed=true、marker_in_raw_html=true，并给出截图路径 verification/evidence/wp4-20261019-xss005-low/browser.png；但包内未含截图内容、DOM 值或控制台日志，无法独立复核标记真的被执行。"
+    },
+    {
+      "criterion": "Only the dedicated rows are deleted by name; the rest of the guestbook is untouched.",
+      "met": "unknown",
+      "evidence": "targeted_delete_names 含 wp4x5h 与 wp4x5，其中本次实际写入的名称只有 wp4x5h（wp4x5 是其前缀），且 cleanup.remaining_rows=0；缺少清理前后全表行快照，无法确认其余行未被误删，或该留言簿原本就为空。"
+    }
+  ],
+  "rationale": "写入、未编码回显与执行的观察记录相互一致，POST 与后续 GET 同哈希也印证了持久化，可判定存储型 XSS 已触发、条件为有漏洞。但 MariaDB 逐字回读和浏览器执行只有结论性字段，没有原始产物；清理删除名单含非本次写入的名称且剩余行数为 0，第四条无法核实。故置信度取中等，证据不充分。",
+  "missing_evidence": [
+    "MariaDB 直接查询该行的原始输出（逐字比对记录），而非只有 stored_verbatim 结论字段",
+    "无头 Chrome 的执行证据：截图内容、window.__wp4xss 的 DOM 取值或控制台日志",
+    "xss_s 读取页中包含该行的原始 HTML 片段（包内响应证据被截断）",
+    "清理前后留言簿全表行数与行内容快照，以及删除名单中 wp4x5 一行的来源说明"
+  ]
+}

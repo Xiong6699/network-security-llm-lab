@@ -8,7 +8,7 @@ $labPython = 'C:\Users\12396\.cache\codex-runtimes\codex-primary-runtime\depende
 & $labPython 'prompts/tools/self_check.py' --report 'prompts/checks/self_check.json'
 ```
 
-看到 `"status": "passed_static_checks"` 且命令退出码为0，说明本次静态自检通过。当前应看到51份组装Prompt、14个父样本、42条正式评测记录（都为`not_run`）、15份同会话草案、6个错误输出被拒绝、4份POC草案通过语法和本地地址约束检查，工作包1没有被改动。报告保存在 [self_check.json](checks/self_check.json)。若退出码不为0，读取报错中的文件或检查项，先排查源文件、Prompt或草案是否被修改；不要直接刷新覆盖已有实验记录。
+看到 `"status": "passed_static_checks"` 且命令退出码为0，说明本次静态自检通过。当前应看到51份组装Prompt、14个父样本、42条评测记录（都为`completed`，来自 `wp2-eval-42` 子代理运行批次）、15份同会话草案、6个错误输出被拒绝、4份POC草案通过语法和本地地址约束检查。报告保存在 [self_check.json](checks/self_check.json)。若退出码不为0，读取报错中的文件或检查项，先排查源文件、Prompt或草案是否被修改；不要直接刷新覆盖已有实验记录。
 
 也可以单独检查某一层：
 

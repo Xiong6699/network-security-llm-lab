@@ -1,0 +1,35 @@
+{
+  "blind_id": "BR-09",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "The normal loopback ping produces the expected command output.",
+      "met": "true",
+      "evidence": "Baseline POST ip=127.0.0.1 returns HTTP 200 (5066 bytes); ping_output_observed=true; pre_excerpt shows 'PING 127.0.0.1 ... 56(84) bytes of data', four '64 bytes from 127.0.0.1: icmp_seq=N ttl=64' lines and the '--- 127.0.0.1 ping sta...' statistics header, i.e. genuine Linux ping output."
+    },
+    {
+      "criterion": "The marker appears inside the server-side command-output block.",
+      "met": "true",
+      "evidence": "Test POST ip='127.0.0.1 | printf WP4_CMD_002' returns HTTP 200 (4652 bytes); marker_in_command_output=true and test pre_excerpt is 'WP4_CMD_002'. The response is only 22 bytes larger than the identical GET page (4630 bytes), consistent with a single command-output block containing the 11-char marker rather than a reflected payload string."
+    },
+    {
+      "criterion": "The marker is not merely reflected in the HTML form or page text.",
+      "met": "true",
+      "evidence": "payload_reflected_outside_command_output=false; the exec form renders '<input type=\"text\" name=\"ip\" size=\"30\">' with no value back-fill, so the submitted string is not echoed; the pipe redirects ping stdout into printf, so only the marker survives in the output block (explaining the 436-byte loss of ping text seen in the 5066->4652 delta)."
+    },
+    {
+      "criterion": "The only changed input is ip; the server OS branch is Linux.",
+      "met": "true",
+      "evidence": "Baseline and test POST bodies are both {Submit, ip, user_token:''}, with identical cookies (PHPSESSID, security=medium) and headers; only ip differs. Linux branch confirmed by Linux-format ping output, by 'printf' executing (a Unix shell builtin, not cmd.exe), and by X-Powered-By PHP/8.1.2-1ubuntu2."
+    }
+  ],
+  "rationale": "基线 ping 正常；注入 '| printf' 后标记出现在服务端命令输出块，响应仅增 22 字节、页面无回显，说明标记来自命令执行而非反射；除 ip 外无其它输入变化，OS 为 Linux。故该条件在该路径触发命令注入。",
+  "missing_evidence": [
+    "测试 POST 响应中 <pre> 命令输出块的原始未截断片段（响应证据在 16120 字符处被截断，未见标记所在块）",
+    "阴性对照：提交不含管道符的纯标记串（如 ip=WP4_CMD_002），确认其不会出现在命令输出块",
+    "OS 分支的直接确认（如 uname -a 输出）；当前仅由 Linux 格式 ping、printf 行为与 Ubuntu PHP 包间接推断"
+  ]
+}

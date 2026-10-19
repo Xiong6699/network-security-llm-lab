@@ -1,0 +1,38 @@
+{
+  "blind_id": "BR-10",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "medium",
+  "evidence_sufficient": false,
+  "criteria": [
+    {
+      "criterion": "Admin and ordinary sessions are separately confirmed by the DVWA login banner.",
+      "met": "true",
+      "evidence": "请求日志中 admin 与 gordonb 各有独立 login POST（均 302→index.php），随后 index.php 分别返回 6524/6447 字节且哈希不同；管理会话 index 正文可见 Setup/Reset DB、DVWA Security、Logout 菜单。普通会话 index 正文被截断，banner 文本未直接呈现。"
+    },
+    {
+      "criterion": "The admin page/read/update control works at this security level.",
+      "met": "unknown",
+      "evidence": "admin page 返回 200（4472 字节），admin read 返回 200、list、6 行且目标存在，两项可用；但 update_api.admin=null，管理员侧 update 控制从未执行，三项控制只证实两项。"
+    },
+    {
+      "criterion": "The ordinary-session result is recorded separately for the page, read API and update API.",
+      "met": "true",
+      "evidence": "page 403 拒绝；read_api 返回 200 但 error=Access denied、row_count=0、target_present=false、未收到受保护行；update_api 返回 200 result=ok，并记录 db_before→db_after 的变更。"
+    },
+    {
+      "criterion": "Any update is verified by direct MariaDB readback and then restored.",
+      "met": "unknown",
+      "evidence": "记录给出 db_before(Wp4/Target)→db_after(Wp4High/Target) 且 restored=true，但包内没有 MariaDB 原始查询输出，也没有恢复后的再次读回；恢复仅是主张而非可核验证据。"
+    }
+  ],
+  "rationale": "管理会话页面/读取正常（200、6 行含目标），普通会话页面 403、读取被拒且无受保护行；但普通会话调用 change_user_details.php 返回 ok，记录显示 wp4target.first_name 由 Wp4 变为 Wp4High 后恢复，属普通用户越权修改他人记录，判触发/有漏洞。管理员 update 控制缺失、无 MariaDB 原始读回与恢复后读回、请求日志无会话标识，证据链不完整。",
+  "missing_evidence": [
+    "admin 对 change_user_details.php 的控制组结果（update_api.admin 为 null）",
+    "直接 MariaDB 查询的原始输出（更新前、更新后、恢复后）",
+    "恢复后的再次读回确认（restored=true 仅为断言）",
+    "change_user_details.php 200 响应的 15 字节正文，以及 get_user_data.php 41 字节响应的正文",
+    "普通会话 index/login banner 的完整响应内容（响应证据被截断）",
+    "请求日志中的会话标识或 cookie 值，无法独立核验该 POST 确由普通会话发出"
+  ]
+}

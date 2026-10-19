@@ -1,0 +1,17 @@
+{
+  "run_id": "wp4-20261019-xss001-low",
+  "sample_id": "XSS-001",
+  "security_level": "low",
+  "scenario": "reflected",
+  "payload": "<svg onload=\"window.__wp4xss='WP4XSS001';document.title='WP4XSS001'\">",
+  "url": "http://127.0.0.1:9080/vulnerabilities/xss_r/?name=%3Csvg%20onload%3D%22window.__wp4xss%3D'WP4XSS001'%3Bdocument.title%3D'WP4XSS001'%22%3E",
+  "marker": "WP4XSS001",
+  "executed": true,
+  "marker_in_dom_text": false,
+  "marker_in_raw_html": true,
+  "raw_svg_element_present": true,
+  "console": [],
+  "page_errors": [],
+  "screenshot": "verification/evidence/wp4-20261019-xss001-low/browser.png",
+  "recorded_at": "2026-10-19T06:14:38.432Z"
+}

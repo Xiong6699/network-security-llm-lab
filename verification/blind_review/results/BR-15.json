@@ -1,0 +1,35 @@
+{
+  "blind_id": "BR-15",
+  "trigger": "未触发",
+  "condition_ground_truth": "无所关注漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "需要新鲜 token；缺失 token 属于前置条件失败，不能作为编码生效的证据",
+      "met": "true",
+      "evidence": "missing_token_request 返回 302 并 Location: index.php，payload_present=false；token_obtained=true。token 拒绝被单独记录，与 XSS 防护区分。"
+    },
+    {
+      "criterion": "携带有效 token 时输入被编码且未产生畸形 HTML",
+      "met": "true",
+      "evidence": "valid_token_request 为 200，raw_svg_present=false，encoded_lt_present=true，encoded_quote_present=true，说明 < 与 \" 已实体化，注入的 svg 标签未以原始形式出现。"
+    },
+    {
+      "criterion": "Headless Chrome 在编码输出中未报告 marker 执行",
+      "met": "true",
+      "evidence": "browser_execution.executed=false，encoded_output_observed=true；请求中 marker 为 window.__wp4xss 与 document.title 的 WP4XSS004。"
+    },
+    {
+      "criterion": "负结果仅限 impossible 的 xss_r 路径",
+      "met": "true",
+      "evidence": "path_id 与 condition_key 均限定于 vulnerabilities/xss_r/index.php:name 且 security=impossible，限制条件明确写明未覆盖其他路径。"
+    }
+  ],
+  "rationale": "全部请求 200/302 与结论自洽：有效 token 下 svg 原始标签缺失而 < 与引号被编码，浏览器未执行 marker，缺失 token 为 302 前置条件失败且未被当作防护。仅此单路径、单浏览器、单 commit 的负结果，故判未触发、无所关注漏洞。",
+  "missing_evidence": [
+    "有效 token 请求的原始响应正文片段（本包响应证据仅展示登录后首页 HTML 且被截断，未见 xss_r 页面中编码后的 name 回显原文）",
+    "无头浏览器的 DOM/console 快照或 marker 检测脚本输出，截图路径 verification/evidence/wp4-20261019-xss004-impossible/browser.png 的内容未提供",
+    "payload 编码前后字节级对照，用于确认“未产生畸形 HTML”而非仅标签实体化"
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "checked_at": "2026-10-19T16:26:36+08:00",
+  "timezone": "+08:00",
+  "runs_checked": 17,
+  "runs_passed": 17,
+  "runs_failed": 0,
+  "error_count": 0,
+  "warning_count": 0,
+  "unredacted_secret_hits": 0,
+  "parents_covered": [
+    "AUTH-001",
+    "CMD-001",
+    "CMD-002",
+    "CMD-003",
+    "CMD-004",
+    "SQLI-001",
+    "SQLI-002",
+    "SQLI-003",
+    "SQLI-005",
+    "XSS-001",
+    "XSS-002",
+    "XSS-003",
+    "XSS-004",
+    "XSS-005"
+  ],
+  "missing_parents": [],
+  "checks": [
+    {
+      "run_id": "wp4-20261019-auth001-high",
+      "sample_id": "AUTH-001",
+      "request_count": 12,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-auth001-impossible",
+      "sample_id": "AUTH-001",
+      "request_count": 12,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-auth001-low",
+      "sample_id": "AUTH-001",
+      "request_count": 13,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-auth001-medium",
+      "sample_id": "AUTH-001",
+      "request_count": 12,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-cmd001-low",
+      "sample_id": "CMD-001",
+      "request_count": 7,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-cmd002-medium",
+      "sample_id": "CMD-002",
+      "request_count": 7,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-cmd003-high",
+      "sample_id": "CMD-003",
+      "request_count": 7,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-cmd004-impossible",
+      "sample_id": "CMD-004",
+      "request_count": 12,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-sqli001-low",
+      "sample_id": "SQLI-001",
+      "request_count": 3,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-sqli002-low",
+      "sample_id": "SQLI-002",
+      "request_count": 3,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-sqli003-low",
+      "sample_id": "SQLI-003",
+      "request_count": 3,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-sqli005-low",
+      "sample_id": "SQLI-005",
+      "request_count": 14,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-xss001-low",
+      "sample_id": "XSS-001",
+      "request_count": 5,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-xss002-medium",
+      "sample_id": "XSS-002",
+      "request_count": 6,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-xss003-high",
+      "sample_id": "XSS-003",
+      "request_count": 6,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-xss004-impossible",
+      "sample_id": "XSS-004",
+      "request_count": 6,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "run_id": "wp4-20261019-xss005-low",
+      "sample_id": "XSS-005",
+      "request_count": 6,
+      "required_files_present": true,
+      "errors": [],
+      "warnings": [],
+      "status": "pass"
+    }
+  ]
+}

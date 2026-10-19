@@ -1,0 +1,72 @@
+{
+  "run_id": "wp4-20261019-xss001-low",
+  "batch_id": "wp4-poc-01",
+  "case_id": "wp4-20261019-xss001-low",
+  "sample_id": "XSS-001",
+  "path_id": "vulnerabilities/xss_r/index.php:name",
+  "condition_key": "env=dvwa-wsl-01|role=admin|security=low|object=none|state=initialized",
+  "input_version": "v2",
+  "prompt_version": null,
+  "source_commit": "068d974487a297c155c48722f9fcf7180a83adc4",
+  "deployment_id": "dvwa-wsl-01",
+  "started_at": "2026-10-19T14:15:03+08:00",
+  "finished_at": "2026-10-19T14:15:04+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent",
+  "reviewer": null,
+  "review_status": "single_person_review_only",
+  "poc": {
+    "original_source": "prompts/trial/pocs/xss_001.py",
+    "original_sha256": "6ae0b34701f052621d6f92fa3fca1ff6ca353f25f77863af607075640fceb11b",
+    "adapted_source": "verification/tools/run_xss.py",
+    "adapted_sha256": "81af5580af97f5657317f315f5c789c3560e2407f4f8eadd539288353a11d6ab",
+    "adaptation_level": "B",
+    "adaptation_notes": ""
+  },
+  "requests": 5,
+  "trigger_result": "触发",
+  "ground_truth": "有漏洞",
+  "model_prediction": null,
+  "failure_kind": null,
+  "success_criteria": [
+    "The page returns an authenticated response and reflects the control text.",
+    "The payload reaches the final HTML position without an applicable output filter.",
+    "Headless Chrome sets the JS marker in the page context, proving execution, not just reflection."
+  ],
+  "limitations": [
+    "Only the low xss_r path is covered in one desktop Chrome version.",
+    "The marker is harmless and creates no network request."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-xss001-low/browser.json",
+      "sha256": "edffc49a16c3316b426d30aaed6f600095a1200a0bf60d67cb70c96688e20eba",
+      "description": "headless browser evidence: browser.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss001-low/browser.png",
+      "sha256": "fb7195d30684dc2bf38774b13fb4f079f99dda76ed3bae50133585044042efcb",
+      "description": "headless browser evidence: browser.png"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss001-low/request.redacted.json",
+      "sha256": "317d13758dd64c402831df3667f817ce5d032413fa11d759bbaea347e2844077",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss001-low/response.redacted.txt",
+      "sha256": "e3d1dbdd0ab1317959ee7dd3140feda007c7b7aa655ca550c7f87eca0f55f97b",
+      "description": "response.redacted.txt"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss001-low/observation.json",
+      "sha256": "58974bed70ebf3d1adb9f9618b19ee6b98eb33098dea430ab0077336977d91c7",
+      "description": "observation.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss001-low/restore_result.json",
+      "sha256": "a9e5fbf25618a89bc7260494273bafece8db396cef61eb3da639c2ac270a88b0",
+      "description": "restore_result.json"
+    }
+  ]
+}

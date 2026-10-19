@@ -1,0 +1,5 @@
+{
+  "required": true,
+  "action": "delete dedicated guestbook rows by name (not TRUNCATE)",
+  "result": "restored"
+}

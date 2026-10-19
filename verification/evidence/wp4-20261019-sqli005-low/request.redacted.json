@@ -1,0 +1,461 @@
+[
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-24/login_create.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "PHPSESSID"
+    ],
+    "body": {
+      "username": "wp4v",
+      "password": "<redacted>",
+      "re_password": "<redacted>",
+      "submit": "Register"
+    },
+    "body_sha256": "567fc222c49ab63490669814d69ccdf1fad056ce5374dc0c26142cc03cc7a27a",
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "refresh": "5, url=index.php",
+      "Content-type": "text/html; charset=UTF-8",
+      "X-WP4-Set-Cookie-Names": [
+        "PHPSESSID"
+      ]
+    },
+    "response_bytes": 509,
+    "response_sha256": "d520342f8116f4b545558af8d87df75ad41989a924937fa40155ba6f887f7515",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-24/login.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "Auth",
+      "PHPSESSID"
+    ],
+    "body": {
+      "login_user": "wp4v",
+      "login_password": "<redacted>",
+      "mysubmit": "Login"
+    },
+    "body_sha256": "d68dd505c5adc85c474d52f6692d640d406792683c8698db7304957cc9408216",
+    "status": 302,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Location": "logged-in.php",
+      "Content-type": "text/html; charset=UTF-8",
+      "X-WP4-Set-Cookie-Names": [
+        "Auth"
+      ]
+    },
+    "response_bytes": 265,
+    "response_sha256": "943807ad9c45153d48b0a2a84f0bd1f0e62effebbf478341d269f584d261e04b",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9081/Less-24/logged-in.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "Auth",
+      "PHPSESSID"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 1570,
+    "response_sha256": "0367606d7a8ff8ef89f10284aa09257f89c8d62fe5dc7659ffc3f70b39f4e2a9",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-24/pass_change.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "Auth",
+      "PHPSESSID"
+    ],
+    "body": {
+      "current_password": "<redacted>",
+      "password": "<redacted>",
+      "re_password": "<redacted>",
+      "submit": "Reset"
+    },
+    "body_sha256": "22a7b8c054bbeaae528257781f7bca36f68904687426b7c1e069c96157344f01",
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 307,
+    "response_sha256": "cb2b8f1bcbec0a44d0b61b9c06907c3549aef7949c6c88303f9d55a38ea37265",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-24/login.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "Auth",
+      "PHPSESSID"
+    ],
+    "body": {
+      "login_user": "wp4v",
+      "login_password": "<redacted>",
+      "mysubmit": "Login"
+    },
+    "body_sha256": "2519073dcd0323aa09e677a445d964aa26fed25a31940c8cf3877e74465ab6f4",
+    "status": 302,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Location": "logged-in.php",
+      "Content-type": "text/html; charset=UTF-8",
+      "X-WP4-Set-Cookie-Names": [
+        "Auth",
+        "PHPSESSID"
+      ]
+    },
+    "response_bytes": 265,
+    "response_sha256": "943807ad9c45153d48b0a2a84f0bd1f0e62effebbf478341d269f584d261e04b",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-24/pass_change.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "Auth",
+      "PHPSESSID"
+    ],
+    "body": {
+      "current_password": "<redacted>",
+      "password": "<redacted>",
+      "re_password": "<redacted>",
+      "submit": "Reset"
+    },
+    "body_sha256": "9e0a4d5a2e1509ebb757cf88b7ab011e6853e992d20c506b1dd362f442d89ad5",
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 307,
+    "response_sha256": "cb2b8f1bcbec0a44d0b61b9c06907c3549aef7949c6c88303f9d55a38ea37265",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-24/login_create.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "PHPSESSID"
+    ],
+    "body": {
+      "username": "wp4s' OR id=17#",
+      "password": "<redacted>",
+      "re_password": "<redacted>",
+      "submit": "Register"
+    },
+    "body_sha256": "f96e7bc55f3f24e09a83545ec6a2be417e41efa3016b92434a0fff9deb71348e",
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "refresh": "5, url=index.php",
+      "Content-type": "text/html; charset=UTF-8",
+      "X-WP4-Set-Cookie-Names": [
+        "PHPSESSID"
+      ]
+    },
+    "response_bytes": 509,
+    "response_sha256": "d520342f8116f4b545558af8d87df75ad41989a924937fa40155ba6f887f7515",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-24/login.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "Auth",
+      "PHPSESSID"
+    ],
+    "body": {
+      "login_user": "wp4s' OR id=17#",
+      "login_password": "<redacted>",
+      "mysubmit": "Login"
+    },
+    "body_sha256": "eea0ff9a0026c076d86eebe3a7a6e87a0c36dd248c784354ae203e77454c9a0a",
+    "status": 302,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Location": "logged-in.php",
+      "Content-type": "text/html; charset=UTF-8",
+      "X-WP4-Set-Cookie-Names": [
+        "Auth"
+      ]
+    },
+    "response_bytes": 265,
+    "response_sha256": "943807ad9c45153d48b0a2a84f0bd1f0e62effebbf478341d269f584d261e04b",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9081/Less-24/logged-in.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "Auth",
+      "PHPSESSID"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 1581,
+    "response_sha256": "8552f388cb5b0ec1138b111fd2c9d0e694ae266e0291a9c20dbe9b576f161b35",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-24/pass_change.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "Auth",
+      "PHPSESSID"
+    ],
+    "body": {
+      "current_password": "<redacted>",
+      "password": "<redacted>",
+      "re_password": "<redacted>",
+      "submit": "Reset"
+    },
+    "body_sha256": "772861c99b5c48f93e65eaceb83eb5ea4029fb87a25f84f515fefaae81cb08dc",
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 307,
+    "response_sha256": "cb2b8f1bcbec0a44d0b61b9c06907c3549aef7949c6c88303f9d55a38ea37265",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-24/login.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "PHPSESSID"
+    ],
+    "body": {
+      "login_user": "wp4v",
+      "login_password": "<redacted>",
+      "mysubmit": "Login"
+    },
+    "body_sha256": "d68dd505c5adc85c474d52f6692d640d406792683c8698db7304957cc9408216",
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8",
+      "X-WP4-Set-Cookie-Names": [
+        "PHPSESSID"
+      ]
+    },
+    "response_bytes": 410,
+    "response_sha256": "6b87cf1dc0d3f2b968ce36b0a3861572491514772410d9b2c12a104174680956",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9081/Less-24/logged-in.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "PHPSESSID"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 302,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Location": "index.php",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 1566,
+    "response_sha256": "30173432a30af47fa21c1853bbbce137423318f134ef1bbcff5b7f328373a8b0",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-24/login.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "Auth",
+      "PHPSESSID"
+    ],
+    "body": {
+      "login_user": "wp4v",
+      "login_password": "<redacted>",
+      "mysubmit": "Login"
+    },
+    "body_sha256": "2d6904ef4533865d26b753e70f62324bd386308da16fc080c183bde25adddb04",
+    "status": 302,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Location": "logged-in.php",
+      "Content-type": "text/html; charset=UTF-8",
+      "X-WP4-Set-Cookie-Names": [
+        "Auth",
+        "PHPSESSID"
+      ]
+    },
+    "response_bytes": 265,
+    "response_sha256": "943807ad9c45153d48b0a2a84f0bd1f0e62effebbf478341d269f584d261e04b",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9081/Less-24/logged-in.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "Auth",
+      "PHPSESSID"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 1570,
+    "response_sha256": "0367606d7a8ff8ef89f10284aa09257f89c8d62fe5dc7659ffc3f70b39f4e2a9",
+    "started_at": "2026-10-19T14:08:15+08:00"
+  }
+]

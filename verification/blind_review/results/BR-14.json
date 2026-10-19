@@ -1,0 +1,35 @@
+{
+  "blind_id": "BR-14",
+  "trigger": "未触发",
+  "condition_ground_truth": "无所关注漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "The normal loopback ping produces the expected command output.",
+      "met": "true",
+      "evidence": "normal.ip=127.0.0.1，HTTP 200，ping_output_observed=true；摘录显示 PING 127.0.0.1 与 4 个 icmp_seq 回包及统计行，属真实 ping 输出。"
+    },
+    {
+      "criterion": "The token-protected request reaches the numeric-octet validation.",
+      "met": "true",
+      "evidence": "带 user_token 的 POST 返回 200 并执行 ping；缺 user_token 的同类 POST 返回 302 到 index.php（missing_token_redirect=true），说明令牌门通过后才进入处理逻辑。合法输入产生命令输出、非法输入产生不同响应体（5163 vs 4776 字节），与进入校验分支一致。"
+    },
+    {
+      "criterion": "A payload containing a command separator is rejected as an invalid IP and no marker is executed.",
+      "met": "true",
+      "evidence": "payload 127.0.0.1; printf WP4_CMD_004 的 POST 返回 200、响应体 4776 字节（小于正常 5163），invalid_payload_rejected=true，invalid_payload_marker_absent=true，marker_in_command_output=false；未见 WP4_CMD_004 输出。"
+    },
+    {
+      "criterion": "A five-octet input is also rejected; the negative result is limited to this four-octet gate.",
+      "met": "true",
+      "evidence": "ip=127.0.0.1.1 的 POST 返回 200、响应体同为 4776 字节，five_octet_rejected=true，与命令分隔符被拒的响应一致，表明四段 octet 门同样拦下五段输入。"
+    }
+  ],
+  "rationale": "正常回环 ping 有真实命令输出；带令牌请求被处理，缺令牌则 302 拒绝；含分号 payload 与五段 IP 均返回同尺寸的拒绝响应，且标记 WP4_CMD_004 未出现在命令输出中。证据相互印证 impossible 级别的四段 is_numeric 门拦截了命令注入，故未触发目标漏洞；仅 IP 格式弱点另记，不构成本路径命令注入。",
+  "missing_evidence": [
+    "被拒绝请求的完整响应正文（invalid IP 提示文本）因响应证据截断而不可见，仅有结构化字段与响应字节数佐证。",
+    "未直接展示四段 octet / is_numeric 校验分支的执行痕迹（如校验失败提示或源码路径），该条结论由响应差异推断。",
+    "缺少同一 payload 的重复运行结果，无法完全排除单次偶然性。"
+  ]
+}

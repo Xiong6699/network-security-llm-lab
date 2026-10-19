@@ -1,0 +1,35 @@
+{
+  "blind_id": "BR-12",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "The normal loopback ping produces the expected command output.",
+      "met": "true",
+      "evidence": "Baseline POST ip=127.0.0.1 returns HTTP 200 (5057 bytes) and observes ping_output_observed=true; the excerpt shows a Linux-format PING summary with four icmp_seq replies and the '--- 127.0.0.1 ping sta...' trailer."
+    },
+    {
+      "criterion": "The marker appears inside the server-side command-output block.",
+      "met": "true",
+      "evidence": "Test POST ip=\"127.0.0.1; printf WP4_CMD_001\" returns HTTP 200 with marker_in_command_output=true; the response grows exactly 11 bytes (5057 -> 5068) versus baseline, matching the 11-character marker WP4_CMD_001 appended after the normal ping output."
+    },
+    {
+      "criterion": "The marker is not merely reflected in the HTML form or page text.",
+      "met": "true",
+      "evidence": "payload_reflected_outside_command_output=false; the baseline and test pages are otherwise identical and the byte delta (11) equals the marker length, so the marker string is not present in the form field or page text, only in the command output region."
+    },
+    {
+      "criterion": "The only changed input is ip; the server OS branch is Linux.",
+      "met": "true",
+      "evidence": "Both POST bodies have identical Submit=Submit and user_token=\"\" with only ip differing; the same session/cookies and security level low (banner Security Level: low, admin logged in) persist. The 56(84) bytes-of-data format and '64 bytes from ... icmp_seq' output are Linux ping output, confirming the Linux branch."
+    }
+  ],
+  "rationale": "正常回环 ping 产生 Linux 格式命令输出；注入 printf 后响应仅增加与标记等长的 11 字节，且标记只出现在服务端命令输出区、未在表单/页面反射；其余输入未变，OS 分支为 Linux。四项标准均满足，判为触发且有漏洞。",
+  "missing_evidence": [
+    "Full untruncated response body for the test POST showing the marker inside the exact command-output block (only a pre_excerpt and byte delta are provided)",
+    "Server-side OS confirmation beyond ping output format (e.g., php_uname output) to prove the Linux branch rather than infer it",
+    "Raw HTML diff between baseline and test responses to independently verify the 11-byte insertion location"
+  ]
+}

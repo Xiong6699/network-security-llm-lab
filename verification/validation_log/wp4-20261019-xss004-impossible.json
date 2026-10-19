@@ -1,0 +1,73 @@
+{
+  "run_id": "wp4-20261019-xss004-impossible",
+  "batch_id": "wp4-poc-01",
+  "case_id": "wp4-20261019-xss004-impossible",
+  "sample_id": "XSS-004",
+  "path_id": "vulnerabilities/xss_r/index.php:name",
+  "condition_key": "env=dvwa-wsl-01|role=admin|security=impossible|object=none|state=initialized",
+  "input_version": "v2",
+  "prompt_version": null,
+  "source_commit": "068d974487a297c155c48722f9fcf7180a83adc4",
+  "deployment_id": "dvwa-wsl-01",
+  "started_at": "2026-10-19T14:15:08+08:00",
+  "finished_at": "2026-10-19T14:15:08+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent",
+  "reviewer": null,
+  "review_status": "single_person_review_only",
+  "poc": {
+    "original_source": null,
+    "original_sha256": null,
+    "adapted_source": "verification/tools/run_xss.py",
+    "adapted_sha256": "81af5580af97f5657317f315f5c789c3560e2407f4f8eadd539288353a11d6ab",
+    "adaptation_level": "C",
+    "adaptation_notes": ""
+  },
+  "requests": 6,
+  "trigger_result": "未触发",
+  "ground_truth": "无所关注漏洞",
+  "model_prediction": null,
+  "failure_kind": null,
+  "success_criteria": [
+    "A fresh token is required; omitting it is a precondition failure, not proof of encoding.",
+    "With a valid token the input is encoded and no malformed HTML is produced.",
+    "Headless Chrome reports no marker execution in the encoded output.",
+    "The negative result is limited to the impossible xss_r path."
+  ],
+  "limitations": [
+    "Token refusal is recorded separately and is not treated as XSS protection.",
+    "Only one browser and this DVWA commit are covered."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-xss004-impossible/browser.json",
+      "sha256": "4fcf660878509f852403367f2355114e980a31196ec21d5ed3530acc3eb1ce95",
+      "description": "headless browser evidence: browser.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss004-impossible/browser.png",
+      "sha256": "51cecde128c47f184b8490795ba096585c0937c224e1954d60e38f2fa71b2458",
+      "description": "headless browser evidence: browser.png"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss004-impossible/request.redacted.json",
+      "sha256": "d18f5fc560af523f06632cfb33257af0e6f473445c7f5a09df2653faf1f8d330",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss004-impossible/response.redacted.txt",
+      "sha256": "1d2e741cd2034978e91ae51220171c0ff3a41858b4cedb401aa898d1266956ea",
+      "description": "response.redacted.txt"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss004-impossible/observation.json",
+      "sha256": "11931e4e5d58b11e13302ad858a240149f56bafcba420e5bba899e37a7fab4bf",
+      "description": "observation.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss004-impossible/restore_result.json",
+      "sha256": "a9e5fbf25618a89bc7260494273bafece8db396cef61eb3da639c2ac270a88b0",
+      "description": "restore_result.json"
+    }
+  ]
+}

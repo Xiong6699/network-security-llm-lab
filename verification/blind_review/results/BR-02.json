@@ -1,0 +1,30 @@
+{
+  "blind_id": "BR-02",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "The page returns an authenticated response and reflects the control text.",
+      "met": "true",
+      "evidence": "Login POST 返回 302 Location: index.php，随后 /index.php 为 200 且页面含 Logout 菜单项，identity.logged_in=true；GET xss_r/?name=WP4_CONTROL 返回 200 且 normal_control.control_reflected=true，响应体 4779 字节。"
+    },
+    {
+      "criterion": "The payload reaches the final HTML position without an applicable output filter.",
+      "met": "true",
+      "evidence": "payload_reflected_verbatim=true，响应体从 4779 增至 4837 字节；差值 58 恰等于解码后 payload(69 字节) 减 WP4_CONTROL(11 字节)，与逐字符原样反射一致。filter_control 显示仅 <script> 被消除（raw_script_tag_present=false、script_keyword_present=false），而 <svg onload=...> 完整保留，说明过滤器只针对 script 关键字，对本 payload 不适用。"
+    },
+    {
+      "criterion": "Headless Chrome sets the JS marker in the page context, proving execution, not just reflection.",
+      "met": "true",
+      "evidence": "browser_execution.executed=true 且 page_errors=[]，另附 browser.png 路径。需注意 marker_in_raw_html=true 本身只反映 payload 文本（其中两次含 WP4XSS003）随 HTML 原样输出，不能单独证明执行；结论主要依赖 executed 这一浏览器侧观测，未见对 window.__wp4xss / document.title 的回读值。"
+    }
+  ],
+  "rationale": "登录态与对照反射成立，payload 与对照的字节差精确匹配原样反射，过滤器仅杀 <script> 而放过 <svg onload>，浏览器侧报告 executed=true 且无页面错误，故三条标准均满足，判为触发有漏洞。仅第三条的原始回读证据略弱。",
+  "missing_evidence": [
+    "浏览器上下文中 window.__wp4xss 或 document.title 的实际回读值（当前仅 executed 布尔标志与 marker_in_raw_html）。",
+    "browser.png 的截图内容未包含在包内，无法核对 marker 是否出现在渲染后页面。",
+    "payload 反射所在的具体 HTML 位置/容器（如 <pre> 内）未以片段形式给出。"
+  ]
+}

@@ -1,0 +1,12 @@
+﻿metric,value
+tp,12
+fp,0
+fn,0
+tn,2
+unknown,0
+accuracy,1.0000
+precision,1.0000
+recall,1.0000
+f1,1.0000
+strict_protocol_passed,14
+strict_protocol_total,14

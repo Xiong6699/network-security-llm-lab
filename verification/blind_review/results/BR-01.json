@@ -1,0 +1,34 @@
+{
+  "blind_id": "BR-01",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "The normal loopback ping produces the expected command output.",
+      "met": "true",
+      "evidence": "Normal POST with ip=127.0.0.1 returns status 200 and a Linux-style ping transcript (PING 127.0.0.1 ... 4 replies with ttl=64, then the '--- 127.0.0.1 ping sta...' trailer), and the response grows from the 4624-byte baseline to 5060 bytes."
+    },
+    {
+      "criterion": "The marker appears inside the server-side command-output block.",
+      "met": "true",
+      "evidence": "The injected POST responds 200 with marker WP4_CMD_003 in the command-output excerpt, and the size difference (4646 vs 4624 baseline, +22 bytes) matches a <pre> wrapper plus the 11-byte marker, i.e. appended output rather than page-level echo."
+    },
+    {
+      "criterion": "The marker is not merely reflected in the HTML form or page text.",
+      "met": "true",
+      "evidence": "Observations record payload_reflected_outside_command_output=false; the served form's ip input has no value attribute, and a form reflection of the 28-byte payload would add roughly 39 bytes, which the observed +22-byte delta rules out."
+    },
+    {
+      "criterion": "The only changed input is ip; the server OS branch is Linux.",
+      "met": "true",
+      "evidence": "Normal and injected POST bodies are identical except the ip value (same Submit and empty user_token); the ping format is Linux iputils style and responses come from PHP/8.1.2-1ubuntu2.26 on the same host."
+    }
+  ],
+  "rationale": "两次 exec POST 仅 ip 不同。正常值返回 Linux ping 输出；注入值响应仅比基线多约 22 字节，与 '<pre>'+11 字节 marker+'</pre>'（5+11+6）吻合，而表单回填约需 +39 字节，故 marker 位于服务端命令输出块而非页面反射。仅 ip 变更且为 Linux 分支。原始测试响应正文被截断，但字节差与结构化观察互相印证。",
+  "missing_evidence": [
+    "未截断的含 marker 的 POST 响应正文（可直接确认 marker 位于服务端输出块内、表单无回填）",
+    "同一 payload 的重复运行或第二个不同 marker，用于排除偶发或缓存导致的假阳性"
+  ]
+}

@@ -1,0 +1,15 @@
+﻿sample_id,ground_truth,v1_prediction,v1_strict,v1_findings,v1_exclusion,v2_prediction,v2_strict,v2_findings,v2_exclusion,final_prediction,final_strict,final_findings,final_exclusion
+SQLI-001,有漏洞,存在候选,passed_static_protocol,1,0,存在候选,passed_static_protocol,1,0,存在候选,failed_static_protocol,1,0
+SQLI-002,有漏洞,存在候选,failed_static_protocol,1,0,存在候选,passed_static_protocol,1,0,存在候选,failed_static_protocol,1,0
+SQLI-003,有漏洞,存在候选,failed_static_protocol,1,0,存在候选,passed_static_protocol,1,0,存在候选,failed_static_protocol,1,0
+SQLI-005,有漏洞,存在候选,failed_static_protocol,1,0,存在候选,passed_static_protocol,1,0,存在候选,passed_static_protocol,1,0
+XSS-001,有漏洞,存在候选,failed_static_protocol,1,0,存在候选,failed_static_protocol,1,0,存在候选,failed_static_protocol,1,0
+XSS-002,有漏洞,存在候选,failed_static_protocol,1,0,存在候选,failed_static_protocol,1,0,存在候选,failed_static_protocol,1,0
+XSS-003,有漏洞,存在候选,failed_static_protocol,1,0,存在候选,failed_static_protocol,1,0,存在候选,failed_static_protocol,1,0
+XSS-004,无所关注漏洞,未检出候选,passed_static_protocol,0,3,未检出候选,passed_static_protocol,0,3,未检出候选,passed_static_protocol,0,2
+XSS-005,有漏洞,存在候选,failed_static_protocol,1,0,存在候选,failed_static_protocol,1,0,存在候选,failed_static_protocol,1,0
+CMD-001,有漏洞,存在候选,failed_static_protocol,1,0,存在候选,failed_static_protocol,1,0,存在候选,passed_static_protocol,1,0
+CMD-002,有漏洞,存在候选,passed_static_protocol,1,0,存在候选,passed_static_protocol,1,0,存在候选,failed_static_protocol,1,0
+CMD-003,有漏洞,存在候选,passed_static_protocol,1,0,存在候选,passed_static_protocol,1,0,存在候选,failed_static_protocol,1,0
+CMD-004,无所关注漏洞,未检出候选,passed_static_protocol,0,4,未检出候选,passed_static_protocol,0,5,未检出候选,passed_static_protocol,0,7
+AUTH-001,有漏洞,存在候选,failed_static_protocol,3,0,存在候选,failed_static_protocol,2,0,存在候选,failed_static_protocol,3,3

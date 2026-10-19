@@ -1,0 +1,80 @@
+[
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-11/index.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [],
+    "body": {
+      "uname": "Dumb",
+      "passwd": "<redacted>",
+      "submit": "Submit"
+    },
+    "body_sha256": "1d8559f6399ebdce26c719ba44f2b0109d2a80c028afc059ef74b8cb696cfdfd",
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 1521,
+    "response_sha256": "b8fe49497b5a6a3367215e660b840f03db4569e0660fe6499186cd5387ba8b49",
+    "started_at": "2026-10-19T14:07:03+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-11/index.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [],
+    "body": {
+      "uname": "Dumb'#",
+      "passwd": "<redacted>",
+      "submit": "Submit"
+    },
+    "body_sha256": "5b016b227cbe9b9bf5ab6d0f90873e984ac259093b5ebbccd69698f15df23508",
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 1521,
+    "response_sha256": "b8fe49497b5a6a3367215e660b840f03db4569e0660fe6499186cd5387ba8b49",
+    "started_at": "2026-10-19T14:07:03+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9081/Less-11/index.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [],
+    "body": {
+      "uname": "Dumb' AND '1'='2#",
+      "passwd": "<redacted>",
+      "submit": "Submit"
+    },
+    "body_sha256": "fe321dad18389c343ff01962d3bff5b52c0f86360b0ebc5bd3b922d4932405d0",
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9081",
+      "Connection": "close",
+      "X-Powered-By": "PHP/5.6.40",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 1435,
+    "response_sha256": "13207bd55f7b725be6675e0f949a06780be21629e24dd5f47164d1b4420f9c88",
+    "started_at": "2026-10-19T14:07:03+08:00"
+  }
+]

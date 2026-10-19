@@ -1,0 +1,64 @@
+{
+  "run_id": "wp4-20261019-cmd004-impossible",
+  "batch_id": "wp4-poc-01",
+  "case_id": "wp4-20261019-cmd004-impossible",
+  "sample_id": "CMD-004",
+  "path_id": "vulnerabilities/exec/index.php:ip",
+  "condition_key": "env=dvwa-wsl-01|role=admin|security=impossible|object=none|state=initialized",
+  "input_version": "v2",
+  "prompt_version": null,
+  "source_commit": "068d974487a297c155c48722f9fcf7180a83adc4",
+  "deployment_id": "dvwa-wsl-01",
+  "started_at": "2026-10-19T14:09:02+08:00",
+  "finished_at": "2026-10-19T14:09:08+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent",
+  "reviewer": null,
+  "review_status": "single_person_review_only",
+  "poc": {
+    "original_source": null,
+    "original_sha256": null,
+    "adapted_source": "verification/tools/run_cmd.py",
+    "adapted_sha256": "ca342274fc6fd1ff98402ddcbf256aa758417a31c907fe79114dea4ba0028462",
+    "adaptation_level": "C",
+    "adaptation_notes": ""
+  },
+  "requests": 12,
+  "trigger_result": "未触发",
+  "ground_truth": "无所关注漏洞",
+  "model_prediction": null,
+  "failure_kind": null,
+  "success_criteria": [
+    "The normal loopback ping produces the expected command output.",
+    "The token-protected request reaches the numeric-octet validation.",
+    "A payload containing a command separator is rejected as an invalid IP and no marker is executed.",
+    "A five-octet input is also rejected; the negative result is limited to this four-octet gate."
+  ],
+  "limitations": [
+    "Only the impossible exec source path and this Linux container are covered.",
+    "The payload only prints a fixed marker; it does not read files or open a connection.",
+    "The negative result applies to the four-octet is_numeric gate; IP-format weaknesses are recorded separately, not as command injection."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-cmd004-impossible/request.redacted.json",
+      "sha256": "a34e713bf21412fc418ac00b1eb693a1cc1d97ff1150da5a2473d406431817ee",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-cmd004-impossible/response.redacted.txt",
+      "sha256": "2dfcb44e0bcfa93a3a5ed87df202c1089de0999df13f445bd09a8d759fe1ed78",
+      "description": "response.redacted.txt"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-cmd004-impossible/observation.json",
+      "sha256": "ba3cedd4f76a169b232f62fbbb4cfc6a7a9c55546c66585d65ea93b73eb864de",
+      "description": "observation.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-cmd004-impossible/restore_result.json",
+      "sha256": "a9e5fbf25618a89bc7260494273bafece8db396cef61eb3da639c2ac270a88b0",
+      "description": "restore_result.json"
+    }
+  ]
+}

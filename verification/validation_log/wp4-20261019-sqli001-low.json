@@ -1,0 +1,63 @@
+{
+  "run_id": "wp4-20261019-sqli001-low",
+  "batch_id": "wp4-poc-01",
+  "case_id": "wp4-20261019-sqli001-low",
+  "sample_id": "SQLI-001",
+  "path_id": "Less-1/index.php?id",
+  "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=none|state=initialized",
+  "input_version": "v2",
+  "prompt_version": null,
+  "source_commit": "e96f21776372c8613a7e565106e62bc01a59355e",
+  "deployment_id": "sqli-labs-wsl-01",
+  "started_at": "2026-10-19T14:07:00+08:00",
+  "finished_at": "2026-10-19T14:07:00+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent",
+  "reviewer": null,
+  "review_status": "single_person_review_only",
+  "poc": {
+    "original_source": "prompts/trial/pocs/sqli_001.py",
+    "original_sha256": "da5e255f4eff3a0b2eb7573062dd21620e041d1fb2e1852f370e0eb858ec26d4",
+    "adapted_source": "verification/tools/run_sqli.py",
+    "adapted_sha256": "645222d71a4ab593848456973e0289883a622557f51150860fb1373fb796c6e3",
+    "adaptation_level": "B",
+    "adaptation_notes": ""
+  },
+  "requests": 3,
+  "trigger_result": "触发",
+  "ground_truth": "有漏洞",
+  "model_prediction": null,
+  "failure_kind": null,
+  "success_criteria": [
+    "A normal numeric id returns an existing teaching row.",
+    "The boolean-true payload returns the same row while changing only id.",
+    "The boolean-false payload returns no user row, showing SQL semantics changed.",
+    "No authentication or redirect is involved in this endpoint."
+  ],
+  "limitations": [
+    "Only the selected Less-1 path and database account are covered.",
+    "No data beyond the first row was enumerated or exported."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-sqli001-low/request.redacted.json",
+      "sha256": "5e148c1b65c213ad377a8aa025ff05472b46351f8156efdfa590ea02c1a59e15",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli001-low/response.redacted.txt",
+      "sha256": "4a5dffd82d7660de96bfb85a62652f0643721ea6290e66c84b837a9b1f7d7898",
+      "description": "response.redacted.txt"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli001-low/observation.json",
+      "sha256": "bee9f711afd4b9289f189a4fe31cc291621302935446dd830c820d1a94551f23",
+      "description": "observation.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli001-low/restore_result.json",
+      "sha256": "a9e5fbf25618a89bc7260494273bafece8db396cef61eb3da639c2ac270a88b0",
+      "description": "restore_result.json"
+    }
+  ]
+}

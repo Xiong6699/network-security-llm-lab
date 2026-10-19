@@ -1,0 +1,64 @@
+{
+  "run_id": "wp4-20261019-auth001-high",
+  "batch_id": "wp4-poc-01",
+  "case_id": "wp4-20261019-auth001-high",
+  "sample_id": "AUTH-001",
+  "path_id": "authbypass page/read_api/update_api",
+  "condition_key": "env=dvwa-wsl-01|role=ordinary|security=high|object=wp4target|state=initialized",
+  "input_version": "v2",
+  "prompt_version": null,
+  "source_commit": "068d974487a297c155c48722f9fcf7180a83adc4",
+  "deployment_id": "dvwa-wsl-01",
+  "started_at": "2026-10-19T14:15:40+08:00",
+  "finished_at": "2026-10-19T14:15:40+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent",
+  "reviewer": null,
+  "review_status": "single_person_review_only",
+  "poc": {
+    "original_source": "prompts/trial/pocs/auth_001_read.py",
+    "original_sha256": "460b5ee1dacd7b6d2f048dfa94751fab2d566e78b75d16cb29a5a87883d6727f",
+    "adapted_source": "verification/tools/run_auth.py",
+    "adapted_sha256": "3f8282f13948e74f66dbb2c163b99dabeaf6143ae3c021565acb713ca4d0e727",
+    "adaptation_level": "C",
+    "adaptation_notes": ""
+  },
+  "requests": 12,
+  "trigger_result": "触发",
+  "ground_truth": "有漏洞",
+  "model_prediction": null,
+  "failure_kind": null,
+  "success_criteria": [
+    "Admin and ordinary sessions are separately confirmed by the DVWA login banner.",
+    "The admin page/read/update control works at this security level.",
+    "The ordinary-session result is recorded separately for the page, read API and update API.",
+    "Any update is verified by direct MariaDB readback and then restored."
+  ],
+  "limitations": [
+    "Only security=high with the dedicated wp4target object is covered.",
+    "The security cookie is client-controlled; this is recorded as part of the condition, not as a separate vulnerability.",
+    "Single-person review only."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-auth001-high/request.redacted.json",
+      "sha256": "198ccb600ce7269e4f7b0fe783ade223a1515b9ab2b7d093231aabc60240276a",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-auth001-high/response.redacted.txt",
+      "sha256": "1795c991105ca8b73f3b38ab23375fbb1f5ac7feee0087261b07eb75da7a556c",
+      "description": "response.redacted.txt"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-auth001-high/observation.json",
+      "sha256": "3533e1a2a60eebee9994588d27b9879a9d370b1f3ae17ce0ebf4449d849c6a42",
+      "description": "observation.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-auth001-high/restore_result.json",
+      "sha256": "5fca57312ff6dbf1e12ba854325b54fa2a1a2adc5e5fdcf1cf7b6ae6cd28b571",
+      "description": "restore_result.json"
+    }
+  ]
+}

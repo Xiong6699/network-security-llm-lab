@@ -1,0 +1,63 @@
+{
+  "run_id": "wp4-20261019-cmd001-low",
+  "batch_id": "wp4-poc-01",
+  "case_id": "wp4-20261019-cmd001-low",
+  "sample_id": "CMD-001",
+  "path_id": "vulnerabilities/exec/index.php:ip",
+  "condition_key": "env=dvwa-wsl-01|role=admin|security=low|object=none|state=initialized",
+  "input_version": "v2",
+  "prompt_version": null,
+  "source_commit": "068d974487a297c155c48722f9fcf7180a83adc4",
+  "deployment_id": "dvwa-wsl-01",
+  "started_at": "2026-10-19T14:08:38+08:00",
+  "finished_at": "2026-10-19T14:08:45+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent",
+  "reviewer": null,
+  "review_status": "single_person_review_only",
+  "poc": {
+    "original_source": "prompts/trial/pocs/cmd_001.py",
+    "original_sha256": "9fa0232a318d72e26024fa0313d80d22e4ba23bdb0b86eea56f8185e67b44751",
+    "adapted_source": "verification/tools/run_cmd.py",
+    "adapted_sha256": "ca342274fc6fd1ff98402ddcbf256aa758417a31c907fe79114dea4ba0028462",
+    "adaptation_level": "B",
+    "adaptation_notes": ""
+  },
+  "requests": 7,
+  "trigger_result": "触发",
+  "ground_truth": "有漏洞",
+  "model_prediction": null,
+  "failure_kind": null,
+  "success_criteria": [
+    "The normal loopback ping produces the expected command output.",
+    "The marker appears inside the server-side command-output block.",
+    "The marker is not merely reflected in the HTML form or page text.",
+    "The only changed input is ip; the server OS branch is Linux."
+  ],
+  "limitations": [
+    "Only the low exec source path and this Linux container are covered.",
+    "The payload only prints a fixed marker; it does not read files or open a connection."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-cmd001-low/request.redacted.json",
+      "sha256": "2c2a2a374c2a5aa701f3aae55da091a0a74c4de54eb10941593b47acc356ea7a",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-cmd001-low/response.redacted.txt",
+      "sha256": "aab087cb7ce440bc69f6e078757b152d981a0ffde359edfde60276a9b041346e",
+      "description": "response.redacted.txt"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-cmd001-low/observation.json",
+      "sha256": "c5d6a6be35febacc8636a01204bae65403e6d960ecfc1f281b21ccc55c4213b0",
+      "description": "observation.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-cmd001-low/restore_result.json",
+      "sha256": "a9e5fbf25618a89bc7260494273bafece8db396cef61eb3da639c2ac270a88b0",
+      "description": "restore_result.json"
+    }
+  ]
+}

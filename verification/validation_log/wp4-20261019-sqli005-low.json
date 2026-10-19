@@ -1,0 +1,66 @@
+{
+  "run_id": "wp4-20261019-sqli005-low",
+  "batch_id": "wp4-poc-01",
+  "case_id": "wp4-20261019-sqli005-low",
+  "sample_id": "SQLI-005",
+  "path_id": "Less-24 register/login/pass_change",
+  "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=dedicated-wp4v|state=initialized",
+  "input_version": "v2",
+  "prompt_version": null,
+  "source_commit": "e96f21776372c8613a7e565106e62bc01a59355e",
+  "deployment_id": "sqli-labs-wsl-01",
+  "started_at": "2026-10-19T14:08:15+08:00",
+  "finished_at": "2026-10-19T14:08:15+08:00",
+  "timezone": "+08:00",
+  "executor": "wp4-agent",
+  "reviewer": null,
+  "review_status": "single_person_review_only",
+  "poc": {
+    "original_source": null,
+    "original_sha256": null,
+    "adapted_source": "verification/tools/run_sqli005.py",
+    "adapted_sha256": "c43b5e3d5bee888144c5760d5a7b870c38c052ee54161d25150dd8850427e40e",
+    "adaptation_level": "C",
+    "adaptation_notes": ""
+  },
+  "requests": 14,
+  "trigger_result": "触发",
+  "ground_truth": "有漏洞",
+  "model_prediction": null,
+  "failure_kind": null,
+  "success_criteria": [
+    "Normal registration, login and password change complete for a dedicated user.",
+    "The dedicated attacker name is stored verbatim and returned into the session by login.",
+    "An UPDATE issued from the attacker session changes a different dedicated user's password.",
+    "The attacker supplies no valid current password for the victim.",
+    "Independent login checks show the victim's old password fails and the injected password works.",
+    "Dedicated test users are removed after the run."
+  ],
+  "limitations": [
+    "Only the Less-24 registration/login/pass-change chain is covered.",
+    "The deployment uses PHP 5.6 with ext/mysql and MariaDB 10.6; other versions are out of scope.",
+    "The victim is a dedicated account, not a pre-existing administrator."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-sqli005-low/request.redacted.json",
+      "sha256": "286a77ad60a9f05411fbb92f2e7df52725b611ed00106f8f883fbb96779fa004",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli005-low/response.redacted.txt",
+      "sha256": "c86e5842472d7b504abd4e9cdb166a71534ef8ba917812d1a156a0d47343b9b7",
+      "description": "response.redacted.txt"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli005-low/observation.json",
+      "sha256": "beb4526d41c58f2c0193e8d8a2e35190dd7afb22135132787edbfc2e4db0e646",
+      "description": "observation.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli005-low/restore_result.json",
+      "sha256": "8df4f1bd398152e219ca04291c2192d0c071977f04f890371c403b4e66f88ab3",
+      "description": "restore_result.json"
+    }
+  ]
+}

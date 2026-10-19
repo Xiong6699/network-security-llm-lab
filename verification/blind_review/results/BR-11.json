@@ -1,0 +1,46 @@
+{
+  "blind_id": "BR-11",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "Normal registration, login and password change complete for a dedicated user.",
+      "met": "true",
+      "evidence": "victim_registered id=17 with password hash ad9300...; normal login returned 302 to logged-in.php and the page rendered 'wp4v'; pass_change returned 'Password successfully updated' with hash changing ad9300...→99775e..., and normal_flow_restored=true (restore step also reported success)."
+    },
+    {
+      "criterion": "The dedicated attacker name is stored verbatim and returned into the session by login.",
+      "met": "true",
+      "evidence": "Registration body and observation both carry username \"wp4s' OR id=17#\" (payload_length=15, stored_username identical); subsequent login returned 302 to logged-in.php and attacker_session.session_username_contains_payload=true."
+    },
+    {
+      "criterion": "An UPDATE issued from the attacker session changes a different dedicated user's password.",
+      "met": "true",
+      "evidence": "The pass_change POST made with the attacker's Auth/PHPSESSID session reported success and victim_password_changed=true, with the victim row's hash moving 9070... from the pre-injection ad9300...; attacker_password_unchanged=true, so the change hit a different dedicated user."
+    },
+    {
+      "criterion": "The attacker supplies no valid current password for the victim.",
+      "met": "true",
+      "evidence": "The attacker-session pass_change request body carries a redacted current_password recorded as '<not-the-victim-password>'; the victim's password still changed, so the check was bypassed rather than passed."
+    },
+    {
+      "criterion": "Independent login checks show the victim's old password fails and the injected password works.",
+      "met": "true",
+      "evidence": "Separate victim login with the old password returned HTTP 200 with no redirect and an empty session username; login with the injected/new password returned 302 to logged-in.php and logged-in.php showed 'wp4v' (old_password_rejected=true, new_password_accepted=true)."
+    },
+    {
+      "criterion": "Dedicated test users are removed after the run.",
+      "met": "true",
+      "evidence": "cleanup.deleted_dedicated_users=true and remaining_rows=0."
+    }
+  ],
+  "rationale": "正常注册/登录/改密均成功；攻击者以 \"wp4s' OR id=17#\" 注册并登录，会话用户名含该载荷；随后攻击者会话的改密请求成功把另一专用用户 id=17 的口令改为 9070...，而攻击者自身口令未变、未提供受害者当前口令；独立登录校验确认旧口令失败、注入后口令可用；测试用户已清理。证据链完整指向存储型二次注入，故判定触发且有漏洞。",
+  "missing_evidence": [
+    "响应证据在 attacker-logged-in 处被截断，未展示注入 UPDATE 与两次独立登录校验的完整响应正文。",
+    "攻击者账号与受害者账号（id=17）各自的数据库行 id 未分别记录，'不同用户'仅由口令未变/已变间接证明。",
+    "清理结果仅由观察记录声明，缺少清理前后的用户表查询或计数输出。",
+    "所有口令字段均被脱敏，无法直接核对 current_password 确非受害者口令。"
+  ]
+}

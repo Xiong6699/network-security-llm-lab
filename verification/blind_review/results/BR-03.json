@@ -1,0 +1,37 @@
+{
+  "blind_id": "BR-03",
+  "trigger": "未触发",
+  "condition_ground_truth": "无所关注漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "Admin and ordinary sessions are separately confirmed by the DVWA login banner.",
+      "met": "true",
+      "evidence": "两次独立 login POST（admin、gordonb）均 302→index.php，随后各自 GET index.php 返回 200（6530/6453 字节，哈希不同）；且 admin 读 API 得到 6 行而 ordinary 被拒，角色差异证明两个会话相互独立。登录横幅正文被截断，未能直接看到用户名文本。"
+    },
+    {
+      "criterion": "The admin page/read/update control works at this security level.",
+      "met": "unknown",
+      "evidence": "admin 页面 GET 200（4490 字节），admin 读 API 200、shape=list、6 行且 target_present=true，说明页面与读取可用；但 update_api.admin 为 null，管理员更新从未尝试，无法确认 impossible 级别下更新控件可用（仅凭 200 状态不足以证明控件生效）。"
+    },
+    {
+      "criterion": "The ordinary-session result is recorded separately for the page, read API and update API.",
+      "met": "true",
+      "evidence": "page.ordinary_status=403、ordinary_denied=true；read_api.ordinary 单独记录 status=200、shape=object、row_count=0、target_present=false、error=Access denied、ordinary_received_protected_rows=false；update_api.ordinary 单独记录 status=200、result=fail、error=Access denied 及 db_before/db_after。"
+    },
+    {
+      "criterion": "Any update is verified by direct MariaDB readback and then restored.",
+      "met": "true",
+      "evidence": "更新尝试后 db_before 与 db_after 均为 first_name=Wp4、last_name=Target，db_changed=false，restored=true；因无成功更新，回读确认原值未变，恢复实为无变更的空操作。包内仅有汇总字段，无 MariaDB 原始查询输出。"
+    }
+  ],
+  "rationale": "security=impossible 下普通用户 gordonb：authbypass 页面 403；读 API 返回 Access denied、0 行、不含 wp4target；改 API 返回 fail/Access denied，MariaDB 前后均为 Wp4/Target。三条越权路径均被拒，未观察到授权绕过，故未触发；管理员更新未尝试不影响该结论。",
+  "missing_evidence": [
+    "index.php 的完整响应体，尤其是 DVWA 登录横幅中显示的 admin/gordonb 用户名（当前响应体被截断）。",
+    "请求仅记录 cookie 名而未记录 PHPSESSID 与 security 的值，无法核对两个会话 ID 确实不同，也无法从请求侧确认 security=impossible 的取值。",
+    "admin 会话对 change_user_details.php 的更新尝试（update_api.admin 为 null），无法验证 impossible 级别下管理员更新控件可用。",
+    "MariaDB 直接回读的原始查询与输出；包内仅有 db_before/db_after 汇总，且 db_changed=false 时 restored=true 只是空操作，未实际演练恢复流程。",
+    "403 响应（12 字节）与 41 字节 Access denied 响应的正文内容，当前仅有长度与 SHA-256。"
+  ]
+}

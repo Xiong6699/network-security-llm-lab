@@ -1,0 +1,30 @@
+{
+  "blind_id": "BR-17",
+  "trigger": "触发",
+  "condition_ground_truth": "有漏洞",
+  "confidence": "high",
+  "evidence_sufficient": true,
+  "criteria": [
+    {
+      "criterion": "The blacklist removes the literal words or/AND but the true && payload still returns the normal row.",
+      "met": "true",
+      "evidence": "normal (id=1) and true (id=1' && '1'='1) both return the Dumb/Dumb login row at HTTP 200; body 892 vs 903 bytes, difference consistent with the longer reflected hint. Recorded filter is only preg_replace('/or/i','') and preg_replace('/AND/i',''), so '&&' survives and the injected boolean AND evaluates true, reproducing the normal row."
+    },
+    {
+      "criterion": "The false payload, differing only in the compared constant, returns no row.",
+      "met": "true",
+      "evidence": "false (id=1' && '1'='2) is identical to true except '1'='2'; status 200, body 852 bytes, and the login-name element is empty (<font color=\"#FFFF00\"></font>) with no 'Your Login name' text, i.e. no row. This differential rules out reflection/page-size artifacts."
+    },
+    {
+      "criterion": "The filtered hint shows the blacklist did not remove the && operator.",
+      "met": "true",
+      "evidence": "The hint for both true and false echoes the full payloads \"1' && '1'='1\" and \"1' && '1'='2\" with the '&&' intact, while normal echoes \"1\"; correct single quotes are also preserved, confirming no removal of the logical operator."
+    }
+  ],
+  "rationale": "三组请求仅 id 载荷不同：normal 与 true 均返回 Dumb 行，false 仅把比较常量改为 '2' 即无行，且提示回显保留完整 &&。差异行为只能由注入的布尔表达式解释，说明黑名单未拦截 &&，条件被触发。",
+  "missing_evidence": [
+    "A positive-control payload using the literal words 'or'/'AND' (e.g. 1' AND '1'='1) showing the blacklist actually strips them; criterion 1's removal clause is supported only by the recorded filter description, not by an observed filtered input.",
+    "Full untruncated response bodies and a local recomputation of the provided response_sha256 values, so the quoted snippets can be tied byte-for-byte to the recorded responses.",
+    "Coverage beyond the Less-25 GET id path (other parameters/endpoints) if the label is meant to generalize beyond this path; the packet itself limits the claim to this path."
+  ]
+}

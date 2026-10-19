@@ -1,0 +1,544 @@
+===== victim-register-normal | HTTP 200 | http://127.0.0.1:9081/Less-24/login_create.php =====
+<html>
+<head>
+</head>
+<body bgcolor="#000000">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a>
+</div>
+
+
+
+
+
+ 
+<font size='3' color='#FFFF00'></br><center><img src=../images/Less-24-user-created.jpg><font size='3' color='#FFFF00'></br></br></br></br>Redirecting you to login page in 5 sec................<font size='2'></br>If it does not redirect, click the home button on top right</center>
+</body>
+</html>
+
+
+===== victim-login-normal | HTTP 302 | http://127.0.0.1:9081/Less-24/login.php =====
+<html>
+<head>
+</head>
+<body bgcolor="#000000">
+<font size="3" color="#FFFF00">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a>
+</div>
+
+
+
+
+
+ 
+
+
+
+
+
+
+</body>
+</html>
+
+
+===== victim-logged-in-normal | HTTP 200 | http://127.0.0.1:9081/Less-24/logged-in.php =====
+<html>
+<head>
+<title>
+</title>
+</head>
+<body bgcolor="#000000">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a></br></br></br>
+</div>
+<center>
+<img src="../images/Logged-in.jpg"></br><font size="4" color="#FFFF00"></br></br>
+YOU ARE LOGGED IN AS </br> 
+<font size="7" color="#FFFF00"><strong>
+wp4v</strong>
+</br>
+</br>
+<font size="5" color="#FFFF00">
+You can Change your password here.
+
+
+<form name="mylogin" method="POST" action="pass_change.php">
+<table style="margin-top:50px;">
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+<strong>Current Password:</strong></font>
+</td>
+	<td style="text-align:left">
+		<input name="current_password" id="current_password" type="text" value="" /> 
+	</td>
+</tr>
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+	<strong>New Password:</strong>
+</font>
+</td>
+<td style="text-align:left">
+	<input name="password" id="password" type="password" value="" />
+</td>
+</tr>
+
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+<strong>Retype Password:</strong>
+</font>
+</td>
+<td style="text-align:left">
+<input name="re_password" id="re_password" type="password" value="" />
+</td>
+</tr>
+
+
+
+
+<tr>
+<td colspan="2" style="text-align:right">
+<input name="submit" id="submit" type="submit" value="Reset" />
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" style="text-align:right">
+<input name="submit1" id="submit1" type="submit" value="Logout" /><br/><br/>
+</td>
+</tr>
+
+</table>
+
+
+
+</center>
+</body>
+</html>
+
+
+
+===== victim-pass-change-normal | HTTP 200 | http://127.0.0.1:9081/Less-24/pass_change.php =====
+<html>
+<head>
+</head>
+<body bgcolor="#000000">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a>
+</div>
+
+
+
+
+
+ 
+<font size="3" color="#FFFF00"><center>Password successfully updated</center>  
+</body>
+</html>
+
+
+===== victim-login-after-normal-change | HTTP 302 | http://127.0.0.1:9081/Less-24/login.php =====
+<html>
+<head>
+</head>
+<body bgcolor="#000000">
+<font size="3" color="#FFFF00">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a>
+</div>
+
+
+
+
+
+ 
+
+
+
+
+
+
+</body>
+</html>
+
+
+===== victim-pass-restore-normal | HTTP 200 | http://127.0.0.1:9081/Less-24/pass_change.php =====
+<html>
+<head>
+</head>
+<body bgcolor="#000000">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a>
+</div>
+
+
+
+
+
+ 
+<font size="3" color="#FFFF00"><center>Password successfully updated</center>  
+</body>
+</html>
+
+
+===== attacker-register-payload | HTTP 200 | http://127.0.0.1:9081/Less-24/login_create.php =====
+<html>
+<head>
+</head>
+<body bgcolor="#000000">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a>
+</div>
+
+
+
+
+
+ 
+<font size='3' color='#FFFF00'></br><center><img src=../images/Less-24-user-created.jpg><font size='3' color='#FFFF00'></br></br></br></br>Redirecting you to login page in 5 sec................<font size='2'></br>If it does not redirect, click the home button on top right</center>
+</body>
+</html>
+
+
+===== attacker-login-payload | HTTP 302 | http://127.0.0.1:9081/Less-24/login.php =====
+<html>
+<head>
+</head>
+<body bgcolor="#000000">
+<font size="3" color="#FFFF00">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a>
+</div>
+
+
+
+
+
+ 
+
+
+
+
+
+
+</body>
+</html>
+
+
+===== attacker-logged-in | HTTP 200 | http://127.0.0.1:9081/Less-24/logged-in.php =====
+<html>
+<head>
+<title>
+</title>
+</head>
+<body bgcolor="#000000">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a></br></br></br>
+</div>
+<center>
+<img src="../images/Logged-in.jpg"></br><font size="4" color="#FFFF00"></br></br>
+YOU ARE LOGGED IN AS </br> 
+<font size="7" color="#FFFF00"><strong>
+wp4s' OR id=17#</strong>
+</br>
+</br>
+<font size="5" color="#FFFF00">
+You can Change your password here.
+
+
+<form name="mylogin" method="POST" action="pass_change.php">
+<table style="margin-top:50px;">
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+<strong>Current Password:</strong></font>
+</td>
+	<td style="text-align:left">
+		<input name="current_password" id="current_password" type="text" value="" /> 
+	</td>
+</tr>
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+	<strong>New Password:</strong>
+</font>
+</td>
+<td style="text-align:left">
+	<input name="password" id="password" type="password" value="" />
+</td>
+</tr>
+
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+<strong>Retype Password:</strong>
+</font>
+</td>
+<td style="text-align:left">
+<input name="re_password" id="re_password" type="password" value="" />
+</td>
+</tr>
+
+
+
+
+<tr>
+<td colspan="2" style="text-align:right">
+<input name="submit" id="submit" type="submit" value="Reset" />
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" style="text-align:right">
+<input name="submit1" id="submit1" type="submit" value="Logout" /><br/><br/>
+</td>
+</tr>
+
+</table>
+
+
+
+</center>
+</body>
+</html>
+
+
+
+===== attacker-pass-change-injected | HTTP 200 | http://127.0.0.1:9081/Less-24/pass_change.php =====
+<html>
+<head>
+</head>
+<body bgcolor="#000000">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a>
+</div>
+
+
+
+
+
+ 
+<font size="3" color="#FFFF00"><center>Password successfully updated</center>  
+</body>
+</html>
+
+
+===== victim-login-old-after-injection | HTTP 200 | http://127.0.0.1:9081/Less-24/login.php =====
+<html>
+<head>
+</head>
+<body bgcolor="#000000">
+<font size="3" color="#FFFF00">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a>
+</div>
+
+
+
+
+
+ 
+<tr><td colspan="2" style="text-align:center;"><br/><p style="color:#FF0000;">
+<center>
+<img src="../images/slap1.jpg">
+</center>
+</p></td></tr>
+
+
+
+
+
+
+</body>
+</html>
+
+
+===== victim-logged-in-old-after-injection | HTTP 302 | http://127.0.0.1:9081/Less-24/logged-in.php =====
+<html>
+<head>
+<title>
+</title>
+</head>
+<body bgcolor="#000000">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a></br></br></br>
+</div>
+<center>
+<img src="../images/Logged-in.jpg"></br><font size="4" color="#FFFF00"></br></br>
+YOU ARE LOGGED IN AS </br> 
+<font size="7" color="#FFFF00"><strong>
+</strong>
+</br>
+</br>
+<font size="5" color="#FFFF00">
+You can Change your password here.
+
+
+<form name="mylogin" method="POST" action="pass_change.php">
+<table style="margin-top:50px;">
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+<strong>Current Password:</strong></font>
+</td>
+	<td style="text-align:left">
+		<input name="current_password" id="current_password" type="text" value="" /> 
+	</td>
+</tr>
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+	<strong>New Password:</strong>
+</font>
+</td>
+<td style="text-align:left">
+	<input name="password" id="password" type="password" value="" />
+</td>
+</tr>
+
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+<strong>Retype Password:</strong>
+</font>
+</td>
+<td style="text-align:left">
+<input name="re_password" id="re_password" type="password" value="" />
+</td>
+</tr>
+
+
+
+
+<tr>
+<td colspan="2" style="text-align:right">
+<input name="submit" id="submit" type="submit" value="Reset" />
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" style="text-align:right">
+<input name="submit1" id="submit1" type="submit" value="Logout" /><br/><br/>
+</td>
+</tr>
+
+</table>
+
+
+
+</center>
+</body>
+</html>
+
+
+
+===== victim-login-new-after-injection | HTTP 302 | http://127.0.0.1:9081/Less-24/login.php =====
+<html>
+<head>
+</head>
+<body bgcolor="#000000">
+<font size="3" color="#FFFF00">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a>
+</div>
+
+
+
+
+
+ 
+
+
+
+
+
+
+</body>
+</html>
+
+
+===== victim-logged-in-new-after-injection | HTTP 200 | http://127.0.0.1:9081/Less-24/logged-in.php =====
+<html>
+<head>
+<title>
+</title>
+</head>
+<body bgcolor="#000000">
+<div align="right">
+<a style="font-size:.8em;color:#FFFF00" href='index.php'><img src="../images/Home.png" height='45'; width='45'></br>HOME</a></br></br></br>
+</div>
+<center>
+<img src="../images/Logged-in.jpg"></br><font size="4" color="#FFFF00"></br></br>
+YOU ARE LOGGED IN AS </br> 
+<font size="7" color="#FFFF00"><strong>
+wp4v</strong>
+</br>
+</br>
+<font size="5" color="#FFFF00">
+You can Change your password here.
+
+
+<form name="mylogin" method="POST" action="pass_change.php">
+<table style="margin-top:50px;">
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+<strong>Current Password:</strong></font>
+</td>
+	<td style="text-align:left">
+		<input name="current_password" id="current_password" type="text" value="" /> 
+	</td>
+</tr>
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+	<strong>New Password:</strong>
+</font>
+</td>
+<td style="text-align:left">
+	<input name="password" id="password" type="password" value="" />
+</td>
+</tr>
+
+<tr>
+<td style="text-align:right">
+<font size="3" color="#FFFF00">
+<strong>Retype Password:</strong>
+</font>
+</td>
+<td style="text-align:left">
+<input name="re_password" id="re_password" type="password" value="" />
+</td>
+</tr>
+
+
+
+
+<tr>
+<td colspan="2" style="text-align:right">
+<input name="submit" id="submit" type="submit" value="Reset" />
+
+</td>
+</tr>
+
+<tr>
+<td colspan="2" style="text-align:right">
+<input name="submit1" id="submit1" type="submit" value="Logout" /><br/><br/>
+</td>
+</tr>
+
+</table>
+
+
+
+</center>
+</body>
+</html>
+
+

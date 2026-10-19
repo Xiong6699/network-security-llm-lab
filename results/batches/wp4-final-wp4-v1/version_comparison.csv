@@ -1,0 +1,15 @@
+﻿sample_id,baseline_prediction,variant_prediction,baseline_class,variant_class,class_change,baseline_poc_score,variant_poc_score,delta,baseline_exclusion_evidence,variant_exclusion_evidence,path_coverage_baseline,path_coverage_variant
+AUTH-001,存在候选,存在候选,TP,TP,same,3/4,3/4,0,0,0,read+update,read+update
+CMD-001,存在候选,存在候选,TP,TP,same,3/4,3/4,0,0,0,single_path,single_path
+CMD-002,存在候选,存在候选,TP,TP,same,4/4,4/4,0,0,0,single_path,single_path
+CMD-003,存在候选,存在候选,TP,TP,same,3/4,4/4,1,0,0,single_path,single_path
+CMD-004,未检出候选,未检出候选,TN,TN,same,n/a,n/a,0,7,5,single_path,single_path
+SQLI-001,存在候选,存在候选,TP,TP,same,4/4,4/4,0,0,0,single_path,single_path
+SQLI-002,存在候选,存在候选,TP,TP,same,4/4,4/4,0,0,0,single_path,single_path
+SQLI-003,存在候选,存在候选,TP,TP,same,4/4,4/4,0,0,0,single_path,single_path
+SQLI-005,存在候选,存在候选,TP,TP,same,4/5,5/5,1,0,0,multi_stage,multi_stage
+XSS-001,存在候选,存在候选,TP,TP,same,3/3,3/3,0,0,0,single_path,single_path
+XSS-002,存在候选,存在候选,TP,TP,same,2/3,3/3,1,0,0,single_path,single_path
+XSS-003,存在候选,存在候选,TP,TP,same,2/3,3/3,1,0,0,single_path,single_path
+XSS-004,未检出候选,未检出候选,TN,TN,same,n/a,n/a,0,4,3,single_path,single_path
+XSS-005,存在候选,存在候选,TP,TP,same,4/5,5/5,1,0,0,write+read,write+read

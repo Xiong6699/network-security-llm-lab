@@ -1,0 +1,224 @@
+{
+  "generated_at": "2026-10-19T14:43:07+08:00",
+  "timezone": "+08:00",
+  "deployments": {
+    "sqli-labs-wsl-01": {
+      "source_dir": "/srv/source_projects/sqli-labs",
+      "deployed_dir": "/srv/web/sqli-labs",
+      "commit": "e96f21776372c8613a7e565106e62bc01a59355e",
+      "files": {
+        "Less-1/index.php": {
+          "source_sha256": "1e38f410149c65831cf19f1913d77a714bab78bd60e561e8ca5571dc70873178",
+          "deployed_sha256": "1e38f410149c65831cf19f1913d77a714bab78bd60e561e8ca5571dc70873178",
+          "identical": true,
+          "bytes": 1464
+        },
+        "Less-11/index.php": {
+          "source_sha256": "ab3d1f79aa24c509e54a5b94d7401fadb8faea7a0868d55361e3a26a5ab76b2e",
+          "deployed_sha256": "ab3d1f79aa24c509e54a5b94d7401fadb8faea7a0868d55361e3a26a5ab76b2e",
+          "identical": true,
+          "bytes": 2708
+        },
+        "Less-25/index.php": {
+          "source_sha256": "293c0b4ba433160d0cc811b4b58b545423df5a77158157c878e0062a0a7c466f",
+          "deployed_sha256": "293c0b4ba433160d0cc811b4b58b545423df5a77158157c878e0062a0a7c466f",
+          "identical": true,
+          "bytes": 1985
+        },
+        "Less-24/login.php": {
+          "source_sha256": "8065e89386cf1a98bd6a3337ecb9b0886c4744b66e8573c532b19108d16d5d21",
+          "deployed_sha256": "8065e89386cf1a98bd6a3337ecb9b0886c4744b66e8573c532b19108d16d5d21",
+          "identical": true,
+          "bytes": 1261
+        },
+        "Less-24/login_create.php": {
+          "source_sha256": "66f697af12e79e48785aee028daa35872d823b047ec976cabaf56918f4f9dc14",
+          "deployed_sha256": "66f697af12e79e48785aee028daa35872d823b047ec976cabaf56918f4f9dc14",
+          "identical": true,
+          "bytes": 1955
+        },
+        "Less-24/pass_change.php": {
+          "source_sha256": "e7dd7b41de7bbcfbc848639beeaf18a437e263fc14526a551075a3bc2b4e5ea7",
+          "deployed_sha256": "e7dd7b41de7bbcfbc848639beeaf18a437e263fc14526a551075a3bc2b4e5ea7",
+          "identical": true,
+          "bytes": 1571
+        },
+        "Less-24/logged-in.php": {
+          "source_sha256": "4658659f50a3cbf2ef853e862184dbeb91b5335173d3d85a33bf2d69d1c6a7a4",
+          "deployed_sha256": "4658659f50a3cbf2ef853e862184dbeb91b5335173d3d85a33bf2d69d1c6a7a4",
+          "identical": true,
+          "bytes": 1774
+        },
+        "sql-connections/sql-connect.php": {
+          "source_sha256": "63addc74cdf08772db4557a2084ac4bfe5210b161a3d47037501bf55a832c9a3",
+          "deployed_sha256": "63addc74cdf08772db4557a2084ac4bfe5210b161a3d47037501bf55a832c9a3",
+          "identical": true,
+          "bytes": 725
+        },
+        "sql-connections/db-creds.inc": {
+          "source_sha256": "87aa6d4aaa043bec0ce2763024ec206e54e27bbbc736c73d16a7a0188734bdfe",
+          "deployed_sha256": "87aa6d4aaa043bec0ce2763024ec206e54e27bbbc736c73d16a7a0188734bdfe",
+          "identical": true,
+          "bytes": 160
+        },
+        "sql-connections/setup-db.php": {
+          "source_sha256": "7cd6a2805a0170679071a0c35d1dc5cba40070bdfb624dadb136c5060b5b4b5a",
+          "deployed_sha256": "7cd6a2805a0170679071a0c35d1dc5cba40070bdfb624dadb136c5060b5b4b5a",
+          "identical": true,
+          "bytes": 5030
+        }
+      }
+    },
+    "dvwa-wsl-01": {
+      "source_dir": "/srv/source_projects/DVWA",
+      "deployed_dir": "/srv/web/dvwa",
+      "commit": "068d974487a297c155c48722f9fcf7180a83adc4",
+      "files": {
+        "vulnerabilities/xss_r/source/low.php": {
+          "source_sha256": "fb3c6fd9937697d4473cb9a2a9267df44b7e8620b16a4189189e76455d351833",
+          "deployed_sha256": "fb3c6fd9937697d4473cb9a2a9267df44b7e8620b16a4189189e76455d351833",
+          "identical": true,
+          "bytes": 229
+        },
+        "vulnerabilities/xss_r/source/medium.php": {
+          "source_sha256": "b2b44ca0f6dd017a5a81a3461668072e15b4481b0c5eebf6da42abcbc94830ad",
+          "deployed_sha256": "b2b44ca0f6dd017a5a81a3461668072e15b4481b0c5eebf6da42abcbc94830ad",
+          "identical": true,
+          "bytes": 288
+        },
+        "vulnerabilities/xss_r/source/high.php": {
+          "source_sha256": "1df9d34ce72f26e3f9cdf4878a23094e194dbabda0d2091547702a51f2851612",
+          "deployed_sha256": "1df9d34ce72f26e3f9cdf4878a23094e194dbabda0d2091547702a51f2851612",
+          "identical": true,
+          "bytes": 315
+        },
+        "vulnerabilities/xss_r/source/impossible.php": {
+          "source_sha256": "6cff3122f97aec856e57134f497cb79079929d7efa1aca3eb75748ea3cc28dd3",
+          "deployed_sha256": "6cff3122f97aec856e57134f497cb79079929d7efa1aca3eb75748ea3cc28dd3",
+          "identical": true,
+          "bytes": 413
+        },
+        "vulnerabilities/xss_s/source/low.php": {
+          "source_sha256": "fd08b4c5d29111581d0ce36ce2a54febd236d4ed3bd7b64d53d6eae9b0f433a0",
+          "deployed_sha256": "fd08b4c5d29111581d0ce36ce2a54febd236d4ed3bd7b64d53d6eae9b0f433a0",
+          "identical": true,
+          "bytes": 1208
+        },
+        "vulnerabilities/xss_s/index.php": {
+          "source_sha256": "88c6ade99cb248f5ae211a49cc23f56d48fe07c6e2d63175f76116e3560a8df5",
+          "deployed_sha256": "88c6ade99cb248f5ae211a49cc23f56d48fe07c6e2d63175f76116e3560a8df5",
+          "identical": true,
+          "bytes": 2870
+        },
+        "vulnerabilities/exec/source/low.php": {
+          "source_sha256": "399a0d5dd28436a952a5bb0d14390eb421e57ab2e7add68813b6ce283cc70f28",
+          "deployed_sha256": "399a0d5dd28436a952a5bb0d14390eb421e57ab2e7add68813b6ce283cc70f28",
+          "identical": true,
+          "bytes": 404
+        },
+        "vulnerabilities/exec/source/medium.php": {
+          "source_sha256": "c25e0a1a61a4c36eedad8c0d54178e88d030f3c2886fe34edea5ae5054c398c0",
+          "deployed_sha256": "c25e0a1a61a4c36eedad8c0d54178e88d030f3c2886fe34edea5ae5054c398c0",
+          "identical": true,
+          "bytes": 630
+        },
+        "vulnerabilities/exec/source/high.php": {
+          "source_sha256": "e3b703d6180c5c1e62fd09f78036e193a16025ffe208be9d90bb19d71a08db7f",
+          "deployed_sha256": "e3b703d6180c5c1e62fd09f78036e193a16025ffe208be9d90bb19d71a08db7f",
+          "identical": true,
+          "bytes": 741
+        },
+        "vulnerabilities/exec/source/impossible.php": {
+          "source_sha256": "26b294a69538ae5de36b8669fdaef85022814bfaa253f7678b2ac5fa295ab543",
+          "deployed_sha256": "26b294a69538ae5de36b8669fdaef85022814bfaa253f7678b2ac5fa295ab543",
+          "identical": true,
+          "bytes": 1159
+        },
+        "vulnerabilities/exec/index.php": {
+          "source_sha256": "b1d993eb1fd41c0f5aca289639cc0f642a8aa15f91dc7a6eeb68b13842113f37",
+          "deployed_sha256": "b1d993eb1fd41c0f5aca289639cc0f642a8aa15f91dc7a6eeb68b13842113f37",
+          "identical": true,
+          "bytes": 1829
+        },
+        "vulnerabilities/authbypass/index.php": {
+          "source_sha256": "a8d7a08fdcc6d93d2bf73f78ac1d66f1e112e1631848e24fb2fd89ad5b89ced9",
+          "deployed_sha256": "a8d7a08fdcc6d93d2bf73f78ac1d66f1e112e1631848e24fb2fd89ad5b89ced9",
+          "identical": true,
+          "bytes": 1817
+        },
+        "vulnerabilities/authbypass/source/low.php": {
+          "source_sha256": "6c959af90b19be7be17b14760701b605a12e295e261a96a2d53655de419571b3",
+          "deployed_sha256": "6c959af90b19be7be17b14760701b605a12e295e261a96a2d53655de419571b3",
+          "identical": true,
+          "bytes": 160
+        },
+        "vulnerabilities/authbypass/source/medium.php": {
+          "source_sha256": "e09b69932bea418fe0de4891847b33aed614cad4a92214e992ba773ddf9ca808",
+          "deployed_sha256": "e09b69932bea418fe0de4891847b33aed614cad4a92214e992ba773ddf9ca808",
+          "identical": true,
+          "bytes": 346
+        },
+        "vulnerabilities/authbypass/source/high.php": {
+          "source_sha256": "e284b44a6c6e76e1071879aa26a0a7d6fbd66ba3af79fe191219a5a35fa89f9c",
+          "deployed_sha256": "e284b44a6c6e76e1071879aa26a0a7d6fbd66ba3af79fe191219a5a35fa89f9c",
+          "identical": true,
+          "bytes": 292
+        },
+        "vulnerabilities/authbypass/source/impossible.php": {
+          "source_sha256": "3214fa65ca0207b262c5027159d997bb4c2c7f4c4c5711a707a9e4fdccd97a21",
+          "deployed_sha256": "3214fa65ca0207b262c5027159d997bb4c2c7f4c4c5711a707a9e4fdccd97a21",
+          "identical": true,
+          "bytes": 176
+        },
+        "vulnerabilities/authbypass/get_user_data.php": {
+          "source_sha256": "1fa87751bccbb490bd5874a295d5ebec98e861bfb46b94902f05e458b5c5c7fa",
+          "deployed_sha256": "1fa87751bccbb490bd5874a295d5ebec98e861bfb46b94902f05e458b5c5c7fa",
+          "identical": true,
+          "bytes": 1051
+        },
+        "vulnerabilities/authbypass/change_user_details.php": {
+          "source_sha256": "a153214888e317e4cf15a3cf5c328821f3a0a9750a1737986589c6c7ac1a046a",
+          "deployed_sha256": "a153214888e317e4cf15a3cf5c328821f3a0a9750a1737986589c6c7ac1a046a",
+          "identical": true,
+          "bytes": 1558
+        },
+        "vulnerabilities/authbypass/authbypass.js": {
+          "source_sha256": "4e5a493f5688bd8dff72e260742ad74a9cdb51e4a00bd223acf531094ffeb578",
+          "deployed_sha256": "4e5a493f5688bd8dff72e260742ad74a9cdb51e4a00bd223acf531094ffeb578",
+          "identical": true,
+          "bytes": 1842
+        },
+        "dvwa/includes/dvwaPage.inc.php": {
+          "source_sha256": "bea6c28500f15705ad5cfedf8c501706bf36a293f22419e7a63651907495f3b8",
+          "deployed_sha256": "bea6c28500f15705ad5cfedf8c501706bf36a293f22419e7a63651907495f3b8",
+          "identical": true,
+          "bytes": 24327
+        },
+        "login.php": {
+          "source_sha256": "1d2aa76fbd9368eddb53bb30713b2e90c99e4d51a2f37c803453e8a07c7a2416",
+          "deployed_sha256": "1d2aa76fbd9368eddb53bb30713b2e90c99e4d51a2f37c803453e8a07c7a2416",
+          "identical": true,
+          "bytes": 4343
+        },
+        "setup.php": {
+          "source_sha256": "97082455623767a43eef6ef6ced586f9884e6cdd5d50bdcc5151b3a0d6a17028",
+          "deployed_sha256": "97082455623767a43eef6ef6ced586f9884e6cdd5d50bdcc5151b3a0d6a17028",
+          "identical": true,
+          "bytes": 5552
+        },
+        "security.php": {
+          "source_sha256": "1d831cae8ec873dc7be0aba295d676b14e8e85bc10a6df6bbe42d13bea67f2be",
+          "deployed_sha256": "1d831cae8ec873dc7be0aba295d676b14e8e85bc10a6df6bbe42d13bea67f2be",
+          "identical": true,
+          "bytes": 3300
+        }
+      }
+    }
+  },
+  "local_config_differences": [
+    "DVWA: config/config.inc.php added locally from config.inc.php.dist; DB credentials are local-only and not committed.",
+    "DVWA: default_security_level set to low for the local lab; individual requests force the target level through the security cookie.",
+    "SQLi-Labs: sql-connections/db-creds.inc is unchanged (root over the local unix socket); PHP 5.6 is configured with mysql.default_socket=/run/mysqld/mysqld.sock.",
+    "Both labs run on PHP's built-in HTTP server rather than Apache; this changes the SAPI, not the audited PHP source."
+  ]
+}

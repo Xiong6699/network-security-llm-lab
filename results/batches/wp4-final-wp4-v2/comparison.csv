@@ -1,0 +1,15 @@
+﻿sample_id,ground_truth,baseline_prediction,v1_prediction,v2_prediction,baseline_status,v1_status,v2_status,v2_vulnerability_types,v2_exclusion_count
+SQLI-001,有漏洞,存在候选,存在候选,存在候选,completed,strict_protocol_failed,completed,SQL注入,0
+SQLI-002,有漏洞,存在候选,存在候选,存在候选,strict_protocol_failed,strict_protocol_failed,completed,SQL注入,0
+SQLI-003,有漏洞,存在候选,存在候选,存在候选,completed,strict_protocol_failed,completed,SQL注入,0
+SQLI-005,有漏洞,存在候选,存在候选,存在候选,strict_protocol_failed,strict_protocol_failed,completed,SQL注入,0
+XSS-001,有漏洞,存在候选,存在候选,存在候选,strict_protocol_failed,strict_protocol_failed,completed,XSS,0
+XSS-002,有漏洞,存在候选,存在候选,存在候选,strict_protocol_failed,strict_protocol_failed,completed,XSS,0
+XSS-003,有漏洞,存在候选,存在候选,存在候选,strict_protocol_failed,strict_protocol_failed,completed,XSS,0
+XSS-004,无所关注漏洞,未检出候选,未检出候选,未检出候选,completed,completed,completed,,6
+XSS-005,有漏洞,存在候选,存在候选,存在候选,strict_protocol_failed,strict_protocol_failed,completed,XSS,0
+CMD-001,有漏洞,存在候选,存在候选,存在候选,completed,completed,completed,命令注入,0
+CMD-002,有漏洞,存在候选,存在候选,存在候选,strict_protocol_failed,completed,completed,命令注入,0
+CMD-003,有漏洞,存在候选,存在候选,存在候选,strict_protocol_failed,strict_protocol_failed,completed,命令注入,0
+CMD-004,无所关注漏洞,未检出候选,未检出候选,未检出候选,completed,completed,completed,,13
+AUTH-001,有漏洞,存在候选,存在候选,存在候选,strict_protocol_failed,strict_protocol_failed,completed,权限越权,5

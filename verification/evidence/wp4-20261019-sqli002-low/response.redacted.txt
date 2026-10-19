@@ -1,0 +1,155 @@
+===== normal | HTTP 200 | http://127.0.0.1:9081/Less-11/index.php =====
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Less-11- Error Based- String</title>
+</head>
+
+<body bgcolor="#000000">
+<div style=" margin-top:20px;color:#FFF; font-size:24px; text-align:center"> Welcome&nbsp;&nbsp;<font color="#FF0000"> Dhakkan </font><br></div>
+
+<div  align="center" style="margin:40px 0px 0px 520px;border:20px; background-color:#0CF; text-align:center; width:400px; height:150px;">
+
+<div style="padding-top:10px; font-size:15px;">
+ 
+
+<!--Form to post the data for sql injections Error based SQL Injection-->
+<form action="" name="form1" method="post">
+	<div style="margin-top:15px; height:30px;">Username : &nbsp;&nbsp;&nbsp;
+	    <input type="text"  name="uname" value=""/>
+	</div>  
+	<div> Password  : &nbsp;&nbsp;&nbsp;
+		<input type="text" name="passwd" value=""/>
+	</div></br>
+	<div style=" margin-top:9px;margin-left:90px;">
+		<input type="submit" name="submit" value="Submit" />
+	</div>
+</form>
+
+</div></div>
+
+<div style=" margin-top:10px;color:#FFF; font-size:23px; text-align:center">
+<font size="6" color="#FFFF00">
+
+
+
+
+
+
+
+
+
+
+ 
+<br><font color= "#FFFF00" font size = 4><font size="3" color="#0000ff"><br>Your Login name:Dumb<br>Your Password:Dumb<br></font><br><br><img src="../images/flag.jpg"  /></font>
+
+</font>
+</div>
+</body>
+</html>
+
+
+===== true | HTTP 200 | http://127.0.0.1:9081/Less-11/index.php =====
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Less-11- Error Based- String</title>
+</head>
+
+<body bgcolor="#000000">
+<div style=" margin-top:20px;color:#FFF; font-size:24px; text-align:center"> Welcome&nbsp;&nbsp;<font color="#FF0000"> Dhakkan </font><br></div>
+
+<div  align="center" style="margin:40px 0px 0px 520px;border:20px; background-color:#0CF; text-align:center; width:400px; height:150px;">
+
+<div style="padding-top:10px; font-size:15px;">
+ 
+
+<!--Form to post the data for sql injections Error based SQL Injection-->
+<form action="" name="form1" method="post">
+	<div style="margin-top:15px; height:30px;">Username : &nbsp;&nbsp;&nbsp;
+	    <input type="text"  name="uname" value=""/>
+	</div>  
+	<div> Password  : &nbsp;&nbsp;&nbsp;
+		<input type="text" name="passwd" value=""/>
+	</div></br>
+	<div style=" margin-top:9px;margin-left:90px;">
+		<input type="submit" name="submit" value="Submit" />
+	</div>
+</form>
+
+</div></div>
+
+<div style=" margin-top:10px;color:#FFF; font-size:23px; text-align:center">
+<font size="6" color="#FFFF00">
+
+
+
+
+
+
+
+
+
+
+ 
+<br><font color= "#FFFF00" font size = 4><font size="3" color="#0000ff"><br>Your Login name:Dumb<br>Your Password:Dumb<br></font><br><br><img src="../images/flag.jpg"  /></font>
+
+</font>
+</div>
+</body>
+</html>
+
+
+===== false | HTTP 200 | http://127.0.0.1:9081/Less-11/index.php =====
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Less-11- Error Based- String</title>
+</head>
+
+<body bgcolor="#000000">
+<div style=" margin-top:20px;color:#FFF; font-size:24px; text-align:center"> Welcome&nbsp;&nbsp;<font color="#FF0000"> Dhakkan </font><br></div>
+
+<div  align="center" style="margin:40px 0px 0px 520px;border:20px; background-color:#0CF; text-align:center; width:400px; height:150px;">
+
+<div style="padding-top:10px; font-size:15px;">
+ 
+
+<!--Form to post the data for sql injections Error based SQL Injection-->
+<form action="" name="form1" method="post">
+	<div style="margin-top:15px; height:30px;">Username : &nbsp;&nbsp;&nbsp;
+	    <input type="text"  name="uname" value=""/>
+	</div>  
+	<div> Password  : &nbsp;&nbsp;&nbsp;
+		<input type="text" name="passwd" value=""/>
+	</div></br>
+	<div style=" margin-top:9px;margin-left:90px;">
+		<input type="submit" name="submit" value="Submit" />
+	</div>
+</form>
+
+</div></div>
+
+<div style=" margin-top:10px;color:#FFF; font-size:23px; text-align:center">
+<font size="6" color="#FFFF00">
+
+
+
+
+
+
+
+
+
+
+ 
+<font color= "#0000ff" font size="3"></br></br></br><img src="../images/slap.jpg" /></font>
+
+</font>
+</div>
+</body>
+</html>
+

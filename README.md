@@ -6,6 +6,8 @@
 
 实验不要求训练模型、开发完整审计引擎或复杂扫描框架。各模块以可追溯的代码、判定依据和运行证据交接，静态分析与实测结论分别记录。
 
+**总报告**：[从工作包1到工作包4的实验全过程与主要原理](docs/final_report.md)，内含结果汇总、代表案例、限制、10 页展示提纲与答辩口径。
+
 ## 当前进度
 
 ### 工作包 1 代码预处理与数据标准化
@@ -16,9 +18,9 @@
 
 ### 工作包 2 Prompt 提示词工程
 
-已基于上述输入准备 v1、v2、final 三版四段式 Prompt、四类专属规则、固定输出协议和 POC 约束，并记录初步分析草案。完整 14 个父样本的正式评测输入及待填记录已准备。
+已基于上述输入准备 v1、v2、final 三版四段式 Prompt、四类专属规则、固定输出协议和 POC 约束，并记录初步分析草案。14 个父样本、每版 17 包的 42 条评测记录已由独立上下文子代理运行并标记 `completed`；原始输出、结构化副本和指标见 `results/batches/wp2-eval-42/`。
 
-现有试用材料来自同一 Codex 会话的整理草案，不代表独立模型调用或实测结果。独立模型评测、POC 实测及误报漏报指标尚待完成。
+该 42 条批次是 DeepSeek Harness 子代理辅助结果，不是正式商业 API 成绩；模型快照、采样参数与用量不可取得。三版分类均为 14/14，但严格静态协议分别为 v1 5/14、v2 8/14、final 4/14。trial 草案仍不代表独立模型调用。POC 实测与正式 API 复核仍待完成。
 
 使用方法见[工作包 2 使用说明](prompts/README.md)，报告材料见[模块 2 设计](docs/module2_design.md)，接口见[工作包 2 交接说明](prompts/handoff.md)。
 
@@ -36,9 +38,14 @@
 
 ### 工作包 4 POC 验证与结果优化
 
-接收前述样本、Prompt、分析与核验条件，负责搭建授权本地环境、适配并执行 POC、保存证据、对比判断及归因，并开展结果校验和优化复测。
+已在 WSL2 Ubuntu 22.04 中按固定提交部署完整 DVWA（PHP 8.1）与 SQLi-Labs（PHP 5.6 + ext/mysql），完成 14 个父样本、17 条条件/路径运行：12 个父样本确认存在目标漏洞，XSS-004 与 CMD-004 在已测路径/条件下未取得漏洞证据。AUTH-001 另按 low/medium/high/impossible 四档分别验证，确认读取与更新保护不一致。
 
-当前所检查的仓库材料未提供上述案例的实际 POC 运行证据，不将草案或静态检查结果填为实测成绩。
+证据、环境、runbook、POC 适配和逐次记录见 `verification/`；人工标签、POC 指标与失败归因见 `results/batches/wp4-poc-01/`。模型侧完成了 final、final-wp4-v1 与 final-wp4-v2 各 14 个父样本的辅助批次（DeepSeek Harness 子代理，非正式 API），分类均为 14/14；优化轮把 POC 证据契约从 40/47 提升到 45/47，但严格静态协议从 5/14 退到 4/14、负例排除证据条数也下降，因此是混合结果而非全面成功。`final-wp4-v2` 随后把严格协议修正到 14/14，并把 XSS-004/CMD-004 的排除证据从 3/5 恢复到 6/13。详见[模块 4 报告](docs/module4_report.md)、[优化复测报告](results/optimization_report.md)与[清理检查](verification/cleanup_checklist.md)。
+
+17 条 `single_person_review_only` 运行已完成独立盲评：复核人只收到脱敏证据、不知道原判断与正式标签，触发判断和条件标签均为 17/17 一致；盲评记录见[盲评报告](verification/blind_review/report.md)。这仍是子代理辅助复核，不替代人工小组成员签字。
+
+v1/v2/final 的 42 条记录已在独立子代理上下文中运行并填入 `prompts/evaluation_records.csv`（状态 `completed`），分类均为 14/14；但模型快照、采样参数与用量不可取得，不是正式商业 API 成绩，限制见[批次说明](results/batches/wp2-eval-42/README.md)。
+
 
 ## 目录与分工
 

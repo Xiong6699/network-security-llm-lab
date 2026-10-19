@@ -1,0 +1,251 @@
+{
+  "scope": "Protocol, quote/line consistency, strict type and negative-exclusion count; no model calls or POC execution",
+  "output_count": 14,
+  "passed_count": 14,
+  "results": [
+    {
+      "sample_id": "SQLI-001",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/SQLI-001.json",
+      "sha256": "1830c930b728c4dbfb0869a45d7425a02ed604de1a5e3d28f04c13d889cbb59e",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 1,
+      "exclusion_count": 0,
+      "vulnerability_types": [
+        "SQL注入"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    },
+    {
+      "sample_id": "SQLI-002",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/SQLI-002.json",
+      "sha256": "bf57e24975a5ac1fb630b4bc6d3707929c60a1983b44ed849116462f25c7af0a",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 1,
+      "exclusion_count": 0,
+      "vulnerability_types": [
+        "SQL注入"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    },
+    {
+      "sample_id": "SQLI-003",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/SQLI-003.json",
+      "sha256": "99f1f6619cc8d19578a12518dd30d86da8bde0bf0c6200f65213dc891ce17a09",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 1,
+      "exclusion_count": 0,
+      "vulnerability_types": [
+        "SQL注入"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    },
+    {
+      "sample_id": "SQLI-005",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/SQLI-005.json",
+      "sha256": "878ff36ccae139bcb5de2434f80be4f21394ca7fa1a6e39cfbf64f6f4920a7b9",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 1,
+      "exclusion_count": 0,
+      "vulnerability_types": [
+        "SQL注入"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    },
+    {
+      "sample_id": "XSS-001",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/XSS-001.json",
+      "sha256": "cac63293a5bee8c3f103f2dcf958a5e211d22385f1efde161c2ad71079277469",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 1,
+      "exclusion_count": 0,
+      "vulnerability_types": [
+        "XSS"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    },
+    {
+      "sample_id": "XSS-002",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/XSS-002.json",
+      "sha256": "a0393dd1ec5e8841a28e7590a454cc90f6acde1d8496208cb912646f6f0b6b93",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 1,
+      "exclusion_count": 0,
+      "vulnerability_types": [
+        "XSS"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    },
+    {
+      "sample_id": "XSS-003",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/XSS-003.json",
+      "sha256": "00288a66bec3a928741bad06f8672632132c634a51e2ad2930310cb06a21ddad",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 1,
+      "exclusion_count": 0,
+      "vulnerability_types": [
+        "XSS"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    },
+    {
+      "sample_id": "XSS-004",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/XSS-004.json",
+      "sha256": "f3e631f824784fe41426a298edf7aebe43a0bf38fca1782bfae775f3a5ce72d7",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "未检出候选",
+      "verdict": "排除",
+      "finding_count": 0,
+      "exclusion_count": 6,
+      "vulnerability_types": [],
+      "success_criteria_types": []
+    },
+    {
+      "sample_id": "XSS-005",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/XSS-005.json",
+      "sha256": "5d9c3dfbdbb5ca268d31b77cf8a1a6ce2262d9465e758dcce0d28910964cf713",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 1,
+      "exclusion_count": 0,
+      "vulnerability_types": [
+        "XSS"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    },
+    {
+      "sample_id": "CMD-001",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/CMD-001.json",
+      "sha256": "bc47a87a2fa1d35380de19a1c5102fd08716af6facc9916eaf4bad76bffe3065",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 1,
+      "exclusion_count": 0,
+      "vulnerability_types": [
+        "命令注入"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    },
+    {
+      "sample_id": "CMD-002",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/CMD-002.json",
+      "sha256": "7cfc9eb2edfd68d2f42711b49c1e46098ed2e9284ebe23bd7461a7731f552b6a",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 1,
+      "exclusion_count": 0,
+      "vulnerability_types": [
+        "命令注入"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    },
+    {
+      "sample_id": "CMD-003",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/CMD-003.json",
+      "sha256": "864b6438f063374a846110b3a5bd780620da1fa9d982b93438a79d68015a0433",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 1,
+      "exclusion_count": 0,
+      "vulnerability_types": [
+        "命令注入"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    },
+    {
+      "sample_id": "CMD-004",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/CMD-004.json",
+      "sha256": "85d1ce397ef1e03e53ee1548c59b6ba5d90234228fd5945b8f2732c21b3d7f3d",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "未检出候选",
+      "verdict": "排除",
+      "finding_count": 0,
+      "exclusion_count": 13,
+      "vulnerability_types": [],
+      "success_criteria_types": []
+    },
+    {
+      "sample_id": "AUTH-001",
+      "prompt_version": "final-wp4-v2",
+      "file": "results/batches/wp4-final-wp4-v2/raw_outputs/AUTH-001.json",
+      "sha256": "62cf71045b8b4fc64797c08368d47efc648c89b7ed081279a7f44178bdfbd246",
+      "status": "passed_static_protocol",
+      "error": "",
+      "prediction": "存在候选",
+      "verdict": "待验证",
+      "finding_count": 2,
+      "exclusion_count": 5,
+      "vulnerability_types": [
+        "权限越权"
+      ],
+      "success_criteria_types": [
+        "str"
+      ]
+    }
+  ]
+}

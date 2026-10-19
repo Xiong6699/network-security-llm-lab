@@ -1,0 +1,18 @@
+{
+  "run_id": "wp4-20261019-xss004-impossible",
+  "sample_id": "XSS-004",
+  "security_level": "impossible",
+  "scenario": "encoded-output-with-token",
+  "payload": "<svg onload=\"window.__wp4xss='WP4XSS004';document.title='WP4XSS004'\">",
+  "url": "http://127.0.0.1:9080/vulnerabilities/xss_r/?name=%3Csvg%20onload%3D%22window.__wp4xss%3D'WP4XSS004'%3Bdocument.title%3D'WP4XSS004'%22%3E&user_token=76704062acabc0816dc380e188e19050",
+  "marker": "WP4XSS004",
+  "executed": false,
+  "marker_in_dom_text": true,
+  "marker_in_raw_html": false,
+  "encoded_output_observed": true,
+  "missing_token_redirected": true,
+  "console": [],
+  "page_errors": [],
+  "screenshot": "verification/evidence/wp4-20261019-xss004-impossible/browser.png",
+  "recorded_at": "2026-10-19T06:14:40.573Z"
+}

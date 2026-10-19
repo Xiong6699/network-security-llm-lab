@@ -4,7 +4,13 @@
   "prepared_prompt_count": 51,
   "parent_sample_count": 14,
   "formal_records": 42,
-  "formal_status": "not_run",
+  "formal_status": "completed",
+  "formal_batch": "results/batches/wp2-eval-42",
+  "strict_protocol_by_version": {
+    "v1": "5/14",
+    "v2": "8/14",
+    "final": "4/14"
+  },
   "same_conversation_drafts_checked": 15,
   "workpackage1_unchanged_file_count": 130,
   "input_code_blocks_unchanged": true,

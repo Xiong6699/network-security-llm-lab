@@ -1,0 +1,66 @@
+{
+  "run_id": "wp4-20261019-xss002-medium",
+  "sample_id": "XSS-002",
+  "path_id": "vulnerabilities/xss_r/index.php:name",
+  "condition_key": "env=dvwa-wsl-01|role=admin|security=medium|object=none|state=initialized",
+  "observations": {
+    "endpoint": "/vulnerabilities/xss_r/index.php",
+    "parameter": "name (GET)",
+    "security_level": "medium",
+    "identity": {
+      "logged_in": true
+    },
+    "normal_control": {
+      "status": 200,
+      "control_reflected": true
+    },
+    "test": {
+      "status": 200,
+      "payload": "<svg onload=\"window.__wp4xss='WP4XSS002';document.title='WP4XSS002'\">",
+      "payload_reflected_verbatim": true,
+      "response_bytes": 4843
+    },
+    "filter_control": {
+      "input": "<script>alert(1)</script>",
+      "raw_script_tag_present": false,
+      "script_keyword_present": false
+    },
+    "browser_execution": {
+      "executed": true,
+      "marker_in_raw_html": true,
+      "page_errors": [],
+      "screenshot": "verification/evidence/wp4-20261019-xss002-medium/browser.png"
+    }
+  },
+  "success_criteria": [
+    "The page returns an authenticated response and reflects the control text.",
+    "The payload reaches the final HTML position without an applicable output filter.",
+    "Headless Chrome sets the JS marker in the page context, proving execution, not just reflection."
+  ],
+  "limitations": [
+    "Only the medium xss_r path is covered in one desktop Chrome version.",
+    "The marker is harmless and creates no network request."
+  ],
+  "artifacts": [
+    {
+      "path": "verification/evidence/wp4-20261019-xss002-medium/browser.json",
+      "sha256": "42ec6cd5feb63b92dfb3a25f22aa42ac3daf2d59cbe76195e1df733225ea5e5b",
+      "description": "headless browser evidence: browser.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss002-medium/browser.png",
+      "sha256": "15aae8df3211d3ef0c170485bf5251bc5062083b57191046b0d13432e17f4fbf",
+      "description": "headless browser evidence: browser.png"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss002-medium/request.redacted.json",
+      "sha256": "3a02fe61ebd1fc779e4dc4f9ca3dd013ab9c4413cefb481ce0c4a0aea115cf36",
+      "description": "request.redacted.json"
+    },
+    {
+      "path": "verification/evidence/wp4-20261019-xss002-medium/response.redacted.txt",
+      "sha256": "089a504cb2ff6d6430d4511ce9b800cdc243ebf420bed0e72bddfd95186cfb6b",
+      "description": "response.redacted.txt"
+    }
+  ]
+}
